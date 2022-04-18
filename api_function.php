@@ -7,6 +7,13 @@
 	include 'jwt/auth.php';
 	use \Firebase\JWT\JWT;
 
+	function DFA($data)
+	{
+		echo "<pre>";
+		print_r($data);
+		exit;
+	}
+
 	function singleInsert($table, $data, $con)
 	{
 	    $colString = "";
@@ -248,7 +255,7 @@
 	function getresgisterrescuer($con,$table,$str,$status)
 	{
 		$data = array();
-		 $sql = "select * from $table where vStatus='1' and vVerificationstatus='$status' $str order by iId desc";
+		$sql = "select * from $table where vStatus='1' and vVerificationstatus='$status' $str order by iId desc";
 		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
 		while($res = mysqli_fetch_assoc($response_query))
 		{
