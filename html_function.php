@@ -65,6 +65,7 @@
 		{
 			foreach ($data as $parent => $val) 
 			{
+
 				$str .= '<tr>';
 				foreach($head as $child => $value) 
 				{
@@ -76,7 +77,7 @@
 				if($method == 'edit')
 					$str .= '<td><a href="master_add.php?type='.$type.'&id='.$val['id'].'">Edit</a> | <a href="javascript:;" onclick="assignItem('.$val['id'].')" data-toggle="modal" data-target="#deleteButton">Delete</a></td>';
 				else
-				$str .= '<td><a href="user_detail_view.php?id='.$val['id'].'">View</a> | <a href="javascript:;" onclick="assignItem('.$val['id'].')" data-toggle="modal" data-target="#deleteButton">Delete</a></td>';
+					$str .= '<td><a href="'.$type.'_detail_view.php?id='.$val['id'].'">View</a> | <a href="javascript:;" onclick="assignItem('.$val['id'].')" data-toggle="modal" data-target="#deleteButton">Delete</a></td>';
 				$str .= '</tr>';
 			}
 		}

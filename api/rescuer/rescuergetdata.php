@@ -1,5 +1,5 @@
 <?php
-    include "../config_user.php";
+    include "../config_rescuer.php";
 	include "../../api_function.php";
 	if(isset($_GET['modules']))
 		$modules = $_GET['modules'];
@@ -10,9 +10,7 @@
     if($_SERVER['REQUEST_METHOD'] == "GET")
 	{   
 		$sample_array = array();
-		$data_from_db=getspecificdata($con,'user',$id,'iId');
-		// print_r($data_from_db);
-		// exit;
+		$data_from_db=getspecificdata($con,'rescuer',$id,'iId');
 		foreach($data_from_db as $key=>$val)
 		{
 			$sample_array['id'] = $data_from_db['iId'];
@@ -27,7 +25,7 @@
 			}
 		}
 		//display_specific_User_Details
-		echo json_encode(array('user'=>$sample_array));
+		echo json_encode(array('rescuer'=>$sample_array));
 		exit;
     }
 ?>

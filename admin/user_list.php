@@ -3,7 +3,7 @@
 	include '../html_function.php';
 	include '../api/config_user.php';
 
-    $tech = 'Dashboard';//($_GET['type']) ? $_GET['type']:'Dashboard';	
+    $tech = 'user';//($_GET['type']) ? $_GET['type']:'Dashboard';	
 	$title = 'Userlist';		
 	$action = $api_url.'user/sample.php';
 	$data = json_decode(file_get_contents($action),true);

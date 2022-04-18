@@ -3,7 +3,7 @@
 	include '../html_function.php';
 	include '../api/config_rescuer.php';
 
-	$tech = 'Dashboard';//($_GET['type']) ? $_GET['type']:'Dashboard';	
+	$tech = 'rescuer';//($_GET['type']) ? $_GET['type']:'Dashboard';	
 	$title = 'Approval';	
 	$action = $api_url.'rescuer/getapprovedlist.php';
 	$data = json_decode(file_get_contents($action),true);
