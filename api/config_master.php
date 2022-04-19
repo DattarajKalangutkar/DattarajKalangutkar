@@ -283,11 +283,10 @@
 			),
 			'vImage'=>array(
 				'validate'=>'1',
-				'clientname'=>'wildlifeIamge',
+				'clientname'=>'wildlifeImage',
 				'type'=>'string',
-				'html'=>'text',
-				'table'=>'1'
-	
+				'html'=>'file',
+				'table'=>'0'
 			),
 			'vContact'=>array(
 				'validate'=>'1',
