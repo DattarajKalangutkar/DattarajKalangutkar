@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 18, 2022 at 11:28 AM
+-- Generation Time: Apr 19, 2022 at 02:11 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 5.6.40
 
@@ -21,6 +21,21 @@ SET time_zone = "+00:00";
 --
 -- Database: `snake`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `answers`
+--
+
+CREATE TABLE `answers` (
+  `iId` int(10) NOT NULL,
+  `iTranscationId` int(10) NOT NULL,
+  `iQuestionId` int(10) NOT NULL,
+  `vAnswer` varchar(255) NOT NULL,
+  `dCreatedDate` datetime NOT NULL,
+  `vStatus` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -107,6 +122,20 @@ CREATE TABLE `post` (
   `vComments` varchar(255) NOT NULL,
   `iLikes` int(10) NOT NULL,
   `iViews` int(10) NOT NULL,
+  `dCreatedDate` datetime NOT NULL,
+  `vStatus` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `questions`
+--
+
+CREATE TABLE `questions` (
+  `iId` int(10) NOT NULL,
+  `vName` varchar(255) NOT NULL,
+  `vOptions` varchar(255) NOT NULL,
   `dCreatedDate` datetime NOT NULL,
   `vStatus` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -208,7 +237,7 @@ CREATE TABLE `transcation` (
   `iRescuerId` int(10) NOT NULL,
   `iUserId` int(10) NOT NULL,
   `iSnakeId` int(10) NOT NULL,
-  `vSnakeImage` varchar(255) NOT NULL,
+  `vImage` varchar(255) NOT NULL,
   `dRescuerDate` datetime NOT NULL,
   `tRescuerAddress` text NOT NULL,
   `ilength` int(10) NOT NULL,
@@ -263,6 +292,12 @@ CREATE TABLE `wildlife` (
 --
 
 --
+-- Indexes for table `answers`
+--
+ALTER TABLE `answers`
+  ADD PRIMARY KEY (`iId`);
+
+--
 -- Indexes for table `color`
 --
 ALTER TABLE `color`
@@ -296,6 +331,12 @@ ALTER TABLE `pattern`
 -- Indexes for table `post`
 --
 ALTER TABLE `post`
+  ADD PRIMARY KEY (`iId`);
+
+--
+-- Indexes for table `questions`
+--
+ALTER TABLE `questions`
   ADD PRIMARY KEY (`iId`);
 
 --
@@ -351,6 +392,12 @@ ALTER TABLE `wildlife`
 --
 
 --
+-- AUTO_INCREMENT for table `answers`
+--
+ALTER TABLE `answers`
+  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `color`
 --
 ALTER TABLE `color`
@@ -384,6 +431,12 @@ ALTER TABLE `pattern`
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
+  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `questions`
+--
+ALTER TABLE `questions`
   MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT;
 
 --
