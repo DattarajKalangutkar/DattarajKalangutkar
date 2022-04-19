@@ -55,6 +55,7 @@
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=hospital">Hospital</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=wildlife">Wild Life</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=headshape">Head Shape</a>
+                <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=questions">Question</a>
             </div>
         </div>
     </li>

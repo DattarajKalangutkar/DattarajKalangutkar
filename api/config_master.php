@@ -384,5 +384,35 @@
 				'table'=>'0'
 			)
 		),
+		'questions'=>array(
+			'vName'=>array(
+				'validate'=>'1',
+				'clientname'=>'questionName',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'vOptions'=>array(
+				'validate'=>'1',
+				'clientname'=>'questionOptions',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'dCreatedDate'=>array(
+				'validate'=>'0',
+				'clientname'=>'createdDate',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			),
+			'vStatus'=>array(
+				'validate'=>'1',
+				'clientname'=>'headshapeStatus',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			)
+		),
 	) 
 ?>
