@@ -47,9 +47,9 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=snake">Snakes</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=color">Color</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=pattern">Pattern</a>
-                <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=snake">Snakes</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=symptoms">Symptoms</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=snaketype">Snake Type</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=hospital">Hospital</a>
@@ -60,9 +60,5 @@
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
 </ul>
 <!-- End of Sidebar -->
