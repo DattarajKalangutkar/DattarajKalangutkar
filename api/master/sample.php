@@ -78,12 +78,14 @@
 				$sample_array[$key]['id'] = $data_from_db[$key]['iId'];
 				foreach($master_config[$modules] as $keys=>$val)
 				{
-					if($keys == 'vStatus')
+					if($keys == 'vImage')
+					{
+						$sample_array[$key][$val['clientname']] = $api_url.$data_from_db[$key][$keys];
+					}
+					else
 					{
 						$sample_array[$key][$val['clientname']] = $data_from_db[$key][$keys];
 					}
-					else
-						$sample_array[$key][$val['clientname']] = $data_from_db[$key][$keys];
 				}
 			}	
 			$count = count($sample_array);

@@ -24,6 +24,10 @@
 				$str .="<a href='$url$val' target='blank'>View</a> || <a href='javascript:;' onclick='deleteImage(\"".$modules."\",\"".$val."\")'>Delete</a>";
 			}
 		}
+		else if($type == 'textarea')
+		{
+			$str .="<textarea id='$iden' name='$iden' class='form-control form-control-user' type='$type' autocomplete='off' required='$req'>$val</textarea>";
+		}
 		else
 		{
 			$str .="<input id='$iden' name='$iden' class='form-control form-control-user' type='$type' autocomplete='off' required='$req' value='$val'>";

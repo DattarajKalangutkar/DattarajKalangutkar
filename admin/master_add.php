@@ -204,7 +204,7 @@
 							data: JSON.stringify(data),
 							success: function(res){
 								alert(JSON.parse(res).message);
-								window.location.reload();
+								window.location.href = "master_list.php?type=<?php echo $tech;?>";
 							},
 						});
 				    }
@@ -218,7 +218,7 @@
 					data: JSON.stringify(data),
 					success: function(res){
 						alert(JSON.parse(res).message);
-						window.location.reload();
+						window.location.href = "master_list.php?type=<?php echo $tech;?>";
 					},
 				});
 			}
