@@ -41,7 +41,7 @@
 			return '';
 	}
 
-	function getDataTable($head,$data,$type,$method)
+	function getDataTable($head,$data,$type,$method,$con)
 	{
 		$str = '';
 		$count = 0;
@@ -65,13 +65,20 @@
 		{
 			foreach ($data as $parent => $val) 
 			{
-
 				$str .= '<tr>';
 				foreach($head as $child => $value) 
 				{
 					if($value['table'] == '1')
 					{
-						$str .= '<td>'.$val[$value['clientname']].'</td>';
+						if($value['html'] == 'dropdown')
+						{
+							$str .= '<td>'.GETXFROMYID($con,$value['data_fetch'],'vName',$val[$value['clientname']]).'</td>';
+						}
+						else
+						{
+							$str .= '<td>'.$val[$value['clientname']].'</td>';
+						}
+						
 					}
 				}
 				if($method == 'edit')

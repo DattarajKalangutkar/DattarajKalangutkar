@@ -68,7 +68,7 @@
 				'clientname'=>'snakeSize',
 				'type'=>'string',
 				'html'=>'number',
-				'table'=>'1'
+				'table'=>'0'
 			),
 			'iColor'=>array(
 				'validate'=>'1',
@@ -76,7 +76,7 @@
 				'type'=>'string',
 				'data_fetch'=>'color',
 				'html'=>'dropdown',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'iPattern'=>array(
 				'validate'=>'1',
@@ -107,7 +107,7 @@
 				'type'=>'string',
 				'data_fetch'=>'headshape',
 				'html'=>'dropdown',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'tDesc'=>array(
 				'validate'=>'0',
