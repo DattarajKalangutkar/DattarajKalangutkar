@@ -84,6 +84,12 @@
 		return $arrayName;
 	}
 
+	function error_msg($msg,$err)
+	{
+		$arrayName = array("message"=>$msg,"error"=>$err);
+		return $arrayName;
+	}
+
 	//validate credentials with database
 	function validate_with_db($type,$phone,$pass,$con)
 	{   
@@ -392,63 +398,11 @@
 		}
 	}
 
-	function get_badwords($con)
+	function checkExist($con,$table,$value,$iden)
 	{
-		$temp = array();
-	    $query = "SELECT vBadwrds FROM  badwords";
-	    $result = mysqli_query($con, $query) or die();
-	    while ($res_data = mysqli_fetch_assoc($result)) 
-	    {
-	        $temp[] = $res_data['vBadwrds'];
-	    }
-	    return $temp;
-	}
-
-	function check_for_badword($badwords,$str)
-	{
-		$myRegexMatch = implode("|",$badwords);
-	    $myRegexMatch = "/(".$myRegexMatch.")/i";
-	    $tempstr = explode(" ", $str);
-	    for($i=0;$i<count($tempstr);$i++)
-	    {
-	        if(preg_match($myRegexMatch,$tempstr[$i])) 
-	        { 
-	            return false;
-	        }
-	        else  
-	        {
-	            return true;
-	        }
-	    }
-	}
-    
-	//rutvij gawas||16-03-2021||to get specific fields
-	function getspecificfield($con,$table,$identifer,$uniqueid,$fields)
-	{
-		$data = array();
-	    $sql = "select $fields from $table where $identifer='$uniqueid' and vStatus='0' order by iId";
-		$response_query = mysqli_query($con, $sql) or die('Error, No:106');
-		while($res = mysqli_fetch_assoc($response_query)) 
-		{
-			$data[] = $res;
-		}
-		return $data;
-	}
-
-
-
-	//rutvij gawas||18-03-2021||to join multiple tables.
-	 function getjoindata($con,$query_str,$condition,$orderby)
-	 {
-		$data = array();
-		$sql = "select $query_str where $condition order by $orderby";
-		$response_query = mysqli_query($con, $sql) or die('Error, No:106');
-		while($res = mysqli_fetch_assoc($response_query)) 
-		{
-			$data[] = $res;
-		}
-		return $data;
-	 }
-
-	
+		$sql = "select $iden from $table where $iden like '$value' and vStatus=1 order by iId";
+		$response_query = mysqli_query($con, $sql) or die('Error, 404');
+		$num_of_rows = mysqli_num_rows($response_query);
+		return ($num_of_rows > 0) ? true : false;
+	}	
 ?>

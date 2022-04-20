@@ -73,7 +73,7 @@
             data: adata,
             success: function(res){
                 alert(JSON.parse(res).message);
-                // window.location.reload();
+                window.location.reload();
             },
         });
     }

@@ -30,4 +30,13 @@
 		echo json_encode(array('user'=>$sample_array));
 		exit;
     }
+
+    if($_SERVER['REQUEST_METHOD'] == 'DELETE')
+	{
+		if(specific_data_id($con,"user",$id))
+		{
+			echo json_encode(array("message"=>"user"." delete Successfully"));
+			exit;
+		}
+	}
 ?>

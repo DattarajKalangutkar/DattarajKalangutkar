@@ -6,7 +6,8 @@
 				'clientname'=>'colorName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'dCreatedDate'=>array(
 				'validate'=>'0',
@@ -30,7 +31,8 @@
 				'clientname'=>'patternName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'dCreatedDate'=>array(
 				'validate'=>'0',
@@ -54,14 +56,15 @@
 				'clientname'=>'snakeName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'vLocalName'=>array(
 				'validate'=>'1',
 				'clientname'=>'snakeLocalName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
 			),
 			'vSize'=>array(
 				'validate'=>'1',
@@ -137,7 +140,8 @@
 				'clientname'=>'snakeTypeName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'dCreatedDate'=>array(
 				'validate'=>'0',
@@ -160,7 +164,8 @@
 				'clientname'=>'statustransName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'dCreated_date'=>array(
 				'validate'=>'0',
@@ -184,7 +189,8 @@
 				'clientname'=>'symptomsName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'dCreatedDate'=>array(
 				'validate'=>'0',
@@ -207,7 +213,8 @@
 				'clientname'=>'hospitalName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'vAddress'=>array(
 				'validate'=>'1',
@@ -272,7 +279,8 @@
 				'clientname'=>'wildlifeName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'vAddress'=>array(
 				'validate'=>'1',
@@ -337,7 +345,8 @@
 				'clientname'=>'firstaidName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'vDescription'=>array(
 				'validate'=>'1',
@@ -367,7 +376,8 @@
 				'clientname'=>'headshapeName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'dCreatedDate'=>array(
 				'validate'=>'0',
@@ -390,7 +400,8 @@
 				'clientname'=>'questionName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'vOptions'=>array(
 				'validate'=>'1',

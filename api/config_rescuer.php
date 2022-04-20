@@ -12,7 +12,8 @@
             'clientname'=>'rescuerPhone',
             'type'=>'string',
             'html'=>'text',
-            'table'=>'1'
+            'table'=>'1',
+            'other_validation'=>'vPhone'
         ),
         'vUserName'=>array(
             'validate'=>'1',

@@ -8,6 +8,8 @@
 	$action = $api_url.'user/sample.php';
 	$data = json_decode(file_get_contents($action),true);
 	$get_data_table_str = getDataTable($user_config,$data['rows'],$tech,'view',$con);
+
+    $deleted_api = $api_url.'user/usergetdata.php';
 ?>
 
 <?php include 'components/header.php';?>
@@ -52,7 +54,7 @@
     {
         $.ajax({
             type: "DELETE",
-            url: '<?php echo $action;?>'+'&id='+deleteItemValue,
+            url: '<?php echo $deleted_api;?>'+'?id='+deleteItemValue,
             data: {},
             success: function(res){
                 alert(JSON.parse(res).message);

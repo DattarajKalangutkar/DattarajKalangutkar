@@ -2,7 +2,8 @@
 	include "../config_rescuer.php";
 	include "../../api_function.php";
 	$postdata = json_decode(file_get_contents("php://input"), true);
-
+	if(isset($_GET['id']))
+		$id = $_GET['id'];
 	$temp_get_array = $_GET;
 	unset($temp_get_array['modules']);
 	// if(validate_with_db(decodejwt(getallheaders()['Authorization'])->data->phone,md5(decodejwt(getallheaders()['Authorization'])->data->password),$con))
@@ -29,5 +30,14 @@
         $count = count($sample_array);
 		echo json_encode(array("count"=>$count,"rows"=>$sample_array));
 		exit;
+	}
+
+	if($_SERVER['REQUEST_METHOD'] == 'DELETE')
+	{
+		if(specific_data_id($con,"rescuer",$id))
+		{
+			echo json_encode(array("message"=>"rescuer"." delete Successfully"));
+			exit;
+		}
 	}
 ?>

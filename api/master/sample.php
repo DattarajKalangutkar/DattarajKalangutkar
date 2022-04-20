@@ -24,6 +24,15 @@
 				else
 					validate_to_number($postdata[$val['clientname']],$val['clientname']);
 			}
+
+			if(isset($val['other_validation']))
+			{
+				if(checkExist($con,$modules,$postdata[$val['clientname']],$val['other_validation']))
+				{
+					echo json_encode(error_msg('Value already Present in the Database',false));
+					exit;
+				}
+			}
 			
 			if($val['clientname'] != 'createdDate') //if everything is fine then proceed further
 				$sample_array[$key] = (isset($postdata[$val['clientname']])) ? $postdata[$val['clientname']]:'';
@@ -106,6 +115,16 @@
 				else
 					validate_to_number($postdata[$val['clientname']],$val['clientname']);
 			}
+
+			if(isset($val['other_validation']))
+			{
+				if(checkExist($con,$modules,$postdata[$val['clientname']],$val['other_validation']))
+				{
+					echo json_encode(error_msg('Value already Present in the Database',false));
+					exit;
+				}
+			}
+
 			if($val['clientname'] != 'Created_date') //if everything is fine then proceed further
 				$sample_array[$key] = (isset($postdata[$val['clientname']])) ? $postdata[$val['clientname']]:'';
 			else

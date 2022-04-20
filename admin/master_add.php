@@ -202,9 +202,9 @@
 							type: "POST",
 							url: '<?php echo $action;?>',
 							data: JSON.stringify(data),
-							success: function(res){
+							success: function(res)
+							{
 								alert(JSON.parse(res).message);
-								window.location.href = "master_list.php?type=<?php echo $tech;?>";
 							},
 						});
 				    }
@@ -218,7 +218,6 @@
 					data: JSON.stringify(data),
 					success: function(res){
 						alert(JSON.parse(res).message);
-						window.location.href = "master_list.php?type=<?php echo $tech;?>";
 					},
 				});
 			}
