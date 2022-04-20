@@ -58,6 +58,13 @@
 	var key_feilds = Object.keys(validate_array);
 	var exclude_feilds = ["dCreatedDate","vStatus"];
 
+
+	function updateValue()
+	{
+		document.getElementById("forchangingforImage").value = '1';
+	}
+
+
 	function deleteImage(modules,url)
 	{
 		var primary_key = document.getElementById('primary_key').value;
@@ -94,7 +101,7 @@
 				{
 					if(validate_array[key_feilds[i]]['clientname'] == document.getElementById("modules").value+"Image")
 					{
-						if(document.getElementById("forchanging").value == "")
+						if(document.getElementById("forchangingforImage").value == "")
 						{
 							alert(validate_array[key_feilds[i]]['clientname']+" is required");
 							return;
@@ -191,44 +198,28 @@
 		{
 			if(key_feilds.includes('vImage'))
 			{
-				if(validate_array['vImage']['validate'] != 0)
-				{
-					if(document.getElementById("forchanging").value != "")
-					{
-						$.ajax({
-						    type: "POST",
-						    url: '<?php echo $api_url."services/file_upload.php?iden=freshupload"?>',
-						    data: new FormData($('#myForm')[0]),
-						    processData: false,
-						    contentType: false,
-						    success: function (responseData) 
-						    {
-						    	var filepath = JSON.parse(responseData).filepath;
-						    	data['<?php echo $tech;?>Image'] = filepath;
-						        $.ajax({
-									type: "POST",
-									url: '<?php echo $action;?>',
-									data: JSON.stringify(data),
-									success: function(res)
-									{
-										alert(JSON.parse(res).message);
-									},
-								});
-						    }
+				$.ajax({
+				    type: "POST",
+				    url: '<?php echo $api_url."services/file_upload.php?iden=freshupload"?>',
+				    data: new FormData($('#myForm')[0]),
+				    processData: false,
+				    contentType: false,
+				    success: function (responseData) 
+				    {
+				    	var filepath = JSON.parse(responseData).filepath;
+				    	data['<?php echo $tech;?>Image'] = filepath;
+				        $.ajax({
+							type: "POST",
+							url: '<?php echo $action;?>',
+							data: JSON.stringify(data),
+							success: function(res)
+							{
+								alert(JSON.parse(res).message);
+								window.location.reload();
+							},
 						});
-					}
-				}
-				else
-				{
-					$.ajax({
-						type: "POST",
-						url: '<?php echo $action;?>',
-						data: JSON.stringify(data),
-						success: function(res){
-							alert(JSON.parse(res).message);
-						},
-					});
-				}
+				    }
+				});
 			}
 			else
 			{
@@ -238,6 +229,7 @@
 					data: JSON.stringify(data),
 					success: function(res){
 						alert(JSON.parse(res).message);
+						window.location.reload();
 					},
 				});
 			}

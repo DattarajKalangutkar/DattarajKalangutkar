@@ -16,9 +16,10 @@
 		}
 		else if($type == 'file')
 		{
-			$str .="<input id='$iden' name='$iden' class='form-control form-control-user' type='$type' autocomplete='off' value=''>";
+			$str .="<input id='$iden' onchange='updateValue()' name='$iden' class='form-control form-control-user' type='$type' autocomplete='off' value='' >";
 			$str .="<input id='image_edit' name='image_edit' class='form-control form-control-user' type='hidden' autocomplete='off' value='$url$val'>";
 			$str .="<input id='forchanging' name='forchanging' class='form-control form-control-user' type='hidden' autocomplete='off' value='$val'>";
+			$str .="<input id='forchangingforImage' name='forchangingforImage' class='form-control form-control-user' type='hidden' autocomplete='off' value='$val'>";
 			if($val != '')
 			{
 				$str .="<a href='$url$val' target='blank'>View</a> || <a href='javascript:;' onclick='deleteImage(\"".$modules."\",\"".$val."\")'>Delete</a>";

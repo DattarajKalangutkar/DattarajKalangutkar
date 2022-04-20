@@ -116,14 +116,14 @@
 					validate_to_number($postdata[$val['clientname']],$val['clientname']);
 			}
 
-			if(isset($val['other_validation']))
-			{
-				if(checkExist($con,$modules,$postdata[$val['clientname']],$val['other_validation']))
-				{
-					echo json_encode(error_msg('Value already Present in the Database',false));
-					exit;
-				}
-			}
+			// if(isset($val['other_validation']))
+			// {
+			// 	if(checkExist($con,$modules,$postdata[$val['clientname']],$val['other_validation']))
+			// 	{
+			// 		echo json_encode(error_msg('Value already Present in the Database',false));
+			// 		exit;
+			// 	}
+			// }
 
 			if($val['clientname'] != 'Created_date') //if everything is fine then proceed further
 				$sample_array[$key] = (isset($postdata[$val['clientname']])) ? $postdata[$val['clientname']]:'';
@@ -140,6 +140,12 @@
 
 	if($_SERVER['REQUEST_METHOD'] == 'DELETE')
 	{
+		if(array_key_exists("vImage",$master_config[$modules]))
+		{
+			$filename = GETXFROMYID($con,$modules,"vImage",$id);
+			unlink($file_check.$filename);	
+		}
+
 		if(specific_data_id($con,$modules,$id))
 		{
 			echo json_encode(array("message"=>$modules." delete Successfully"));

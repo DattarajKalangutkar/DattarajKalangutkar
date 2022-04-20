@@ -90,7 +90,7 @@
 				'table'=>'1'
 			),
 			'vImage'=>array(
-				'validate'=>'0',
+				'validate'=>'1',
 				'clientname'=>'snakeImage',
 				'type'=>'string',
 				'html'=>'file',
