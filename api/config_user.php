@@ -33,7 +33,7 @@
             'clientname'=>'userPassword',
             'type'=>'string',
             'html'=>'text',
-            'table'=>'0'
+            'table'=>'1'
         ),
         'iRoleId'=>array(
             'validate'=>'1',

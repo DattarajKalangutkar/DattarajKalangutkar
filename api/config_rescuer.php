@@ -84,7 +84,7 @@
             'clientname'=>'rescuerImage',
             'type'=>'string',
             'html'=>'text',
-            'table'=>'0'
+            'table'=>'1'
         ),
         'vAchievement'=>array(
             'validate'=>'1',

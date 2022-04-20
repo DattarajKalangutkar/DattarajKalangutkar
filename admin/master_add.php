@@ -90,20 +90,23 @@
 		{
 			if(!exclude_feilds.includes(key_feilds[i]))
 			{
-				if(validate_array[key_feilds[i]]['clientname'] == document.getElementById("modules").value+"Image")
+				if(validate_array[key_feilds[i]]['validate'] == 1)
 				{
-					if(document.getElementById("image_edit").value == "")
+					if(validate_array[key_feilds[i]]['clientname'] == document.getElementById("modules").value+"Image")
 					{
-						alert(validate_array[key_feilds[i]]['clientname']+" is required");
-						return;
+						if(document.getElementById("forchanging").value == "")
+						{
+							alert(validate_array[key_feilds[i]]['clientname']+" is required");
+							return;
+						}
 					}
-				}
-				else
-				{
-					if(document.getElementById(validate_array[key_feilds[i]]['clientname']).value == "")
+					else
 					{
-						alert(validate_array[key_feilds[i]]['clientname']+" is required");
-						return;
+						if(document.getElementById(validate_array[key_feilds[i]]['clientname']).value == "")
+						{
+							alert(validate_array[key_feilds[i]]['clientname']+" is required");
+							return;
+						}
 					}
 				}
 			}
@@ -188,27 +191,44 @@
 		{
 			if(key_feilds.includes('vImage'))
 			{
-				$.ajax({
-				    type: "POST",
-				    url: '<?php echo $api_url."services/file_upload.php?iden=freshupload"?>',
-				    data: new FormData($('#myForm')[0]),
-				    processData: false,
-				    contentType: false,
-				    success: function (responseData) 
-				    {
-				    	var filepath = JSON.parse(responseData).filepath;
-				    	data['<?php echo $tech;?>Image'] = filepath;
-				        $.ajax({
-							type: "POST",
-							url: '<?php echo $action;?>',
-							data: JSON.stringify(data),
-							success: function(res)
-							{
-								alert(JSON.parse(res).message);
-							},
+				if(validate_array['vImage']['validate'] != 0)
+				{
+					if(document.getElementById("forchanging").value != "")
+					{
+						$.ajax({
+						    type: "POST",
+						    url: '<?php echo $api_url."services/file_upload.php?iden=freshupload"?>',
+						    data: new FormData($('#myForm')[0]),
+						    processData: false,
+						    contentType: false,
+						    success: function (responseData) 
+						    {
+						    	var filepath = JSON.parse(responseData).filepath;
+						    	data['<?php echo $tech;?>Image'] = filepath;
+						        $.ajax({
+									type: "POST",
+									url: '<?php echo $action;?>',
+									data: JSON.stringify(data),
+									success: function(res)
+									{
+										alert(JSON.parse(res).message);
+									},
+								});
+						    }
 						});
-				    }
-				});
+					}
+				}
+				else
+				{
+					$.ajax({
+						type: "POST",
+						url: '<?php echo $action;?>',
+						data: JSON.stringify(data),
+						success: function(res){
+							alert(JSON.parse(res).message);
+						},
+					});
+				}
 			}
 			else
 			{
