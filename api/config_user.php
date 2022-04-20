@@ -33,7 +33,7 @@
             'clientname'=>'userPassword',
             'type'=>'string',
             'html'=>'text',
-            'table'=>'1'
+            'table'=>'0'
         ),
         'iRoleId'=>array(
             'validate'=>'1',
@@ -47,7 +47,7 @@
             'clientname'=>'createdDate',
             'type'=>'string',
             'html'=>'',
-            'table'=>'0'
+            'table'=>'1'
         ),
         'vStatus'=>array(
             'validate'=>'1',

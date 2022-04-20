@@ -14,7 +14,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'string',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -39,7 +39,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'string',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -124,7 +124,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'date',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -148,7 +148,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'date',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -172,7 +172,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'date',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -197,7 +197,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'string',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -263,7 +263,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'string',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -329,7 +329,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'string',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -360,7 +360,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'string',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -384,7 +384,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'string',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -415,7 +415,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'string',
 				'html'=>'',
-				'table'=>'0'
+				'table'=>'1'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',

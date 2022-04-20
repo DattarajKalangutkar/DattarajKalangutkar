@@ -78,6 +78,10 @@
 						{
 							$str .= '<td>'.GETXFROMYID($con,$value['data_fetch'],'vName',$val[$value['clientname']]).'</td>';
 						}
+						else if($child == 'dCreatedDate')
+						{
+							$str .= '<td>'.date_format(date_create($val[$value['clientname']]),"M d, H:m a").'</td>';
+						}
 						else
 						{
 							$str .= '<td>'.$val[$value['clientname']].'</td>';
@@ -132,7 +136,18 @@
 				{
 					if($value['table'] == '1')
 					{
-						$str .= '<td>'.$val[$value['clientname']].'</td>';
+						if($value['html'] == 'dropdown')
+						{
+							$str .= '<td>'.GETXFROMYID($con,$value['data_fetch'],'vName',$val[$value['clientname']]).'</td>';
+						}
+						else if($child == 'dCreatedDate')
+						{
+							$str .= '<td>'.date_format(date_create($val[$value['clientname']]),"M d, H:m a").'</td>';
+						}
+						else
+						{
+							$str .= '<td>'.$val[$value['clientname']].'</td>';
+						}
 					}
 				}
 				$approve = 1;
