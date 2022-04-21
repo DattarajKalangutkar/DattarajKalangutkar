@@ -19,8 +19,6 @@
 		}
 
 		$data = validate_with_db_data('resuer',$postdata['rescuerPhone'],$postdata['rescuerPassword'],$con);
-    //    DFA($data);
-
 		if($data['vVerificationstatus'] == '0')
 		{
 			echo json_encode(array("validate"=>false,"message"=>'You Are Not verifierd By Admin'));
