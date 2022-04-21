@@ -19,6 +19,7 @@
 		}
 
 		$data = validate_with_db_data('resuer',$postdata['rescuerPhone'],$postdata['rescuerPassword'],$con);
+    //    DFA($data);
 
 		if($data['vVerificationstatus'] == '0')
 		{

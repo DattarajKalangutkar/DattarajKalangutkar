@@ -14,7 +14,7 @@
 		foreach($data_from_db as $key=>$val)
 		{
 			$sample_array['id'] = $data_from_db['iId'];
-			foreach($user_config as $key=>$val)
+			foreach($rescuer_config as $key=>$val)
 			{
 				if($key == 'vStatus')
 				{
