@@ -3,8 +3,6 @@
 	include "../../api_function.php";
 	$postdata = json_decode(file_get_contents("php://input"), true);
 	$modules = "rescuer";
-	// print_r($postdata);
-	// exit(1);
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
