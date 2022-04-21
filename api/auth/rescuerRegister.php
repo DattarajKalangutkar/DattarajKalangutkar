@@ -3,8 +3,6 @@
 	include "../../api_function.php";
 	$postdata = json_decode(file_get_contents("php://input"), true);
 	$modules = "rescuer";
-	// print_r($postdata);
-	// exit(1);
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -29,14 +27,13 @@
 				}
 			}
 
-			if($val['clientname'] != 'createdDate') //if everything is fine then proceed further
+			if($val['clientname'] != 'createdDate' && $val['clientname'] != 'rescuerPassword') //if everything is fine then proceed further
 				$sample_array[$key] = (isset($postdata[$val['clientname']])) ? $postdata[$val['clientname']]:'';
 			else if($val['clientname'] == 'rescuerPassword')
 				$sample_array[$key] = md5($postdata[$val['clientname']]);
 			else
 				$sample_array[$key] = NOW;
 		}
-		
 		if(singleInsert($modules,$sample_array,$con))
 		{
 			echo json_encode(array("message"=>$modules." created Successfully","flag"=>true));

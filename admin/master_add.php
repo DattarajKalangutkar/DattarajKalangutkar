@@ -109,10 +109,21 @@
 					}
 					else
 					{
-						if(document.getElementById(validate_array[key_feilds[i]]['clientname']).value == "")
+						if(validate_array[key_feilds[i]]['html'] == 'dropdown')
 						{
-							alert(validate_array[key_feilds[i]]['clientname']+" is required");
-							return;
+							if(document.getElementById(validate_array[key_feilds[i]]['clientname']).value == "0")
+							{
+								alert(validate_array[key_feilds[i]]['clientname']+" is required");
+								return;
+							}
+						}
+						else
+						{
+							if(document.getElementById(validate_array[key_feilds[i]]['clientname']).value == "")
+							{
+								alert(validate_array[key_feilds[i]]['clientname']+" is required");
+								return;
+							}
 						}
 					}
 				}

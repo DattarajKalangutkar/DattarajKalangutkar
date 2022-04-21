@@ -102,7 +102,7 @@
 	function validate_with_db_data($type,$phone,$pass,$con)
 	{   
 		$table = ($type == 'user') ? 'user':'rescuer';
-	    $sql = "select * from $table where vPhone='$phone' and vPassword='".md5($pass)."' and vStatus='1' order by iId";
+	   	$sql = "select * from $table where vPhone='$phone' and vPassword='".md5($pass)."' and vStatus='1' order by iId";
 		$response_query = mysqli_query($con, $sql) or die('Error, insert query failed with query at 106');
 		return mysqli_fetch_assoc($response_query);
 	}
