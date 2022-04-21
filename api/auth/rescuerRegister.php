@@ -31,6 +31,8 @@
 
 			if($val['clientname'] != 'createdDate') //if everything is fine then proceed further
 				$sample_array[$key] = (isset($postdata[$val['clientname']])) ? $postdata[$val['clientname']]:'';
+			else if($val['clientname'] == 'rescuerPassword')
+				$sample_array[$key] = md5($postdata[$val['clientname']]);
 			else
 				$sample_array[$key] = NOW;
 		}

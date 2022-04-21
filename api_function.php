@@ -94,9 +94,17 @@
 	function validate_with_db($type,$phone,$pass,$con)
 	{   
 		$table = ($type == 'user') ? 'user':'rescuer';
-	    $sql = "select vStatus from $table where vPhone='$phone' and vPassword='".$pass."' and vStatus='1' order by iId";
+	    $sql = "select vStatus from $table where vPhone='$phone' and vPassword='".md5($pass)."' and vStatus='1' order by iId";
 		$response_query = mysqli_query($con, $sql) or die('Error, insert query failed with query at 83');
 		return (mysqli_num_rows($response_query) > 0 ? true:false);
+	}
+
+	function validate_with_db_data($type,$phone,$pass,$con)
+	{   
+		$table = ($type == 'user') ? 'user':'rescuer';
+	    $sql = "select * from $table where vPhone='$phone' and vPassword='".md5($pass)."' and vStatus='1' order by iId";
+		$response_query = mysqli_query($con, $sql) or die('Error, insert query failed with query at 106');
+		return mysqli_fetch_assoc($response_query);
 	}
 
 	//string validation function
@@ -322,7 +330,7 @@
 	function getuserdata($type,$phone,$pass,$con,$iden)
 	{
 		$table = ($type == 'user') ? 'user':'rescuer';
-		$sql = "select $iden from $table where vPhone='$phone' and vPassword='".$pass."' and vStatus='1' order by iId";
+		$sql = "select $iden from $table where vPhone='$phone' and vPassword='".md5($pass)."' and vStatus='1' order by iId";
 		$response_query = mysqli_query($con, $sql) or die('Error, 196');
 		return mysqli_fetch_assoc($response_query)[$iden];
 	}
@@ -405,4 +413,12 @@
 		$num_of_rows = mysqli_num_rows($response_query);
 		return ($num_of_rows > 0) ? true : false;
 	}	
+
+	function getrescuerdata($type,$con,$iden)
+	{
+		$table = ($type == 'user') ? 'user':'rescuer';
+		$sql = "select $iden from $table where vStatus='1' order by iId";
+		$response_query = mysqli_query($con, $sql) or die('Error, 319');
+		return mysqli_fetch_assoc($response_query)[$iden];
+	}
 ?>
