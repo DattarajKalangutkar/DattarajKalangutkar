@@ -21,6 +21,8 @@
 			
 			if($val['clientname'] != 'createdDate') //if everything is fine then proceed further
 				$sample_array[$key] = (isset($postdata[$val['clientname']])) ? $postdata[$val['clientname']]:'';
+			else if($val['clientname'] == 'userPassword')
+				$sample_array[$key] = md5($postdata[$val['clientname']]);
 			else
 				$sample_array[$key] = NOW;
 		}
@@ -31,49 +33,4 @@
 			exit;
 		}
 	}
-
-	// if($_SERVER['REQUEST_METHOD'] == "POST")
-	// {
-	// 	$error = false;
-	// 	if(empty($postdata['userName']))
-	// 	{
-	// 		echo json_encode(validate_feilds($postdata['userName'],'User Name'));
-    //     	exit;
-	// 	}
-	// 	if(empty($postdata['userPhone']))
-	// 	{
-	// 		echo json_encode(validate_feilds($postdata['userPhone'],'User Phone'));
-    //     	exit;
-	// 	}
-	// 	if(empty($postdata['userEmail']))
-	// 	{
-	// 		echo json_encode(validate_feilds($postdata['userEmail'],'User Email'));
-    //     	exit;
-	// 	}
-	// 	if(empty($postdata['userUsername']))
-	// 	{
-	// 		echo json_encode(validate_feilds($postdata['userUsername'],'User Username'));
-    //     	exit;
-	// 	}
-	// 	if(empty($postdata['userPassword']))
-	// 	{
-	// 		echo json_encode(validate_feilds($postdata['userPassword'],'User Password'));
-    //     	exit;
-	// 	}
-
-	// 	$data = array(
-	// 		'vName'=>$postdata['userName'],
-	// 		'vPhone'=>$postdata['userPhone'],
-	// 		'vEmail'=>$postdata['userEmail'],
-	// 		'vUsername'=>$postdata['userUsername'],
-	// 		'vPassword'=>md5($postdata['userPassword']),
-	// 		'vStatus'=>"1",
-	// 	);
-
-	// 	if(singleInsert('user',$data,$con))
-	// 	{
-	// 		echo json_encode(success_msg('User Registeration Done Successfully',$error));
-    //     	exit;
-	// 	}
-	// }
 ?>
