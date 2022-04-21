@@ -7,7 +7,7 @@
     $title = 'Rescuer Detail'; 
     $action = $api_url.'rescuer\rescuergetdata.php?id='.$_GET['id'];
     $data = json_decode(file_get_contents($action),true);
-    $user_data = $data['user'];
+    $rescuer_data = $data['rescuer'];
 ?>
 
 <?php include 'components/header.php';?>
@@ -26,20 +26,20 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4"><?php echo $user_data['userUsername'];?></h1>
+                                <h1 class="h4 text-gray-900 mb-4"><?php echo $rescuer_data['rescuerUsername'];?></h1>
                             </div>
                             <form class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" value="<?php echo $user_data['userName'];?>" disabled="true">
+                                        <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerName'];?>" disabled="true">
                                     </div>
                                     <div class="col-sm-6">
-                                    <input type="text" class="form-control form-control-user" value="<?php echo $user_data['userPhone'];?>" disabled="true">
+                                    <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerPhone'];?>" disabled="true">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" value="<?php echo $user_data['userEmail'];?>" disabled="true">
+                                        <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerEmail'];?>" disabled="true">
                                     </div>
                                 </div>
                             </form>

@@ -421,4 +421,14 @@
 		$response_query = mysqli_query($con, $sql) or die('Error, 319');
 		return mysqli_fetch_assoc($response_query)[$iden];
 	}
+
+	//Function to get ph no from database shripad,nikhil,deepesh
+    function fetch_db_ph($type,$ph,$con)
+    {
+        $table = ($type == 'user') ? 'user':'rescuer';
+        $sql =  "select vPhone from  $table where vPhone=$ph";
+        $sql_result = mysqli_query($con,$sql);
+        $end = mysqli_fetch_assoc($sql_result);
+        return ($end > 0) ? true : false;
+    }
 ?>

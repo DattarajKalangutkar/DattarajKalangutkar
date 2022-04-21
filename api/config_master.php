@@ -350,7 +350,7 @@
 			),
 			'vDescription'=>array(
 				'validate'=>'1',
-				'clientname'=>'firstDescription',
+				'clientname'=>'firstaidDescription',
 				'type'=>'string',
 				'html'=>'text',
 				'table'=>'1'
@@ -364,7 +364,7 @@
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
-				'clientname'=>'wildlifeStatus',
+				'clientname'=>'firstaidStatus',
 				'type'=>'string',
 				'html'=>'',
 				'table'=>'0'

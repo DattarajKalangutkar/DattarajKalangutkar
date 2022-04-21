@@ -34,6 +34,10 @@
 			else
 				$sample_array[$key] = NOW;
 		}
+
+		// print_r ($sample_array);
+		// exit(0);
+		
 		if(singleInsert($modules,$sample_array,$con))
 		{
 			echo json_encode(array("message"=>$modules." created Successfully","flag"=>true));
