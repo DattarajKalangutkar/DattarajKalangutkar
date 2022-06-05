@@ -424,6 +424,37 @@
 				'html'=>'',
 				'table'=>'0'
 			)
-		),
+			),
+		/*'answers'=>array(
+			'iTransactionId'=>array(
+				'validate'=>'1',
+				'clientname'=>'quest',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1',
+				'other_validation'=>'vName'
+			),
+			'vOptions'=>array(
+				'validate'=>'1',
+				'clientname'=>'questionOptions',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'dCreatedDate'=>array(
+				'validate'=>'0',
+				'clientname'=>'createdDate',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'1'
+			),
+			'vStatus'=>array(
+				'validate'=>'1',
+				'clientname'=>'headshapeStatus',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			)
+		),*/
 	) 
 ?>

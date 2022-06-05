@@ -21,7 +21,7 @@
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-block">
-                        <img src="img/snake.jpg" style="width: 400px;height: auto;object-fit: cover;">
+                        <img src="api/uploads/users" style="width: 400px;height: auto;object-fit: cover;">
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">
@@ -31,15 +31,32 @@
                             <form class="user">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <label>Name</label>
                                         <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerName'];?>" disabled="true">
                                     </div>
                                     <div class="col-sm-6">
+                                    <label>Phone No</label>
                                     <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerPhone'];?>" disabled="true">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>Email</label>
                                         <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerEmail'];?>" disabled="true">
+                                    </div>
+                                    <div class="col-sm-6">
+                                    <label>Age</label>
+                                    <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerAge'];?>" disabled="true">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <label>Gender</label>
+                                        <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerGender'];?>" disabled="true">
+                                    </div>
+                                    <div class="col-sm-6">
+                                    <label>Address</label>
+                                    <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerAddress'];?>" disabled="true">
                                     </div>
                                 </div>
                             </form>

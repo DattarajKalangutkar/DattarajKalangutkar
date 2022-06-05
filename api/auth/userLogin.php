@@ -2,7 +2,9 @@
     include "../config_user.php";
 	include "../../api_function.php";
 	$postdata = json_decode(file_get_contents("php://input"), true);
-    
+    // print_r($postdata);
+	// exit;
+
     if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//validation

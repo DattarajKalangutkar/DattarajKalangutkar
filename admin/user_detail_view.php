@@ -21,7 +21,7 @@
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-block">
-                        <img src="img/snake.jpg" style="width: 400px;height: auto;object-fit: cover;">
+                        <img src="" style="width: 400px;height: auto;object-fit: cover;">
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">
