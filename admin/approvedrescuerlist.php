@@ -71,7 +71,7 @@
         adata = JSON.stringify(obj);
         $.ajax({
             type: "PUT",
-            url: '<?php echo $api_url;?>'+'master/rescuerverification.php?id='+id,
+            url: '<?php echo $api_url;?>'+'rescuer/rescuerverification.php?id='+id,
             data: adata,
             success: function(res){
                 alert(JSON.parse(res).message);

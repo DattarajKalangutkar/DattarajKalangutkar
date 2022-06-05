@@ -95,6 +95,8 @@
 	{   
 		$table = ($type == 'user') ? 'user':'rescuer';
 	    $sql = "select vStatus from $table where vPhone='$phone' and vPassword='".md5($pass)."' and vStatus='1' order by iId";
+		// echo $sql;
+		// exit(1);
 		$response_query = mysqli_query($con, $sql) or die('Error, insert query failed with query at 83');
 		return (mysqli_num_rows($response_query) > 0 ? true:false);
 	}
@@ -103,6 +105,8 @@
 	{   
 		$table = ($type == 'user') ? 'user':'rescuer';
 	   	$sql = "select * from $table where vPhone='$phone' and vPassword='".md5($pass)."' and vStatus='1' order by iId";
+		   	echo $sql;
+		exit(1);
 		$response_query = mysqli_query($con, $sql) or die('Error, insert query failed with query at 106');
 		return mysqli_fetch_assoc($response_query);
 	}
@@ -139,11 +143,11 @@
 		}
 	}
 
-	function validate_to_date($val,$mess)
+	function validate_to_date($val,$msg)
 	{
 		if($val == "")
 		{
-			echo json_endcode(array("message"=>$msg." is empty","error"=>true));
+			echo json_encode(array("message"=>$msg." is empty","error"=>true));
 			exit;
 		}
 	}
@@ -186,18 +190,10 @@
 		        }
 			break;
 
-			case 'Exist_bad_word':
-				if(check_for_badword($bad_word,$data[$feilds]) == FALSE)
-				{
-					echo json_encode(array("message"=>"Invalid ".$feilds,"error"=>true));
-					exit;
-				}
-			break;
-
 			case 'valid_phone_number':
-				if((strlen($data[$feilds])>15) || strlen($data[$feilds])<=4)
+				if((strlen($data[$feilds])>11) || strlen($data[$feilds])<=10)
 		        {
-		            echo json_encode(array("message"=>"Contact No should be between 5 to 15 digits","error"=>true));
+		            echo json_encode(array("message"=>"Contact No should be 10 digits","error"=>true));
 					exit;
 		        }
 				if(!(preg_match("/(?!0+$)[0-9]/",$data[$feilds])))
@@ -334,19 +330,6 @@
 		$response_query = mysqli_query($con, $sql) or die('Error, 196');
 		return mysqli_fetch_assoc($response_query)[$iden];
 	}
-
-	function sendsms($to,$msg)
-	{
-		$client = new Client(account_sid, auth_token);
-		$client->messages->create(
-    		'+91'.$to,
-		    array(
-		        'from' => twilio_number,
-		        'body' => $msg
-		    )
-		);
-	}
-
 
 	function creating_shopkeeper_msg($owner_name,$custphone,$order_id)
 	{

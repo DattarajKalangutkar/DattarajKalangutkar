@@ -57,12 +57,20 @@
 			$sample_array['id'] = $data_from_db['iId'];
 			foreach($master_config[$modules] as $key=>$val)
 			{
-				if($key == 'vStatus')
+				// if($key == 'vStatus')
+				// {
+				// 	$sample_array[$val['clientname']] = $data_from_db[$key];
+				// }
+				// else
+				// 	$sample_array[$val['clientname']] = $data_from_db[$key];
+				if($key == 'vImage')
+				{
+					$sample_array[$val['clientname']] = $api_url.$data_from_db[$key];
+				}
+				else
 				{
 					$sample_array[$val['clientname']] = $data_from_db[$key];
 				}
-				else
-					$sample_array[$val['clientname']] = $data_from_db[$key];
 			}
 			$count = 1;
 		} 
