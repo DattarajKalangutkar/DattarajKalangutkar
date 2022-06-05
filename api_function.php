@@ -414,4 +414,28 @@
         $end = mysqli_fetch_assoc($sql_result);
         return ($end > 0) ? true : false;
     }
+
+	//function to get list of completed transaction 
+	function getalltransaction($con,$table,$str)
+	{
+		$data = array();
+		$sql = "select * from $table where vStatus='1' and  vTranStatus='3' $str order by iId desc";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
+		while($res = mysqli_fetch_assoc($response_query))
+		{
+			$data[] = $res;
+		}
+		return $data; 
+	}
+	function getupdationtransaction($con,$table,$str)
+	{
+		$data = array();
+		$sql = "select * from $table where vStatus='1' and  vTranStatus='2' $str order by iId desc";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
+		while($res = mysqli_fetch_assoc($response_query))
+		{
+			$data[] = $res;
+		}
+		return $data; 
+	}
 ?>

@@ -44,7 +44,7 @@
 				}
 			}
 
-			$data_from_db =getpendingtransaction($con,'transaction',$search_str); //get all the data from the database
+			$data_from_db =getupdationtransaction($con,'transaction',$search_str); //get all the data from the database
 			foreach($data_from_db as $key=>$val)
 			{
 				$sample_array[$key]['id'] = $data_from_db[$key]['iId'];
