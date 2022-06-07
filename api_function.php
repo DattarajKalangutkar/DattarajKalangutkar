@@ -420,18 +420,18 @@
 	{
 		$data = array();
 		$sql = "select * from $table where vStatus='1' and  vTranStatus='3' $str order by iId desc";
-		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
+		$response_query = mysqli_query($con, $sql) or die('Error, No:423');
 		while($res = mysqli_fetch_assoc($response_query))
 		{
 			$data[] = $res;
 		}
 		return $data; 
 	}
-	function getupdationtransaction($con,$table,$str)
+	function getupdationtransaction($con,$table,$client_str)
 	{
 		$data = array();
-		$sql = "select * from $table where vStatus='1' and  vTranStatus='2' $str order by iId desc";
-		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
+		$sql = "select * from $table where vStatus='1' $client_str order by iId desc";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:434');
 		while($res = mysqli_fetch_assoc($response_query))
 		{
 			$data[] = $res;

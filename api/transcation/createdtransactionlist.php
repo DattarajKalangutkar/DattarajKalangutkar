@@ -1,18 +1,10 @@
 <?php
     include "../config_transcation.php";
 	include "../../api_function.php";
-	if(isset($_GET['status']))
-		$status = $_GET['status'];
-	if(isset($_GET['client']))
-		$client = $_GET['client'];
-	if(isset($_GET['clientType']))
-		$clientType = $_GET['clientType'];
-
-	if($clientType == '1')
-		$str_query = " and iRescuerId=$client";
-	else
-		$str_query = " and iUserId=$client";
-
+	if(isset($_GET['modules']))
+		$modules = $_GET['modules'];
+	if(isset($_GET['id']))
+		$id = $_GET['id'];
     $postdata = json_decode(file_get_contents("php://input"), true);
 	
 	$temp_get_array = $_GET;
@@ -24,9 +16,9 @@
 		$count = 0;
 		if(isset($id))
 		{
-			$data_from_db = getspecificdata($con,"transcation",'iId',$id);//get specific data from database
+			$data_from_db = getspecificdata($con,$modules,'iId',$id);//get specific data from database
 			$sample_array['id'] = $data_from_db['iId'];
-			foreach($transcation_config as $key=>$val)
+			foreach($master_config[$modules] as $key=>$val)
 			{
 				if($key == 'vStatus')
 				{
@@ -52,7 +44,7 @@
 				}
 			}
 
-			$data_from_db=getupdationtransaction($con,'transcation',$str_query); //get all the data from the database
+			$data_from_db =getcreatedtransaction($con,'transcation',$search_str); //get all the data from the database
 			foreach($data_from_db as $key=>$val)
 			{
 				$sample_array[$key]['id'] = $data_from_db[$key]['iId'];
@@ -62,15 +54,8 @@
 					{
 						$sample_array[$key][$val['clientname']] = $data_from_db[$key][$keys];
 					}
-					else{
-						if(isset($val['data_fetch']))
-						{
-							$sample_array[$key][$val['clientname']] = GETXFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key][$keys]);
-						}
-						else{
-							$sample_array[$key][$val['clientname']] = $data_from_db[$key][$keys];
-						}
-					}	
+					else
+						$sample_array[$key][$val['clientname']] = $data_from_db[$key][$keys];
 				}
 			}	
 			$count = count($sample_array);
