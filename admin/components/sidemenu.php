@@ -57,6 +57,7 @@
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=headshape">Head Shape</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=questions">Question</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=firstaid">First Aid</a>
+                <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=statustrans">Transaction Status</a>
             </div>
         </div>
     </li>
