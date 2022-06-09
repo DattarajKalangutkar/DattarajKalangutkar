@@ -53,4 +53,20 @@
 			exit;
 		}
 	}
+
+	if($_GET['iden'] == "mobileUpload")
+	{
+		$modules = (isset($_POST['modules'])) ? $_POST['modules'] : '';
+		$filename = $modules.'Image'; 
+		$target_dir = "../uploads/$modules/";
+		$fileName = $modules."_".basename($_FILES[$filename]["name"]);
+		$target_file = $target_dir.$fileName;
+		$uploadOk = 1;
+		$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+		if(move_uploaded_file($_FILES[$filename]["tmp_name"], $target_file))
+		{
+			echo json_encode(array('status' => true, 'filepath'=>$api_url.'uploads/'.$modules.'/'.$fileName));
+			exit;
+		}
+	}
 ?>
