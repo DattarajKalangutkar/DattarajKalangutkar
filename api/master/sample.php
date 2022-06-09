@@ -67,10 +67,19 @@
 				{
 					$sample_array[$val['clientname']] = $api_url.$data_from_db[$key];
 				}
-				else
-				{
-					$sample_array[$val['clientname']] = $data_from_db[$key];
+				else{
+					if(isset($val['data_fetch']))
+					{
+						$sample_array[$val['clientname']] = GETXFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key]);
+					}
+					else{
+						$sample_array[$val['clientname']] = $data_from_db[$key];
+					}
 				}
+				// else
+				// {
+				// 	$sample_array[$val['clientname']] = $data_from_db[$key];
+				// }
 			}
 			$count = 1;
 		} 
