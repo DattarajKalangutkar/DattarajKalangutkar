@@ -167,7 +167,7 @@
 				'table'=>'1',
 				'other_validation'=>'vName'
 			),
-			'dCreated_date'=>array(
+			'dCreatedDate'=>array(
 				'validate'=>'0',
 				'clientname'=>'createdDate',
 				'type'=>'date',
@@ -424,6 +424,44 @@
 				'html'=>'',
 				'table'=>'0'
 			)
+			),
+			'events'=>array(
+				'vName'=>array(
+					'validate'=>'1',
+					'clientname'=>'eventName',
+					'type'=>'string',
+					'html'=>'text',
+					'table'=>'1',
+					'other_validation'=>'vName'
+				),
+				'vDescription'=>array(
+					'validate'=>'1',
+					'clientname'=>'eventDescription',
+					'type'=>'string',
+					'html'=>'text',
+					'table'=>'1'
+				),
+				'vImage'=>array(
+					'validate'=>'1',
+					'clientname'=>'eventsImage',
+					'type'=>'string',
+					'html'=>'file',
+					'table'=>'0'
+				),
+				'dCreatedDate'=>array(
+					'validate'=>'0',
+					'clientname'=>'createdDate',
+					'type'=>'string',
+					'html'=>'',
+					'table'=>'1'
+				),
+				'vStatus'=>array(
+					'validate'=>'1',
+					'clientname'=>'firstaidStatus',
+					'type'=>'string',
+					'html'=>'',
+					'table'=>'0'
+				)
 			),
 		/*'answers'=>array(
 			'iTransactionId'=>array(

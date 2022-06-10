@@ -48,6 +48,7 @@
 
 	function getDataTable($head,$data,$type,$method,$con)
 	{
+		
 		$str = '';
 		$count = 0;
 		$str .= '<div class="table-responsive">';
@@ -77,7 +78,7 @@
 					{
 						if($value['html'] == 'dropdown')
 						{
-							$str .= '<td>'.GETXFROMYID($con,$value['data_fetch'],'vName',$val[$value['clientname']]).'</td>';
+							$str .= '<td>'.$val[$value['clientname']].'</td>';
 						}
 						else if($child == 'dCreatedDate')
 						{
