@@ -21,17 +21,17 @@
 		$data = validate_with_db_data('resuer',$postdata['rescuerPhone'],$postdata['rescuerPassword'],$con);
 		if($data['vVerificationstatus'] == '0')
 		{
-			echo json_encode(array("validate"=>false,"message"=>'You Are Not verifierd By Admin'));
+			echo json_encode(array("flag"=>false,"message"=>'You Are Not verifierd By Admin'));
 			exit;
 		}
 		else if($data['vVerificationstatus'] == '2')
 		{
-			echo json_encode(array("validate"=>false,"message"=>'You Are dissapproved By Admin'));
+			echo json_encode(array("flag"=>false,"message"=>'You Are dissapproved By Admin'));
 			exit;
 		}
 		else
 		{
-			echo json_encode(array("token"=>encodejwt($postdata['rescuerPhone'],$postdata['rescuerPassword']),"validate"=>true,"message"=>'','userid'=>getrescuerdata('rescuer',$con,'iId')));
+			echo json_encode(array("token"=>encodejwt($postdata['rescuerPhone'],$postdata['rescuerPassword']),"flag"=>true,"message"=>'','userid'=>getrescuerdata('rescuer',$con,'iId')));
 			exit;
 		}
 	}
