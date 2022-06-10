@@ -42,6 +42,13 @@
             'html'=>'text',
             'table'=>'0'
         ),
+        'vImage'=>array(
+            'validate'=>'1',
+            'clientname'=>'userImage',
+            'type'=>'string',
+            'html'=>'file',
+            'table'=>'0'
+        ),
         'dCreatedDate'=>array(
             'validate'=>'0',
             'clientname'=>'createdDate',

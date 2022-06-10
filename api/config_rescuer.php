@@ -36,16 +36,15 @@
             'html'=>'text',
             'table'=>'0'
         ),
-        
         'tAddress'=>array(
-            'validate'=>'1',
+            'validate'=>'0',
             'clientname'=>'rescuerAddress',
             'type'=>'string',
             'html'=>'text',
-            'table'=>'1'
+            'table'=>'0'
         ),
         'iAge'=>array(
-            'validate'=>'1',
+            'validate'=>'0',
             'clientname'=>'rescuerAge',
             'type'=>'string',
             'html'=>'text',
@@ -59,21 +58,21 @@
             'table'=>'0'
         ),
         'vGender'=>array(
-            'validate'=>'1',
+            'validate'=>'0',
             'clientname'=>'rescuerGender',
             'type'=>'string',
             'html'=>'text',
             'table'=>'0'
         ),
         'vCertificate'=>array(
-            'validate'=>'1',
+            'validate'=>'0',
             'clientname'=>'rescuerCertificate',
             'type'=>'string',
             'html'=>'text',
             'table'=>'0'
         ),
         'vExperience'=>array(
-            'validate'=>'1',
+            'validate'=>'0',
             'clientname'=>'rescuerExperience',
             'type'=>'string',
             'html'=>'text',
@@ -84,10 +83,10 @@
             'clientname'=>'rescuerImage',
             'type'=>'string',
             'html'=>'file',
-            'table'=>'1'
+            'table'=>'0'
         ),
         'vAchievement'=>array(
-            'validate'=>'1',
+            'validate'=>'0',
             'clientname'=>'rescuerAchievement',
             'type'=>'string',
             'html'=>'text',

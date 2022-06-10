@@ -105,8 +105,6 @@
 	{   
 		$table = ($type == 'user') ? 'user':'rescuer';
 	   	$sql = "select * from $table where vPhone='$phone' and vPassword='".md5($pass)."' and vStatus='1' order by iId";
-		   	echo $sql;
-		exit(1);
 		$response_query = mysqli_query($con, $sql) or die('Error, insert query failed with query at 106');
 		return mysqli_fetch_assoc($response_query);
 	}
@@ -437,5 +435,33 @@
 			$data[] = $res;
 		}
 		return $data; 
+	}
+
+	function checkemailId($con,$email)
+	{
+		$sql = "select * from otp where vStatus='1' and email='$email' order by iId desc";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:434');
+		$num_of_rows = mysqli_num_rows($response_query);
+		return ($num_of_rows > 0) ? true : false;
+	}
+
+	function checkverifiedOTP($con,$email,$otp)
+	{
+		$sql = "select * from otp where vStatus='1' and email='$email' and otp='$otp' and verified='0' order by iId desc";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:434');
+		$num_of_rows = mysqli_num_rows($response_query);
+		return ($num_of_rows > 0) ? true : false;
+	}
+
+	function updateDatail($con, $table, $data, $identifier, $id)
+	{
+	    $colString = "";
+	    foreach ($data as $col => $val) {
+	        $colString .= "$col='$val',";
+	    }
+	    $colString      = substr($colString, 0, -1);
+		$sql            = "update $table set $colString where $identifier = '$id' and vStatus=1";
+	    $response_query = mysqli_query($con, $sql) or die('Error, 35');
+	    return true;
 	}
 ?>

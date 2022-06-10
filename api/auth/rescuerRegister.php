@@ -34,9 +34,6 @@
 			else
 				$sample_array[$key] = NOW;
 		}
-
-		// print_r ($sample_array);
-		// exit(0);
 		
 		if(singleInsert($modules,$sample_array,$con))
 		{
