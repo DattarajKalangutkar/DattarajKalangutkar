@@ -3,9 +3,6 @@
 	include "../../api_function.php";
 	$postdata = json_decode(file_get_contents("php://input"), true);
 	$modules = "transcation";
-	// print_r($postdata);
-	// exit(0);
-
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		$sample_array = array();
@@ -31,9 +28,6 @@
 			if(isset($val['phase1']) && $val['phase1'] == '1')
 				$sample_array[$key] = (isset($postdata[$val['clientname']])) ? $postdata[$val['clientname']]:'';
         }	
-		// print_r($sample_array);
-		// exit(0);
-		
 		if(singleInsert($modules,$sample_array,$con))
 		{
 			echo json_encode(array("message"=>$modules." created Successfully","flag"=>true));
