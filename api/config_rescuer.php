@@ -99,6 +99,20 @@
             'html'=>'text',
             'table'=>'0'
         ),
+        'vLat'=>array(
+            'validate'=>'0',
+            'clientname'=>'rescuerLatitude',
+            'type'=>'string',
+            'html'=>'text',
+            'table'=>'0'
+        ),
+        'vLong'=>array(
+            'validate'=>'0',
+            'clientname'=>'rescuerLongitude',
+            'type'=>'string',
+            'html'=>'text',
+            'table'=>'0'
+        ),
         'dCreatedDate'=>array(
             'validate'=>'0',
             'clientname'=>'createdDate',

@@ -31,7 +31,7 @@
 		}
 		else
 		{
-			echo json_encode(array("token"=>encodejwt($postdata['rescuerPhone'],$postdata['rescuerPassword']),"flag"=>true,"message"=>'','userid'=>getrescuerdata('rescuer',$con,'iId')));
+			echo json_encode(array("token"=>encodejwt($postdata['rescuerPhone'],$postdata['rescuerPassword']),"flag"=>true,"message"=>'','userid'=>$data['iId']));
 			exit;
 		}
 	}

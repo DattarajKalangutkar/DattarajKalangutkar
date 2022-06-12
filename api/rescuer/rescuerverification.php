@@ -2,9 +2,6 @@
     include "../config_rescuer.php";
 	include "../../api_function.php";
 	$postdata = json_decode(file_get_contents("php://input"), true);
-	// echo "<pre>";
-	// print_r($postdata);
-	// exit;
     $modules = "rescuer";
 	if(isset($_GET['id']))
 		$id = $_GET['id'];
@@ -18,7 +15,8 @@
 
         //check the value from the postman
 		$sample_array = array(
-            'vVerificationstatus'=>$postdata['rescuerVerification']
+            'vVerificationstatus'=>$postdata['rescuerVerification'],
+			'vAchievement'=>'0'
 		);
 
 		if($postdata['rescuerVerification'] == 1)
