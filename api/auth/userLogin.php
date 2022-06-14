@@ -23,12 +23,12 @@
 		//if everythings is FINE then Do validate with Database
 		if(validate_with_db('user',$postdata['userPhone'],$postdata['userPassword'],$con))
 		{
-			echo json_encode(array("token"=>encodejwt($postdata['userPhone'],$postdata['userPassword']),"validate"=>true,"message"=>'','userid'=>getuserdata('user',$postdata['userPhone'],$postdata['userPassword'],$con,'iId')));
+			echo json_encode(array("token"=>encodejwt($postdata['userPhone'],$postdata['userPassword']),"flag"=>true,"message"=>'','userid'=>getuserdata('user',$postdata['userPhone'],$postdata['userPassword'],$con,'iId')));
 			exit;
 		}
 		else
 		{
-			echo json_encode(array("token"=>'',"validate"=>false,"message"=>'InValid Credentials'));
+			echo json_encode(array("token"=>'',"flag"=>false,"message"=>'InValid Credentials'));
 			exit;
 		}
 	}
