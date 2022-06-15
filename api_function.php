@@ -432,10 +432,10 @@
 		}
 		return $data; 
 	}
-	function getupdationtransaction($con,$table,$client_str,$status)
+	function getupdationtransaction($con,$table,$client_str)
 	{
 		$data = array();
-		$sql = "select * from $table where vStatus='1' and vTranStatus='$status' $client_str order by iId desc";
+		$sql = "select * from $table where vStatus='1' $client_str order by iId desc";
 		$response_query = mysqli_query($con, $sql) or die('Error, No:434');
 		while($res = mysqli_fetch_assoc($response_query))
 		{

@@ -1,8 +1,8 @@
 <?php
     include "../config_transcation.php";
 	include "../../api_function.php";
-	if(isset($_GET['status']))
-		$status = $_GET['status'];
+	// if(isset($_GET['status']))
+	// 	$status = $_GET['status'];
 	if(isset($_GET['client']))
 		$client = $_GET['client'];
 	if(isset($_GET['clientType']))
@@ -52,7 +52,7 @@
 				}
 			}
 
-			$data_from_db=getupdationtransaction($con,'transcation',$str_query,$status); //get all the data from the database
+			$data_from_db=getupdationtransaction($con,'transcation',$str_query); //get all the data from the database
 			foreach($data_from_db as $key=>$val)
 			{
 				$sample_array[$key]['id'] = $data_from_db[$key]['iId'];
