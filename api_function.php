@@ -298,6 +298,13 @@
 		return mysqli_fetch_assoc($response_query)[$feild];
 	}
 
+	function GETXDATAFROMYID($con,$table,$feild,$id)
+	{
+		$sql = "select * from $table where vStatus='1' and iId=$id order by iId desc";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:157');
+		return mysqli_fetch_assoc($response_query);
+	}
+
 	
 	function GenerateID($con,$table,$code,$ordid)
 	{
@@ -425,10 +432,10 @@
 		}
 		return $data; 
 	}
-	function getupdationtransaction($con,$table,$client_str)
+	function getupdationtransaction($con,$table,$client_str,$status)
 	{
 		$data = array();
-		$sql = "select * from $table where vStatus='1' $client_str order by iId desc";
+		$sql = "select * from $table where vStatus='1' and vTranStatus='$status' $client_str order by iId desc";
 		$response_query = mysqli_query($con, $sql) or die('Error, No:434');
 		while($res = mysqli_fetch_assoc($response_query))
 		{

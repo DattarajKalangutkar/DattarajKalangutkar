@@ -52,7 +52,7 @@
 				}
 			}
 
-			$data_from_db=getupdationtransaction($con,'transcation',$str_query); //get all the data from the database
+			$data_from_db=getupdationtransaction($con,'transcation',$str_query,$status); //get all the data from the database
 			foreach($data_from_db as $key=>$val)
 			{
 				$sample_array[$key]['id'] = $data_from_db[$key]['iId'];
@@ -65,7 +65,7 @@
 					else{
 						if(isset($val['data_fetch']))
 						{
-							$sample_array[$key][$val['clientname']] = GETXFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key][$keys]);
+							$sample_array[$key][$val['clientname']] = GETXDATAFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key][$keys]);
 						}
 						else{
 							$sample_array[$key][$val['clientname']] = $data_from_db[$key][$keys];

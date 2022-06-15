@@ -19,19 +19,27 @@
 		}
 
 		$data = validate_with_db_data('resuer',$postdata['rescuerPhone'],$postdata['rescuerPassword'],$con);
-		if($data['vVerificationstatus'] == '0')
+		if(isset($data['iId']))
 		{
-			echo json_encode(array("flag"=>false,"message"=>'You Are Not verifierd By Admin'));
-			exit;
-		}
-		else if($data['vVerificationstatus'] == '2')
-		{
-			echo json_encode(array("flag"=>false,"message"=>'You Are dissapproved By Admin'));
-			exit;
+			if($data['vVerificationstatus'] == '0')
+			{
+				echo json_encode(array("flag"=>false,"message"=>'You Are Not verifierd By Admin'));
+				exit;
+			}
+			else if($data['vVerificationstatus'] == '2')
+			{
+				echo json_encode(array("flag"=>false,"message"=>'You Are dissapproved By Admin'));
+				exit;
+			}
+			else
+			{
+				echo json_encode(array("token"=>encodejwt($postdata['rescuerPhone'],$postdata['rescuerPassword']),"flag"=>true,"message"=>'','userid'=>$data['iId']));
+				exit;
+			}
 		}
 		else
 		{
-			echo json_encode(array("token"=>encodejwt($postdata['rescuerPhone'],$postdata['rescuerPassword']),"flag"=>true,"message"=>'','userid'=>$data['iId']));
+			echo json_encode(array("flag"=>false,"message"=>'Invalid Credentials'));
 			exit;
 		}
 	}
