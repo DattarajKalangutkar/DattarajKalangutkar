@@ -1,8 +1,6 @@
 <?php
 	include "../../api_function.php";
-	include "../../mailer_function.php";
 	$postdata = json_decode(file_get_contents("php://input"), true);
-
     if($_SERVER['REQUEST_METHOD'] == "POST" && $_GET['identifier']=="sendOTP")
 	{
 		if(checkemailId($con,$postdata['email']))
@@ -20,10 +18,10 @@
 				"verified"=>"0",
 				"vStatus"=>"1"
 			);
-			
+						
 			if(singleInsert('otp',$data,$con))
 			{
-				echo json_encode(array("message"=>"OTP is send to Email id","flag"=>true));
+				echo json_encode(array("message"=>"OTP is send to Email id","flag"=>true,"otp"=>$otp));
 				exit;
 			}
 		}
