@@ -48,9 +48,9 @@
     //email host config
     $Year = date("Y");
     define('HOST_MAIL','smtp.hostinger.in');
-    define('HOST_USERNAME','admin@pujakarwalo.com');
-    define('HOST_PASSWORD','Pujakarwalo_01');
-    define('HOST_RECIPIENT','admin@pujakarwalo.com');
+    define('HOST_USERNAME','dkangutkar43@gmail.com');
+    define('HOST_PASSWORD','dattu!@#$%');
+    define('HOST_RECIPIENT','dkangutkar43@gmail.com');
         
     //roles
     $validation_filter_array = array(

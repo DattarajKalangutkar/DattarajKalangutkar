@@ -298,6 +298,13 @@
 		return mysqli_fetch_assoc($response_query)[$feild];
 	}
 
+	function GETXDATAFROMYID($con,$table,$feild,$id)
+	{
+		$sql = "select * from $table where vStatus='1' and iId=$id order by iId desc";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:157');
+		return mysqli_fetch_assoc($response_query);
+	}
+
 	
 	function GenerateID($con,$table,$code,$ordid)
 	{

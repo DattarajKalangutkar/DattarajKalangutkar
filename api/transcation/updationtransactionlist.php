@@ -1,20 +1,20 @@
 <?php
     include "../config_transcation.php";
 	include "../../api_function.php";
-	if(isset($_GET['status']))
-		$status = $_GET['status'];
+	// if(isset($_GET['status']))
+	// 	$status = $_GET['status'];
+	$str_query = '';
 	if(isset($_GET['client']))
 		$client = $_GET['client'];
-	if(isset($_GET['clientType']))
+	if(isset($_GET['clientType'])){
 		$clientType = $_GET['clientType'];
-
-	if($clientType == '1')
-		$str_query = " and iRescuerId=$client";
-	else
-		$str_query = " and iUserId=$client";
-
+		if($clientType == '1')
+			$str_query = " and iRescuerId=$client";
+		else
+			$str_query = " and iUserId=$client";
+	}
+		
     $postdata = json_decode(file_get_contents("php://input"), true);
-	
 	$temp_get_array = $_GET;
 	unset($temp_get_array['modules']);
     
@@ -26,14 +26,22 @@
 		{
 			$data_from_db = getspecificdata($con,"transcation",'iId',$id);//get specific data from database
 			$sample_array['id'] = $data_from_db['iId'];
+			$sample_array['tranid'] = str_pad($data_from_db['iId'],6,"0",STR_PAD_LEFT);
 			foreach($transcation_config as $key=>$val)
 			{
-				if($key == 'vStatus')
+				if($keys == 'vStatus')
 				{
 					$sample_array[$val['clientname']] = $data_from_db[$key];
 				}
-				else
-					$sample_array[$val['clientname']] = $data_from_db[$key];
+				else{
+					if(isset($val['data_fetch']))
+					{
+						$sample_array[$val['clientname']] = GETXDATAFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key]);
+					}
+					else{
+						$sample_array[$val['clientname']] = $data_from_db[$key];
+					}
+				}
 			}
 			$count = 1;
 		} 
@@ -56,6 +64,7 @@
 			foreach($data_from_db as $key=>$val)
 			{
 				$sample_array[$key]['id'] = $data_from_db[$key]['iId'];
+				$sample_array[$key]['tranid'] = str_pad($data_from_db[$key]['iId'],6,"0",STR_PAD_LEFT);
 				foreach($transcation_config as $keys=>$val)
 				{
 					if($keys == 'vStatus')
@@ -65,7 +74,7 @@
 					else{
 						if(isset($val['data_fetch']))
 						{
-							$sample_array[$key][$val['clientname']] = GETXFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key][$keys]);
+							$sample_array[$key][$val['clientname']] = GETXDATAFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key][$keys]);
 						}
 						else{
 							$sample_array[$key][$val['clientname']] = $data_from_db[$key][$keys];
