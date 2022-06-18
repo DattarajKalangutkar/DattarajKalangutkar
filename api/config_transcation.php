@@ -34,7 +34,7 @@
 			'phase3'=>'0'
 		),
 		'vImage'=>array(
-			'validate'=>'1',
+			'validate'=>'0',
 			'clientname'=>'transImage',
 			'type'=>'string',
 			'html'=>'file',
