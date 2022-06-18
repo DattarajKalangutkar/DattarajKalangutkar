@@ -24,6 +24,11 @@
 				$sample_array[$key] = (isset($postdata[$val['clientname']])) ? $postdata[$val['clientname']]:'';
 		}
 
+
+		$rescuer_id = GETXFROMYID($con,'transcation','iRescuerId',$id);
+
+		updateData($con,'rescuer',array('iPoints'=>$postdata['transRate']),'iId',$rescuer_id);
+
 		if(updateData($con,$modules,$sample_array,'iId',$id))
 		{
 			echo json_encode(array("message"=>$modules." Updated Successfully","flag"=>true));
