@@ -27,6 +27,9 @@
 
 			if(isset($val['phase1']) && $val['phase1'] == '1')
 				$sample_array[$key] = (isset($postdata[$val['clientname']])) ? $postdata[$val['clientname']]:'';
+
+			// if($val['clientname'] != 'createdDate')
+			// 	$sample_array[$key] = NOW;
         }	
 		if(singleInsert($modules,$sample_array,$con))
 		{
