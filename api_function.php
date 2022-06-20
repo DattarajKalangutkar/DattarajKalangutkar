@@ -516,7 +516,8 @@
 	{
 		$ori_data = array(
 			"dates"=>array(),
-			"values"=>array()
+			"values"=>array(),
+			"names"=>array()
 		);
 
 		$date = date('Y-m-d');
@@ -525,6 +526,13 @@
 		array_push($ori_data['dates'],date('Y-m-d', strtotime($date .' -3 day')));
 		array_push($ori_data['dates'],date('Y-m-d', strtotime($date .' -2 day')));
 		array_push($ori_data['dates'],date('Y-m-d', strtotime($date .' -1 day')));
+
+
+		array_push($ori_data['names'],date('M d', strtotime($date .' -5 day')));
+		array_push($ori_data['names'],date('M d', strtotime($date .' -4 day')));
+		array_push($ori_data['names'],date('M d', strtotime($date .' -3 day')));
+		array_push($ori_data['names'],date('M d', strtotime($date .' -2 day')));
+		array_push($ori_data['names'],date('M d', strtotime($date .' -1 day')));
 		foreach($ori_data['dates'] as $value)
 		{
 			$sql = "select COUNT(*) as score from transcation where vStatus = '1' and vTranStatus='3' and DATE(dCreatedDate) = '".$value."'";

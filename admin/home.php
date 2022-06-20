@@ -123,7 +123,7 @@ new Chart("toprankingchart", {
 });
 
 
-var xValues = <?php echo json_encode($barchart_complete_tran_data['dates']);?>;
+var xValues = <?php echo json_encode($barchart_complete_tran_data['names']);?>;
 var yValues = <?php echo json_encode($barchart_complete_tran_data['values']);?>;
 new Chart("complete_tranchart", {
   type: "bar",
