@@ -1,7 +1,9 @@
 <?php 
 	include '../api_function.php';
     $title = 'Analysis';  
-    $barchart_data = getTopfiverescuer($con);
+    $barchart_top_res_data = getTopfiverescuer($con);
+    $barchart_complete_tran_data = getcompletedtrans($con);
+    $barchart_today_tran_data = gettodaystranscation($con);
     $action = $api_url.'services/analysis.php';
     $data = json_decode(file_get_contents($action),true);
 	include 'components/header.php';
@@ -84,15 +86,24 @@
         <div class="col-xl-6 col-md-6 mb-4">
             <canvas id="toprankingchart" style="width:100%;max-width:600px"></canvas>
         </div>
+        <div class="col-xl-6 col-md-6 mb-4">
+            <canvas id="complete_tranchart" style="width:100%;max-width:600px"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-6 col-md-6 mb-4">
+            <canvas id="today_tranchart" style="width:100%;max-width:600px"></canvas>
+        </div>
     </div>
 </div>
 <?php include 'components/footer.php';?>
 <script src="js/charts.js"></script>
 <script>
-var xValues = <?php echo json_encode($barchart_data['names']);?>;
-var yValues = <?php echo json_encode($barchart_data['values']);?>;
 var barColors = ["#bb7022", "#317a1e","#5252b9","#afb31a","#440f0f"];
 
+
+var xValues = <?php echo json_encode($barchart_top_res_data['names']);?>;
+var yValues = <?php echo json_encode($barchart_top_res_data['values']);?>;
 new Chart("toprankingchart", {
   type: "bar",
   data: {
@@ -107,6 +118,47 @@ new Chart("toprankingchart", {
     title: {
       display: true,
       text: "Top 5 Ranking"
+    }
+  }
+});
+
+
+var xValues = <?php echo json_encode($barchart_complete_tran_data['dates']);?>;
+var yValues = <?php echo json_encode($barchart_complete_tran_data['values']);?>;
+new Chart("complete_tranchart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Last 5 Days Transction"
+    }
+  }
+});
+
+var xValues = <?php echo json_encode($barchart_today_tran_data['names']);?>;
+var yValues = <?php echo json_encode($barchart_today_tran_data['values']);?>;
+new Chart("today_tranchart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Todays Transcation Status"
     }
   }
 });

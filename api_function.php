@@ -511,4 +511,46 @@
 		}
 		return $ori_data; 
 	}
+
+	function getcompletedtrans($con)
+	{
+		$ori_data = array(
+			"dates"=>array(),
+			"values"=>array()
+		);
+
+		$date = date('Y-m-d');
+		array_push($ori_data['dates'],date('Y-m-d', strtotime($date .' -5 day')));
+		array_push($ori_data['dates'],date('Y-m-d', strtotime($date .' -4 day')));
+		array_push($ori_data['dates'],date('Y-m-d', strtotime($date .' -3 day')));
+		array_push($ori_data['dates'],date('Y-m-d', strtotime($date .' -2 day')));
+		array_push($ori_data['dates'],date('Y-m-d', strtotime($date .' -1 day')));
+		foreach($ori_data['dates'] as $value)
+		{
+			$sql = "select COUNT(*) as score from transcation where vStatus = '1' and vTranStatus='3' and DATE(dCreatedDate) = '".$value."'";
+			$response_query = mysqli_query($con, $sql) or die('Error, No:434');
+			$res = mysqli_fetch_assoc($response_query)['score'];
+			array_push($ori_data['values'],$res);
+		}
+		return $ori_data;
+	}
+
+	function gettodaystranscation($con)
+	{
+		$ori_data = array(
+			"names"=>["Created","Updated","Completed"],
+			"db_values"=>[1,2,3],
+			"values"=>array()
+		);
+
+		$date = date('Y-m-d');
+		foreach($ori_data['db_values'] as $value)
+		{
+			$sql = "select COUNT(*) as score from transcation where vStatus = '1' and vTranStatus='".$value."' and DATE(dCreatedDate) = '".$date."'";
+			$response_query = mysqli_query($con, $sql) or die('Error, No:434');
+			$res = mysqli_fetch_assoc($response_query)['score'];
+			array_push($ori_data['values'],$res);
+		}
+		return $ori_data;
+	}
 ?>
