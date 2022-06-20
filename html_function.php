@@ -82,7 +82,7 @@
 						}
 						else if($child == 'dCreatedDate')
 						{
-							$str .= '<td>'.date_format(date_create($val[$value['clientname']]),"M d, H:m a").'</td>';
+							$str .= '<td>'.date_format(date_create($val[$value['clientname']]),"M d, h:i a").'</td>';
 						}
 						else
 						{
