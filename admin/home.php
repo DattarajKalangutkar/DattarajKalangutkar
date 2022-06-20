@@ -87,13 +87,11 @@
     </div>
 </div>
 <?php include 'components/footer.php';?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script src="js/charts.js"></script>
 <script>
 var xValues = <?php echo json_encode($barchart_data['names']);?>;
 var yValues = <?php echo json_encode($barchart_data['values']);?>;
-console.log(yValues);
-console.log(xValues);
-var barColors = ["#bb7022", "#317a1e","blue","orange","brown"];
+var barColors = ["#bb7022", "#317a1e","#5252b9","#afb31a","#440f0f"];
 
 new Chart("toprankingchart", {
   type: "bar",
