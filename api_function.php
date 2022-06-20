@@ -561,4 +561,169 @@
 		}
 		return $ori_data;
 	}
+
+	function getuniquedataset($dataset,$iden)
+	{
+		$name_count = array();
+		$count_of_snake = array();
+		foreach($dataset as $key=>$value)
+		{
+			if(in_array($value[$iden], $name_count))
+			{
+				$count_of_snake[$value[$iden]] += 1;
+			}
+			else
+			{
+				$count_of_snake[$value[$iden]] = 1;
+				array_push($name_count,$value[$iden]);
+			}
+		}
+
+		return $count_of_snake;
+	}
+
+	function total_dataset_entropy($total_count,$data)
+	{
+		$entropy = 0;
+		foreach($data as $key=>$value)
+		{
+			$entropy += (log($value/$total_count, 2) * $value/$total_count);
+		}
+
+		$entropy = (-1)*$entropy;
+		return $entropy;
+	}
+
+	function getcrossattribute($dataset,$primary,$secondary,$iden_1,$iden_2)
+	{
+		$getcross = array();
+		foreach($primary as $pkey=>$pValue)
+		{
+			foreach($secondary as $skey=>$sValue)
+			{
+				$crossValue = getdata($dataset,$iden_1,$iden_2,$pkey,$skey);
+				$getcross[$pkey][$skey] = $crossValue;
+			}
+		}
+		return $getcross;
+	}
+
+	function getdata($dataset,$iden_1,$iden_2,$pkey,$skey)
+	{
+		$count = 0;
+		foreach($dataset as $key=>$value)
+		{
+			if($value[$iden_1] == $pkey && $value[$iden_2] == $skey)
+			{
+				$count += 1;
+			}
+		}
+		return $count;
+	}
+
+	function getgainentropy($dataset,$iden,$iden_array,$crossattribute,$total_count,$total_gain)
+	{
+		//DFA($iden_array);
+		$gain_entroy = 0;
+		$net_entryopy = array();
+		$gain = 0;
+		foreach($iden_array as $key=>$countkey)
+		{
+			$entropy = 0;
+			foreach($crossattribute[$key] as $ckey=>$cValue)
+			{
+				if($cValue !=0)
+					$entropy += (log($cValue/$countkey, 2) * $cValue/$countkey);
+			}
+			$entropy = (-1)*$entropy;
+			$net_entryopy[$key] = $entropy;
+		}
+
+		$netEntropy = 0;
+		foreach($iden_array as $key=>$countkey)
+		{
+			$netEntropy += ($countkey/$total_count)*$net_entryopy[$key];
+		}
+
+		$gain = $total_gain-$netEntropy;
+		
+		$splitinfo = 0;
+		foreach($iden_array as $key=>$countkey)
+		{
+			$splitinfo += (log($countkey/$total_count, 2) * $countkey/$total_count);
+		}
+		$splitinfo = (-1)*$splitinfo;
+
+		if($splitinfo != 0)
+		{
+			$gain_ratio = ($gain/$splitinfo);
+			return $gain_ratio;
+		}
+		else
+		{
+			return 0;
+		}
+	}
+
+	function getmaxvalue($data)
+	{
+		$max_index = '';
+		$max_value = 0;
+
+		foreach($data as $key=>$value)
+		{
+			if($value > $max_value)
+			{
+				$max_value = $value;
+				$max_index = $key;
+			}	
+		}
+		return $max_index;
+	}
+
+	function gettreeformat($iden_array,$full_dataset,$attr)
+	{
+		$tree_format = array();
+		foreach($iden_array as $key=>$value)
+		{
+			if($value <= 2)
+			{
+				foreach($full_dataset as $keys=>$data)
+				{
+					if($data[$attr] == $key)
+					{
+						$tree_format[$key] = array(
+							"done"=>1,
+							"child"=>array(),
+							"name"=>$data['name']
+						);
+					}
+				}
+			}else{
+				$tree_format[$key] = array(
+					"done"=>0,
+					"child"=>array(),
+					"name"=>$key
+				);
+			}
+		}
+
+		return $tree_format;
+	}
+
+	function checkeverythingisdone($main_tree)
+	{
+		$counter=0;
+		$identider = '';
+		foreach($main_tree['child'] as $key=>$value)
+		{
+			if($value['done'] == 0)
+			{
+				$counter = 1;
+				$identider = $key;
+				break;
+			}
+		} 
+		return $identider;
+	}	
 ?>
