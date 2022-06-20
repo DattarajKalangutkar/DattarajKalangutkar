@@ -1,6 +1,7 @@
 <?php 
 	include '../api_function.php';
     $title = 'Analysis';  
+    $barchart_data = getTopfiverescuer($con);
     $action = $api_url.'services/analysis.php';
     $data = json_decode(file_get_contents($action),true);
 	include 'components/header.php';
@@ -79,5 +80,36 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-xl-6 col-md-6 mb-4">
+            <canvas id="toprankingchart" style="width:100%;max-width:600px"></canvas>
+        </div>
+    </div>
 </div>
 <?php include 'components/footer.php';?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+var xValues = <?php echo json_encode($barchart_data['names']);?>;
+var yValues = <?php echo json_encode($barchart_data['values']);?>;
+console.log(yValues);
+console.log(xValues);
+var barColors = ["#bb7022", "#317a1e","blue","orange","brown"];
+
+new Chart("toprankingchart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Top 5 Ranking"
+    }
+  }
+});
+</script>

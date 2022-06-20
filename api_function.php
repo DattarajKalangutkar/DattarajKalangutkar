@@ -488,5 +488,27 @@
 		} else {
 			return $miles;
 		}
-	  }
+	}
+
+	function getTopfiverescuer($con)
+	{
+		$data = array();
+		$ori_data = array(
+			"names"=>array(),
+			"values"=>array()
+		);
+		$sql = "select vName,iPoints from rescuer where vStatus='1' and iPoints!=0 order by iPoints desc limit 5";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:434');
+		while($res = mysqli_fetch_assoc($response_query))
+		{
+			$data[] = $res;
+		}
+
+		foreach($data as $key=>$val)
+		{
+			array_push($ori_data['names'],$val['vName']);
+			array_push($ori_data['values'],$val['iPoints']);
+		}
+		return $ori_data; 
+	}
 ?>
