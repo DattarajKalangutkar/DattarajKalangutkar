@@ -1,8 +1,8 @@
 <?php
     include "../config_transcation.php";
 	include "../../api_function.php";
-	// if(isset($_GET['status']))
-	// 	$status = $_GET['status'];
+	if(isset($_GET['id']))
+		$id = $_GET['id'];
 	$str_query = '';
 	if(isset($_GET['client']))
 		$client = $_GET['client'];
@@ -29,7 +29,7 @@
 			$sample_array['tranid'] = str_pad($data_from_db['iId'],6,"0",STR_PAD_LEFT);
 			foreach($transcation_config as $key=>$val)
 			{
-				if($keys == 'vStatus')
+				if($key == 'vStatus')
 				{
 					$sample_array[$val['clientname']] = $data_from_db[$key];
 				}
