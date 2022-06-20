@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set('Asia/Kolkata');
     if(isset($_SERVER['HTTP_ORIGIN'])) 
     {
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
@@ -46,12 +47,7 @@
     $status_array = array("1"=>"Active","2"=>"InActive");
 
     //email host config
-    $Year = date("Y");
-    define('HOST_MAIL','smtp.hostinger.in');
-    define('HOST_USERNAME','dkangutkar43@gmail.com');
-    define('HOST_PASSWORD','dattu!@#$%');
-    define('HOST_RECIPIENT','dkangutkar43@gmail.com');
-        
+    $Year = date("Y"); 
     //roles
     $validation_filter_array = array(
         'compare_with_password',
