@@ -681,7 +681,7 @@
 		return $max_index;
 	}
 
-	function gettreeformat($iden_array,$full_dataset,$attr)
+	function gettreeformat($iden_array,$full_dataset,$attr,$parent_slug,$parent_attr,$leveltostart)
 	{
 		$tree_format = array();
 		foreach($iden_array as $key=>$value)
@@ -695,7 +695,11 @@
 						$tree_format[$key] = array(
 							"done"=>1,
 							"child"=>array(),
-							"name"=>$data['name']
+							"parent"=>$attr,
+							"level"=>$leveltostart,
+							"name"=>$data[$attr],
+							"parent_slug"=>$parent_slug,
+							"parent_attr"=>$parent_attr
 						);
 					}
 				}
@@ -703,7 +707,11 @@
 				$tree_format[$key] = array(
 					"done"=>0,
 					"child"=>array(),
-					"name"=>$key
+					"parent"=>$attr,
+					"level"=>$leveltostart,
+					"name"=>$key,
+					"parent_slug"=>$parent_slug,
+					"parent_attr"=>$parent_attr
 				);
 			}
 		}
@@ -714,16 +722,42 @@
 	function checkeverythingisdone($main_tree)
 	{
 		$counter=0;
-		$identider = '';
+		$identider_array = array();
 		foreach($main_tree['child'] as $key=>$value)
 		{
 			if($value['done'] == 0)
 			{
 				$counter = 1;
-				$identider = $key;
+				$identider_array = $value;
 				break;
 			}
+
+			if(count($value['child']) > 0)
+			{
+				foreach($value['child'] as $keys=>$values)
+				{
+					if($values['done'] == 0)
+					{
+						$counter = 1;
+						$identider_array = $values;
+						break;
+					}
+
+					if(count($values['child']) > 0)
+					{
+						foreach($values['child'] as $keysss=>$valuesss)
+						{
+							if($valuesss['done'] == 0)
+							{
+								$counter = 1;
+								$identider_array = $valuesss;
+								break;
+							}
+						}
+					}
+				}
+			}
 		} 
-		return $identider;
+		return $identider_array;
 	}	
 ?>

@@ -509,105 +509,89 @@ foreach($gain_ratio as $iden=>$value)
     $gain_ratio[$iden] = $gain_entropy;
 }
 
+$leveltostart = 1;
 $higgestattribute = getmaxvalue($gain_ratio);
-
 $main_tree['parent'] = $higgestattribute;
 $main_tree['name'] = $higgestattribute;
 $main_tree['level'] = 0;
-$main_tree['child'] = gettreeformat(getuniquedataset($data_set,$higgestattribute),$data_set,$higgestattribute);
+$main_tree['child'] = gettreeformat(getuniquedataset($data_set,$higgestattribute),$data_set,$higgestattribute,'','',$leveltostart);
 $main_tree['done'] = 1;
 unset($gain_ratio[$higgestattribute]);
 
 $checkattribute = $higgestattribute;
 //check if any done = 0, othersie break the condition
-$identifier = checkeverythingisdone($main_tree);
-if($identifier != '')
+$leveltostart++;
+for($i=0;$i<10;$i++)
 {
-    $ne_data_Set = array();
-    foreach($data_set as $key=>$value)
-    {
-        if($value[$checkattribute] == $identifier)
+    $identifier = checkeverythingisdone($main_tree);
+    if(isset($identifier['done']))
+    {   
+        if($identifier['done'] != '1' && $identifier['level'] == '1')
         {
-            array_push($ne_data_Set,$value);
+            $ne_data_Set = array();
+            foreach($data_set as $key=>$value)
+            {
+                if($value[$checkattribute] == $identifier['name'])
+                {
+                    array_push($ne_data_Set,$value);
+                }
+            } 
+
+            $total_dataset_count = count($ne_data_Set);
+            $get_name_snake = getuniquedataset($ne_data_Set,'name');
+            $total_entropy = total_dataset_entropy($total_dataset_count,$get_name_snake);
+
+            foreach($gain_ratio as $iden=>$value)
+            {
+                $gain_entropy = 0;
+                $get_color_snake = getuniquedataset($ne_data_Set,$iden);
+                $getcrossattributevalue = getcrossattribute($ne_data_Set,$get_color_snake,$get_name_snake,$iden,'name');
+                $gain_entropy = getgainentropy($ne_data_Set,$iden,$get_color_snake,$getcrossattributevalue,$total_dataset_count,$total_entropy);
+                $gain_ratio[$iden] = $gain_entropy;
+            }
+
+            $higgestattribute_level = getmaxvalue($gain_ratio);
+            $main_tree['child'][$identifier['name']]['child'] = gettreeformat(getuniquedataset($ne_data_Set,$higgestattribute_level),$ne_data_Set,$higgestattribute_level,$identifier['name'],$identifier['parent'],$leveltostart);
+            $main_tree['child'][$identifier['name']]['done'] = 1;
         }
-    } 
-    $total_dataset_count = count($ne_data_Set);
-    $get_name_snake = getuniquedataset($ne_data_Set,'name');
-    $total_entropy = total_dataset_entropy($total_dataset_count,$get_name_snake);
-
-    foreach($gain_ratio as $iden=>$value)
-    {
-        $gain_entropy = 0;
-        $get_color_snake = getuniquedataset($ne_data_Set,$iden);
-        $getcrossattributevalue = getcrossattribute($ne_data_Set,$get_color_snake,$get_name_snake,$iden,'name');
-        $gain_entropy = getgainentropy($ne_data_Set,$iden,$get_color_snake,$getcrossattributevalue,$total_dataset_count,$total_entropy);
-        $gain_ratio[$iden] = $gain_entropy;
-    }
-
-    $higgestattribute_level = getmaxvalue($gain_ratio);
-    $main_tree['child'][$identifier]['child'] = gettreeformat(getuniquedataset($ne_data_Set,$higgestattribute_level),$ne_data_Set,$higgestattribute_level);
-    $main_tree['child'][$identifier]['done'] = 1;
-}
-
-
-$identifier = checkeverythingisdone($main_tree);
-if($identifier != '')
-{
-    $ne_data_Set = array();
-    foreach($data_set as $key=>$value)
-    {
-        if($value[$checkattribute] == $identifier)
+        else if($identifier['done'] != '1' && $identifier['level'] == '2')
         {
-            array_push($ne_data_Set,$value);
+            $checkattribute = $higgestattribute_level;
+            $ne_data_Set = array();
+            foreach($data_set as $key=>$value)
+            {
+                if($value[$checkattribute] == $identifier['name'] && $value[$identifier['parent_attr']] == $identifier['parent_slug'])
+                {
+                    array_push($ne_data_Set,$value);
+                }
+            } 
+
+            $total_dataset_count = count($ne_data_Set);
+            $get_name_snake = getuniquedataset($ne_data_Set,'name');
+            $total_entropy = total_dataset_entropy($total_dataset_count,$get_name_snake);
+
+            foreach($gain_ratio as $iden=>$value)
+            {
+                $gain_entropy = 0;
+                $get_color_snake = getuniquedataset($ne_data_Set,$iden);
+                $getcrossattributevalue = getcrossattribute($ne_data_Set,$get_color_snake,$get_name_snake,$iden,'name');
+                $gain_entropy = getgainentropy($ne_data_Set,$iden,$get_color_snake,$getcrossattributevalue,$total_dataset_count,$total_entropy);
+                $gain_ratio[$iden] = $gain_entropy;
+            }
+
+            $higgestattribute_level = getmaxvalue($gain_ratio);
+
+            
+            $main_tree['child'][$identifier['parent_slug']]['child'][$identifier['name']]['child'] = gettreeformat(getuniquedataset($ne_data_Set,$higgestattribute_level),$ne_data_Set,$higgestattribute_level,$identifier['name'],$identifier['parent'],$leveltostart);
+            $main_tree['child'][$identifier['parent_slug']]['child'][$identifier['name']]['done'] = 1;
         }
-    } 
-    $total_dataset_count = count($ne_data_Set);
-    $get_name_snake = getuniquedataset($ne_data_Set,'name');
-    $total_entropy = total_dataset_entropy($total_dataset_count,$get_name_snake);
-
-    foreach($gain_ratio as $iden=>$value)
-    {
-        $gain_entropy = 0;
-        $get_color_snake = getuniquedataset($ne_data_Set,$iden);
-        $getcrossattributevalue = getcrossattribute($ne_data_Set,$get_color_snake,$get_name_snake,$iden,'name');
-        $gain_entropy = getgainentropy($ne_data_Set,$iden,$get_color_snake,$getcrossattributevalue,$total_dataset_count,$total_entropy);
-        $gain_ratio[$iden] = $gain_entropy;
-    }
-
-    $higgestattribute_level = getmaxvalue($gain_ratio);
-    $main_tree['child'][$identifier]['child'] = gettreeformat(getuniquedataset($ne_data_Set,$higgestattribute_level),$ne_data_Set,$higgestattribute_level);
-    $main_tree['child'][$identifier]['done'] = 1;
-}
-
-$identifier = checkeverythingisdone($main_tree);
-if($identifier != '')
-{
-    $ne_data_Set = array();
-    foreach($data_set as $key=>$value)
-    {
-        if($value[$checkattribute] == $identifier)
+        else
         {
-            array_push($ne_data_Set,$value);
+
         }
-    } 
-    $total_dataset_count = count($ne_data_Set);
-    $get_name_snake = getuniquedataset($ne_data_Set,'name');
-    $total_entropy = total_dataset_entropy($total_dataset_count,$get_name_snake);
-
-    foreach($gain_ratio as $iden=>$value)
-    {
-        $gain_entropy = 0;
-        $get_color_snake = getuniquedataset($ne_data_Set,$iden);
-        $getcrossattributevalue = getcrossattribute($ne_data_Set,$get_color_snake,$get_name_snake,$iden,'name');
-        $gain_entropy = getgainentropy($ne_data_Set,$iden,$get_color_snake,$getcrossattributevalue,$total_dataset_count,$total_entropy);
-        $gain_ratio[$iden] = $gain_entropy;
     }
-
-    $higgestattribute_level = getmaxvalue($gain_ratio);
-    $main_tree['child'][$identifier]['child'] = gettreeformat(getuniquedataset($ne_data_Set,$higgestattribute_level),$ne_data_Set,$higgestattribute_level);
-    $main_tree['child'][$identifier]['done'] = 1;
+    
 }
-
 
 DFA($main_tree);
 ?>
