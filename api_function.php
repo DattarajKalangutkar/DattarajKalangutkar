@@ -699,7 +699,8 @@
 							"level"=>$leveltostart,
 							"name"=>$data[$attr],
 							"parent_slug"=>$parent_slug,
-							"parent_attr"=>$parent_attr
+							"parent_attr"=>$parent_attr,
+							"snake_name"=>$data["name"]
 						);
 					}
 				}
