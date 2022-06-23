@@ -27,7 +27,7 @@
 
 		$rescuer_id = GETXFROMYID($con,'transcation','iRescuerId',$id);
 
-		updateData($con,'rescuer',array('iPoints'=>$postdata['transRate']),'iId',$rescuer_id);
+		updateDataForIncrement($con,'rescuer',array('iPoints'=>$postdata['transRate']),'iId',$rescuer_id);
 
 		if(updateData($con,$modules,$sample_array,'iId',$id))
 		{

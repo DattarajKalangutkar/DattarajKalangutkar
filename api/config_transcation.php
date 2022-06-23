@@ -87,6 +87,7 @@
 			'validate'=>'1',
 			'clientname'=>'transStatus',
 			'data_fetch'=>'statustrans',
+			'type'=>'string',
 			'html'=>'dropdown',
 			'table'=>'1',
 			'phase1'=>'1',

@@ -45,6 +45,18 @@
 	    return true;
 	}
 
+	function updateDataForIncrement($con, $table, $data, $identifier, $id)
+	{
+	    $colString = "";
+	    foreach ($data as $col => $val) {
+	        $colString .= "$col=$col+$val,";
+	    }
+	    $colString      = substr($colString, 0, -1);
+		$sql            = "update $table set $colString where $identifier = $id and vStatus=1";
+	    $response_query = mysqli_query($con, $sql) or die('Error, 35');
+	    return true;
+	}
+
 	function specific_data_id($con,$table,$id)
 	{
 		$sql            = "delete from $table where iId = $id and vStatus=1";
