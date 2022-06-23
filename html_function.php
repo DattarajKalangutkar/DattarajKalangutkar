@@ -22,7 +22,7 @@
 			$str .="<input id='forchangingforImage' name='forchangingforImage' class='form-control form-control-user' type='hidden' autocomplete='off' value='$val'>";
 			if($val != '')
 			{
-				$str .="<a href='$url$val' target='blank'>View</a> || <a href='javascript:;' onclick='deleteImage(\"".$modules."\",\"".$val."\")'>Delete</a>";
+				$str .="<a href='$val' target='blank'>View</a> || <a href='javascript:;' onclick='deleteImage(\"".$modules."\",\"".$val."\")'>Delete</a>";
 			}
 		}
 		else if($type == 'textarea')
