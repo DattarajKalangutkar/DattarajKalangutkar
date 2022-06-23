@@ -38,7 +38,7 @@
 			'clientname'=>'transImage',
 			'type'=>'string',
 			'html'=>'file',
-			'table'=>'1',
+			'table'=>'0',
 			'phase1'=>'0',
 			'phase2'=>'1',
 			'phase3'=>'0'
@@ -48,7 +48,7 @@
 			'clientname'=>'transRescuerDate',
 			'type'=>'string',
 			'html'=>'date',
-			'table'=>'1',
+			'table'=>'0',
 			'phase1'=>'0',
 			'phase2'=>'1',
 			'phase3'=>'0'
@@ -58,7 +58,7 @@
 			'clientname'=>'transRescuerAddress',
 			'type'=>'string',
 			'html'=>'text',
-			'table'=>'1',
+			'table'=>'0',
 			'phase1'=>'0',
 			'phase2'=>'1',
 			'phase3'=>'0'
@@ -68,7 +68,7 @@
 			'clientname'=>'transSnakeLength',
 			'type'=>'string',
 			'html'=>'text',
-			'table'=>'1',
+			'table'=>'0',
 			'phase1'=>'0',
 			'phase2'=>'1',
 			'phase3'=>'0'
@@ -78,7 +78,7 @@
 			'clientname'=>'transSnakeWeight',
 			'type'=>'string',
 			'html'=>'text',
-			'table'=>'1',
+			'table'=>'0',
 			'phase1'=>'0',
 			'phase2'=>'1',
 			'phase3'=>'0'
@@ -87,8 +87,7 @@
 			'validate'=>'1',
 			'clientname'=>'transStatus',
 			'data_fetch'=>'statustrans',
-			'type'=>'string',
-			'html'=>'text',
+			'html'=>'dropdown',
 			'table'=>'1',
 			'phase1'=>'1',
 			'phase2'=>'1',
@@ -99,7 +98,7 @@
 			'clientname'=>'transComment',
 			'type'=>'string',
 			'html'=>'textarea',
-			'table'=>'1',
+			'table'=>'0',
 			'phase1'=>'0',
 			'phase2'=>'0',
 			'phase3'=>'1'
@@ -109,7 +108,7 @@
 			'clientname'=>'transRate',
 			'type'=>'string',
 			'html'=>'text',
-			'table'=>'1',
+			'table'=>'0',
 			'phase1'=>'0',
 			'phase2'=>'0',
 			'phase3'=>'1'
@@ -126,7 +125,7 @@
 			'clientname'=>'vStatus',
 			'type'=>'string',
 			'html'=>'text',
-			'table'=>'1',
+			'table'=>'0',
 			'phase1'=>'1',
 		)        
 	) 

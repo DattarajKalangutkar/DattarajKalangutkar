@@ -78,7 +78,7 @@
 					{
 						if($value['html'] == 'dropdown')
 						{
-							$str .= '<td>'.$val[$value['clientname']].'</td>';
+							$str .= '<td>'.$val[$value['clientname']]['vName'].'</td>';
 						}
 						else if($child == 'dCreatedDate')
 						{
