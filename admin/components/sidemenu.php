@@ -38,6 +38,11 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Request <?php echo (isset($data_rescuer['rows'])) ? '('.count($data_rescuer['rows']).')':'';?></span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="transaction_list.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Transaction </span></a>
+    </li>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
