@@ -70,7 +70,7 @@
 				else{
 					if(isset($val['data_fetch']))
 					{
-						$sample_array[$val['clientname']] = GETXFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key]);
+						$sample_array[$val['clientname']] = GETXDATAFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key]);
 					}
 					else{
 						$sample_array[$val['clientname']] = $data_from_db[$key];
@@ -111,7 +111,7 @@
 					else{
 						if(isset($val['data_fetch']))
 						{
-							$sample_array[$key][$val['clientname']] = GETXFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key][$keys]);
+							$sample_array[$key][$val['clientname']] = GETXDATAFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key][$keys]);
 						}
 						else{
 							$sample_array[$key][$val['clientname']] = $data_from_db[$key][$keys];

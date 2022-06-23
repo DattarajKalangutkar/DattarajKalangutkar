@@ -48,7 +48,6 @@
 
 	function getDataTable($head,$data,$type,$method,$con)
 	{
-		
 		$str = '';
 		$count = 0;
 		$str .= '<div class="table-responsive">';
