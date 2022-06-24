@@ -29,6 +29,10 @@
 		{
 			$str .="<textarea id='$iden' name='$iden' class='form-control form-control-user' type='$type' autocomplete='off' required='$req'>$val</textarea>";
 		}
+		else if($type == 'number')
+		{
+			$str .="<input id='$iden' name='$iden' min='0' class='form-control form-control-user' type='$type' autocomplete='off' required='$req' value='$val'>";
+		}
 		else
 		{
 			$str .="<input id='$iden' name='$iden' class='form-control form-control-user' type='$type' autocomplete='off' required='$req' value='$val'>";

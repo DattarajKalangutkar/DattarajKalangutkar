@@ -118,7 +118,7 @@ unset($gain_ratio[$higgestattribute]);
 
 $checkattribute = $higgestattribute;
 //check if any done = 0, othersie break the condition
-for($i=0;$i<10;$i++)
+for($i=0;$i<20;$i++)
 {
     $identifier = checkeverythingisdone($main_tree);
     if(isset($identifier['done']))
@@ -179,18 +179,49 @@ for($i=0;$i<10;$i++)
             }
 
             $higgestattribute_level = getmaxvalue($gain_ratio);
-
-            
+            //DFA(getuniquedataset($ne_data_Set,$higgestattribute_level));
+           
             $main_tree['child'][$identifier['parent_slug']]['child'][$identifier['name']]['child'] = gettreeformat(getuniquedataset($ne_data_Set,$higgestattribute_level),$ne_data_Set,$higgestattribute_level,$identifier['name'],$identifier['parent'],$leveltostart);
             $main_tree['child'][$identifier['parent_slug']]['child'][$identifier['name']]['done'] = 1;
         }
-        else
+        else if($identifier['done'] != '1' && $identifier['level'] == '3')
         {
+            DFA($main_tree);
+            $getTrace = gettrace($main_tree,$identifier['name']);
+            
+            $leveltostart = 4;
+            $checkattribute = $higgestattribute_level;
+            $ne_data_Set = array();
+            foreach($data_set as $key=>$value)
+            {
+                if($value[$checkattribute] == $identifier['name'] && $value[$identifier['parent_attr']] == $identifier['parent_slug'])
+                {
+                    array_push($ne_data_Set,$value);
+                }
+            } 
 
+            $total_dataset_count = count($ne_data_Set);
+            $get_name_snake = getuniquedataset($ne_data_Set,'name');
+            $total_entropy = total_dataset_entropy($total_dataset_count,$get_name_snake);
+
+            foreach($gain_ratio as $iden=>$value)
+            {
+                $gain_entropy = 0;
+                $get_color_snake = getuniquedataset($ne_data_Set,$iden);
+                $getcrossattributevalue = getcrossattribute($ne_data_Set,$get_color_snake,$get_name_snake,$iden,'name');
+                $gain_entropy = getgainentropy($ne_data_Set,$iden,$get_color_snake,$getcrossattributevalue,$total_dataset_count,$total_entropy);
+                $gain_ratio[$iden] = $gain_entropy;
+            }
+
+            $higgestattribute_level = getmaxvalue($gain_ratio);
+
+
+            $main_tree['child'][$gettrace[0]]['child'][$gettrace[1]]['child'][$gettrace[2]]['child'] = gettreeformat(getuniquedataset($ne_data_Set,$higgestattribute_level),$ne_data_Set,$higgestattribute_level,$identifier['name'],$identifier['parent'],$leveltostart);
+            $main_tree['child'][$gettrace[0]]['child'][$gettrace[1]]['child'][$gettrace[2]]['done'] = 1;
         }
     }
     
 }
 DFA($main_tree);
-DFA(count($main_tree['child']));
+// DFA(count($main_tree['child']));
 ?>

@@ -698,7 +698,7 @@
 		$tree_format = array();
 		foreach($iden_array as $key=>$value)
 		{
-			if($value <= 2)
+			if($value <= 1)
 			{
 				foreach($full_dataset as $keys=>$data)
 				{
@@ -736,6 +736,7 @@
 	{
 		$counter=0;
 		$identider_array = array();
+		$trace = array();
 		foreach($main_tree['child'] as $key=>$value)
 		{
 			if($value['done'] == 0)
@@ -766,6 +767,30 @@
 								$identider_array = $valuesss;
 								break;
 							}
+							if(count($valuesss['child']) > 0)
+							{
+								foreach($valuesss['child'] as $keylevel_4=>$valuelevel_4)
+								{
+									if($valuelevel_4['done'] == 0)
+									{
+										$counter = 1;
+										$identider_array = $valuelevel_4;
+										break;
+									}
+									if(count($valuelevel_4['child']) > 0)
+									{
+										foreach($valuelevel_4['child'] as $keylevel_5=>$valuelevel_5)
+										{
+											if($valuelevel_5['done'] == 0)
+											{
+												$counter = 1;
+												$identider_array = $valuelevel_5;
+												break;
+											}
+										}
+									}
+								}
+							}
 						}
 					}
 				}
@@ -773,4 +798,18 @@
 		} 
 		return $identider_array;
 	}	
+
+	function gettrace($array_tree,$name)
+	{
+		$counter=0;
+		$trace = array();
+		if(count($array_tree['child']) > 0)
+		{
+			foreach($array_tree['child'] as $key=>$value)
+			{
+				
+			}
+		}
+		return $trace;
+	}
 ?>
