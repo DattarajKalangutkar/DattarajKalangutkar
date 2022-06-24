@@ -43,7 +43,7 @@
     define('DATABSE',$db_name);
     $con = mysqli_connect(HOST,USERNAME,PASSWORD,DATABSE);
     define('JWT_KEY','SNAKE_PROJ');
-    define('NOW',date('Y-m-d H:s:i'));
+    define('NOW',date('Y-m-d H:i:s a'));
     $status_array = array("1"=>"Active","2"=>"InActive");
 
     //email host config
