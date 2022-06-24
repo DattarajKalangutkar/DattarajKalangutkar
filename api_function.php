@@ -812,4 +812,166 @@
 		}
 		return $trace;
 	}
+
+	function getTotalcount($data)
+	{
+		return count($data);
+	}
+
+	function updateMainTree($main,$child_array,$attr,$ori_attr,$fulldata)
+	{
+		foreach($child_array as $key=>$value)
+		{
+			if($value > 1)
+			{
+				if(checkforsamerecord($fulldata,$attr,$key))
+				{
+					$sub_trace_array = $main[$attr]['trace'];
+					array_push($sub_trace_array,$key);
+					$main[$key] = array(
+						"root"=>$key,
+						"done"=>0,
+						"trace"=>$sub_trace_array,
+						"value"=>$value
+					);
+				}
+				else
+				{
+					$sub_trace_array = $main[$attr]['trace'];
+					array_push($sub_trace_array,$key);
+					$main[$key] = array(
+						"root"=>$key,
+						"done"=>1,
+						"trace"=>$sub_trace_array,
+						"value"=>$value,
+						"snake_name"=>checkforsamerecordname($fulldata,$attr,$key,$value)
+					);
+				}
+			}
+			else
+			{
+				$sub_trace_array = $main[$attr]['trace'];
+				array_push($sub_trace_array,$key);
+				$main[$key] = array(
+					"root"=>$key,
+					"done"=>1,
+					"trace"=>$sub_trace_array,
+					"value"=>$value,
+					"snake_name"=>checkforsamerecordname($fulldata,$attr,$key,$value)
+				);
+			}
+		}
+		return $main;
+	}
+
+	function checkforsamerecord($data,$compareto,$compareValue)
+	{
+		$arraytotcheck = array();
+		foreach($data as $key=>$value)
+		{
+			if($value[$compareto] == $compareValue)
+			{
+				array_push($arraytotcheck,$value['name']);
+			}
+		}
+
+		if(count(array_unique($arraytotcheck)) > 1)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	function checkforsamerecordname($data,$compareto,$compareValue,$count)
+	{
+		$arraytotcheck = array();
+		foreach($data as $key=>$value)
+		{
+			if($value[$compareto] == $compareValue)
+			{
+				array_push($arraytotcheck,$value['name']);
+			}
+		}
+
+		if(count(array_unique($arraytotcheck)) > 1)
+		{
+			return true;
+		}
+		else
+		{
+			return array_unique($arraytotcheck)[0];
+		}
+	}
+
+	function alldoneturnone($main_data)
+	{
+		$counter = 0;
+		foreach($main_data as $key=>$value)
+		{
+			if($value['done'] == 0)
+			{
+				$counter = 1;
+			}
+		}
+
+		return ($counter == 1) ? true:false;
+	}
+
+	function getdataithzerostatus($main_data)
+	{
+		$data = array();
+		foreach($main_data as $key=>$value)
+		{
+			if($value['done'] == 0)
+			{
+				$data = $main_data[$key];
+				break;
+			}
+		}
+
+		return $data;
+	}
+
+	function DFADATA($data)
+	{
+		echo "<pre>";
+		print_r($data);
+		echo "<br>";
+	}
+
+	function getfilterdata($data_set,$trace_array)
+	{
+		$new_data_set = array();
+		$count = count($trace_array);
+		foreach($data_set as $key=>$value)
+		{
+			if($count == 2)
+			{
+				if($value[$trace_array[0]] == $trace_array[1])
+				{
+					array_push($new_data_set,$value);
+				}
+			}
+
+			if($count == 4)
+			{
+				if(($value[$trace_array[0]] == $trace_array[1]) && ($value[$trace_array[2]] == $trace_array[3]))
+				{
+					array_push($new_data_set,$value);
+				}
+			}
+
+			if($count == 6)
+			{
+				if(($value[$trace_array[0]] == $trace_array[1]) && ($value[$trace_array[2]] == $trace_array[3]) && ($value[$trace_array[4]] == $trace_array[5]))
+				{
+					array_push($new_data_set,$value);
+				}
+			}
+		}
+		return $new_data_set;
+	}
 ?>

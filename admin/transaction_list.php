@@ -4,7 +4,7 @@
 	include '../api/config_transcation.php';
 
     $tech = 'transaction';//($_GET['type']) ? $_GET['type']:'Dashboard';	
-	$title = 'transaction_list';		
+	$title = 'Transaction';		
 	$action = $api_url.'transcation/updationtransactionlist.php';
 	$data = json_decode(file_get_contents($action),true);
   
