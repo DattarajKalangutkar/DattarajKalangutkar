@@ -832,7 +832,9 @@
 						"root"=>$key,
 						"done"=>0,
 						"trace"=>$sub_trace_array,
-						"value"=>$value
+						"value"=>$value,
+						"branches"=>"1",
+						"child"=>array()
 					);
 				}
 				else
@@ -853,6 +855,53 @@
 				$sub_trace_array = $main[$attr]['trace'];
 				array_push($sub_trace_array,$key);
 				$main[$key] = array(
+					"root"=>$key,
+					"done"=>1,
+					"trace"=>$sub_trace_array,
+					"value"=>$value,
+					"snake_name"=>checkforsamerecordname($fulldata,$attr,$key,$value)
+				);
+			}
+		}
+		return $main;
+	}
+
+	function updateMainTreeWithbranches($main,$child_array,$attr,$ori_attr,$fulldata,$branch)
+	{
+		foreach($child_array as $key=>$value)
+		{
+			if($value > 1)
+			{
+				if(checkforsamerecord($fulldata,$attr,$key))
+				{
+					$sub_trace_array = $main[$branch]['child'][$attr]['trace'];
+					array_push($sub_trace_array,$key);
+					$main[$branch]['child'][$key] = array(
+						"root"=>$key,
+						"done"=>0,
+						"trace"=>$sub_trace_array,
+						"value"=>$value,
+						"child"=>array()
+					);
+				}
+				else
+				{
+					$sub_trace_array = $main[$branch]['child'][$attr]['trace'];
+					array_push($sub_trace_array,$key);
+					$main[$branch]['child'][$key] = array(
+						"root"=>$key,
+						"done"=>1,
+						"trace"=>$sub_trace_array,
+						"value"=>$value,
+						"snake_name"=>checkforsamerecordname($fulldata,$attr,$key,$value)
+					);
+				}
+			}
+			else
+			{
+				$sub_trace_array = $main[$branch]['child'][$attr]['trace'];
+				array_push($sub_trace_array,$key);
+				$main[$branch]['child'][$key] = array(
 					"root"=>$key,
 					"done"=>1,
 					"trace"=>$sub_trace_array,
@@ -906,7 +955,7 @@
 		}
 	}
 
-	function alldoneturnone($main_data)
+	function checkforbranches($main_data)
 	{
 		$counter = 0;
 		foreach($main_data as $key=>$value)
@@ -916,11 +965,10 @@
 				$counter = 1;
 			}
 		}
-
 		return ($counter == 1) ? true:false;
 	}
 
-	function getdataithzerostatus($main_data)
+	function getbranchwithzerostatus($main_data)
 	{
 		$data = array();
 		foreach($main_data as $key=>$value)
@@ -931,7 +979,40 @@
 				break;
 			}
 		}
+		return $data;
+	}
 
+	function alldoneturnone($main_data,$parent)
+	{
+		$counter = 0;
+		if($counter == 0)
+		{
+			if(isset($main_data[$parent]['child']))
+			{
+				foreach($main_data[$parent]['child'] as $key=>$value)
+				{
+					if($value['done'] == 0)
+					{
+						$counter = 1;
+					}
+				}
+			}
+		}
+
+		return ($counter == 1) ? true:false;
+	}
+
+	function getdataithzerostatus($main_data,$parent)
+	{
+		$data = array();
+		foreach($main_data[$parent]['child'] as $key=>$value)
+		{
+			if($value['done'] == 0)
+			{
+				$data = $main_data[$parent]['child'][$key];
+				break;
+			}
+		}
 		return $data;
 	}
 
