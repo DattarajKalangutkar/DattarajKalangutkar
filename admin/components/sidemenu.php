@@ -64,6 +64,7 @@
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=firstaid">First Aid</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=statustrans">Transaction Status</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=events">Events</a>
+                <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=algo">Algorithm</a>
             </div>
         </div>
     </li>
