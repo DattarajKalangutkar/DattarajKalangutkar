@@ -272,6 +272,18 @@
 		return $data; 
 	}
 
+	function getalldataAlgo($con,$table)
+	{
+		$data = array();
+		$sql = "select type,color,headshape,eyeshape,snake as name from $table";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
+		while($res = mysqli_fetch_assoc($response_query))
+		{
+			$data[] = $res;
+		}
+		return $data; 
+	}
+
 	function getresgisterrescuer($con,$table,$str,$status)
 	{
 		$data = array();

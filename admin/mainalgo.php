@@ -7,88 +7,38 @@ $gain_ratio = array(
     "headshape"=>0,
     "eyeshape"=>0,
 );
+
+
+
+// $file = fopen("snake_data.csv","r");
+// while(! feof($file))
+// {
+//     $file_data = fgetcsv($file);
+//     if($file_data[0] != "")
+//     {
+//         $sample_array = array(
+//             "snake"=>trim($file_data[6]),
+//             "type"=>trim($file_data[0]),
+//             "color"=>trim($file_data[1]),
+//             "headshape"=>trim($file_data[2]),
+//             "texture"=>trim($file_data[3]),
+//             "eyeshape"=>trim($file_data[4]),
+//             "symptoms"=>trim($file_data[5]),
+//         );
+
+//         singleInsert('algo_data',$sample_array,$con);
+//     }
+// }
+
+// fclose($file);
+// exit;
+
+$data_set = getalldataAlgo($con,'algo');
+
+
+
 $main_tree = array();
-$data_set = array(
-    "row_1"=>array(
-        "type"=>"venomous",
-        "color"=>"brown",
-        "headshape"=>"triangular",
-        "eyeshape"=>"round",
-        "name"=>"cobra"
-    ),
-    "row_2"=>array
-    (
-        "type"=>"venomous",
-        "color"=>"black",
-        "headshape"=>"triangular",
-        "eyeshape"=>"round",
-        "name"=>"cobra"
-    ),
-    "row_3"=>array
-    (
-        "type"=>"venomous",
-        "color"=>"brown",
-        "headshape"=>"triangular",
-        "eyeshape"=>"vertical",
-        "name"=>"saw-scaled viper"
-    ),
-    "row_4"=>array
-    (
-        "type"=>"venomous",
-        "color"=>"reddish",
-        "headshape"=>"triangular",
-        "eyeshape"=>"pear-shaped",
-        "name"=>"saw-scaled viper"
-    ),
-    "row_5"=>array
-    (
-        "type"=>"non-venomous",
-        "color"=>"yellow",
-        "headshape"=>"broader",
-        "eyeshape"=>"round",
-        "name"=>"rat snake"
-    ),
-    "row_6"=>array
-    (
-        "type"=>"non-venomous",
-        "color"=>"brown",
-        "headshape"=>"broader",
-        "eyeshape"=>"round",
-        "name"=>"rat snake"
-    ),
-    "row_7"=>array
-    (
-        "type"=>"mild-venomous",
-        "color"=>"brown",
-        "headshape"=>"triangular",
-        "eyeshape"=>"vertical",
-        "name"=>"cat snake"
-    ),
-    "row_8"=>array
-    (
-        "type"=>"non-venomous",
-        "color"=>"brown",
-        "headshape"=>"triangular",
-        "eyeshape"=>"round",
-        "name"=>"wolf snake"
-    ),
-    "row_9"=>array
-    (
-        "type"=>"non-venomous",
-        "color"=>"brown",
-        "headshape"=>"broader",
-        "eyeshape"=>"vertical",
-        "name"=>"wolf snake"
-    ),
-    "row_10"=>array
-    (
-        "type"=>"venomous",
-        "color"=>"reddish",
-        "headshape"=>"triangular",
-        "eyeshape"=>"vertical",
-        "name"=>"saw-scaled viper"
-    )
-);
+
 
 $iterate = 1;
 $branches = array();
@@ -124,6 +74,8 @@ while($iterate)
                     array_push($branches,$key);
             }
         }
+
+        DFA($branches);
         $main_tree = updateMainTree($main_tree,$get_count_of_every_attribute_values,$attribute_with_highest_gain_ratio,"name",$data_set);
         unset($gain_ratio[$attribute_with_highest_gain_ratio]);
         //DFA($main_tree);

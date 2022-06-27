@@ -424,57 +424,92 @@
 				'html'=>'',
 				'table'=>'0'
 			)
-			),
-			'events'=>array(
-				'vName'=>array(
-					'validate'=>'1',
-					'clientname'=>'eventName',
-					'type'=>'string',
-					'html'=>'text',
-					'table'=>'1',
-					'other_validation'=>'vName'
-				),
-				'vDescription'=>array(
-					'validate'=>'1',
-					'clientname'=>'eventDescription',
-					'type'=>'string',
-					'html'=>'text',
-					'table'=>'1'
-				),
-				'vImage'=>array(
-					'validate'=>'1',
-					'clientname'=>'eventsImage',
-					'type'=>'string',
-					'html'=>'file',
-					'table'=>'0'
-				),
-				'dCreatedDate'=>array(
-					'validate'=>'0',
-					'clientname'=>'createdDate',
-					'type'=>'string',
-					'html'=>'',
-					'table'=>'1'
-				),
-				'vStatus'=>array(
-					'validate'=>'1',
-					'clientname'=>'firstaidStatus',
-					'type'=>'string',
-					'html'=>'',
-					'table'=>'0'
-				)
-			),
-		/*'answers'=>array(
-			'iTransactionId'=>array(
+		),
+		'events'=>array(
+			'vName'=>array(
 				'validate'=>'1',
-				'clientname'=>'quest',
+				'clientname'=>'eventName',
 				'type'=>'string',
 				'html'=>'text',
 				'table'=>'1',
 				'other_validation'=>'vName'
 			),
-			'vOptions'=>array(
+			'vDescription'=>array(
 				'validate'=>'1',
-				'clientname'=>'questionOptions',
+				'clientname'=>'eventDescription',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'vImage'=>array(
+				'validate'=>'1',
+				'clientname'=>'eventsImage',
+				'type'=>'string',
+				'html'=>'file',
+				'table'=>'0'
+			),
+			'dCreatedDate'=>array(
+				'validate'=>'0',
+				'clientname'=>'createdDate',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'1'
+			),
+			'vStatus'=>array(
+				'validate'=>'1',
+				'clientname'=>'firstaidStatus',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			)
+		),
+		'algo'=>array(
+			'snake'=>array(
+				'validate'=>'1',
+				'clientname'=>'algoSnake',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1',
+				'other_validation'=>'vName'
+			),
+			'type'=>array(
+				'validate'=>'1',
+				'clientname'=>'algoType',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'color'=>array(
+				'validate'=>'1',
+				'clientname'=>'algoColor',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'headshape'=>array(
+				'validate'=>'1',
+				'clientname'=>'algoHeadshape',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'texture'=>array(
+				'validate'=>'1',
+				'clientname'=>'algoTexture',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'eyeshape'=>array(
+				'validate'=>'1',
+				'clientname'=>'algoEyeshape',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'symptoms'=>array(
+				'validate'=>'1',
+				'clientname'=>'algoSymptoms',
 				'type'=>'string',
 				'html'=>'text',
 				'table'=>'1'
@@ -488,11 +523,11 @@
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
-				'clientname'=>'headshapeStatus',
+				'clientname'=>'algoStatus',
 				'type'=>'string',
 				'html'=>'',
 				'table'=>'0'
 			)
-		),*/
+		),
 	) 
 ?>
