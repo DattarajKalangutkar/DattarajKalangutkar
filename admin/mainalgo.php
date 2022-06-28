@@ -34,12 +34,7 @@ $gain_ratio = array(
 // exit;
 
 $data_set = getalldataAlgo($con,'algo');
-
-
-
 $main_tree = array();
-
-
 $iterate = 1;
 $branches = array();
 
@@ -74,8 +69,6 @@ while($iterate)
                     array_push($branches,$key);
             }
         }
-
-        DFA($branches);
         $main_tree = updateMainTree($main_tree,$get_count_of_every_attribute_values,$attribute_with_highest_gain_ratio,"name",$data_set);
         unset($gain_ratio[$attribute_with_highest_gain_ratio]);
         //DFA($main_tree);

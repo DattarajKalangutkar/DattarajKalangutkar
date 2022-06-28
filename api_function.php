@@ -1064,6 +1064,13 @@
 					array_push($new_data_set,$value);
 				}
 			}
+			if($count == 8)
+			{
+				if(($value[$trace_array[0]] == $trace_array[1]) && ($value[$trace_array[2]] == $trace_array[3]) && ($value[$trace_array[4]] == $trace_array[5]) && ($value[$trace_array[6]] == $trace_array[7]))
+				{
+					array_push($new_data_set,$value);
+				}
+			}
 		}
 		return $new_data_set;
 	}
