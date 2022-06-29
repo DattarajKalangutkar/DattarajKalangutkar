@@ -608,12 +608,17 @@
 
 	function total_dataset_entropy($total_count,$data)
 	{
+		$str = "Entropy of the Dataset:";
+		$str .= "<br>";
 		$entropy = 0;
 		foreach($data as $key=>$value)
 		{
 			$entropy += (log($value/$total_count, 2) * $value/$total_count);
+			$str .= "log2(".$value."/".$total_count.")*(".$value."/".$total_count.")";
+			$str .= "<br>";
 		}
 
+		echo $str;
 		$entropy = (-1)*$entropy;
 		return $entropy;
 	}
@@ -647,30 +652,52 @@
 
 	function getgainentropy($dataset,$iden,$iden_array,$crossattribute,$total_count,$total_gain)
 	{
-		//DFA($iden_array);
 		$gain_entroy = 0;
 		$net_entryopy = array();
 		$gain = 0;
 		foreach($iden_array as $key=>$countkey)
 		{
 			$entropy = 0;
+			$str = "Entropy of the ".$key;
+			$str .= "<br>";
 			foreach($crossattribute[$key] as $ckey=>$cValue)
 			{
+				
 				if($cValue !=0)
+				{
 					$entropy += (log($cValue/$countkey, 2) * $cValue/$countkey);
+					$str .= "log2(".$cValue."/".$countkey.")*(".$cValue."/".$countkey.") + ";
+				}
 			}
 			$entropy = (-1)*$entropy;
+			
 			$net_entryopy[$key] = $entropy;
+			$str .= "<br>";
+			$str .= "<br>";
+			$str .= "is ".$entropy;
+			$str .= "<br>";
+			$str .= "<br>";
+			echo $str;
+			$str = '';
 		}
 
+		echo "<br>";
+		echo "Now Lets caluate the Net Entropy : ";
 		$netEntropy = 0;
 		foreach($iden_array as $key=>$countkey)
 		{
 			$netEntropy += ($countkey/$total_count)*$net_entryopy[$key];
+			echo "log2(".$countkey."/".$total_count.")*(".$countkey."/".$total_count.") + ";
 		}
 
+		echo " which is <strong>".$netEntropy."</strong>";
 		$gain = $total_gain-$netEntropy;
-		
+		echo "<br>";
+		echo "So now Gain is ".$total_gain." - ".$netEntropy." = <strong>".$gain."</strong>";
+
+		echo "<br>";
+		echo "<br>";
+		echo "Now Lets caluate the Split Info : ";
 		$splitinfo = 0;
 		foreach($iden_array as $key=>$countkey)
 		{
@@ -681,10 +708,18 @@
 		if($splitinfo != 0)
 		{
 			$gain_ratio = ($gain/$splitinfo);
+			echo "(".$gain."/".$splitinfo.") => <strong>".$gain_ratio."</strong>";
+			echo "<br>";
+			echo "********************************* Done for ".$iden."*************************************";
+			echo "<br>";
 			return $gain_ratio;
 		}
 		else
 		{
+			echo "0";
+			echo "<br>";
+			echo "********************************* Done for".$iden."*************************************";
+			echo "<br>";
 			return 0;
 		}
 	}
@@ -1073,5 +1108,29 @@
 			}
 		}
 		return $new_data_set;
+	}
+
+	function printDataset($data)
+	{
+		$str = "<table>";
+		$str .="<tr><td>Name</td><td>Type</td><td>Color</td><td>HeadShape</td><td>Eyeshape</td></tr>";
+		foreach($data as $key=>$value)
+		{
+			$str .="<tr><td>".$value['name']."</td><td>".$value['type']."</td><td>".$value['color']."</td><td>".$value['headshape']."</td><td>".$value['eyeshape']."</td></tr>";
+		}
+		$str .= "<table>";
+		return $str;
+	}
+
+	function printcountofsnake($data,$name)
+	{
+		$str = "<table>";
+		$str .="<tr><td>".$name."</td><td>Count</td></tr>";
+		foreach($data as $key=>$value)
+		{
+			$str .="<tr><td>".$key."</td><td>".$value."</td></tr>";
+		}
+		$str .= "<table>";
+		return $str;
 	}
 ?>
