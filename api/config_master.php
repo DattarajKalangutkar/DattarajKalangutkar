@@ -28,7 +28,7 @@
 		'pattern'=>array(
 			'vName'=>array(
 				'validate'=>'1',
-				'clientname'=>'patternName',
+				'clientname'=>'Textures',
 				'type'=>'string',
 				'html'=>'text',
 				'table'=>'1',
@@ -39,7 +39,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'string',
 				'html'=>'',
-				'table'=>'1'
+				'table'=>'0'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -53,7 +53,7 @@
 		'snake'=>array(
 			'vName'=>array(
 				'validate'=>'1',
-				'clientname'=>'snakeName',
+				'clientname'=>'Name',
 				'type'=>'string',
 				'html'=>'text',
 				'table'=>'1',
@@ -64,7 +64,7 @@
 				'clientname'=>'snakeLocalName',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1',
+				'table'=>'0',
 			),
 			'vSize'=>array(
 				'validate'=>'1',
@@ -75,7 +75,7 @@
 			),
 			'iColor'=>array(
 				'validate'=>'1',
-				'clientname'=>'snakeColor',
+				'clientname'=>'Color',
 				'type'=>'string',
 				'data_fetch'=>'color',
 				'html'=>'dropdown',
@@ -83,7 +83,7 @@
 			),
 			'iPattern'=>array(
 				'validate'=>'1',
-				'clientname'=>'snakePattern',
+				'clientname'=>'Texture',
 				'type'=>'string',
 				'data_fetch'=>'pattern',
 				'html'=>'dropdown',
@@ -91,14 +91,14 @@
 			),
 			'vImage'=>array(
 				'validate'=>'1',
-				'clientname'=>'snakeImage',
+				'clientname'=>'Image',
 				'type'=>'string',
 				'html'=>'file',
 				'table'=>'0'
 			),
 			'iType'=>array(
 				'validate'=>'0',
-				'clientname'=>'snakeType',
+				'clientname'=>'Snake Type',
 				'type'=>'string',
 				'data_fetch'=>'snaketype',
 				'html'=>'dropdown',
@@ -106,7 +106,7 @@
 			),
 			'iHeadShape'=>array(
 				'validate'=>'0',
-				'clientname'=>'snakeHeadShape',
+				'clientname'=>'Head Shape',
 				'type'=>'string',
 				'data_fetch'=>'headshape',
 				'html'=>'dropdown',
@@ -114,7 +114,7 @@
 			),
 			'tDesc'=>array(
 				'validate'=>'0',
-				'clientname'=>'snakeDesc',
+				'clientname'=>'Snake Description',
 				'type'=>'string',
 				'html'=>'textarea',
 				'table'=>'0'
@@ -124,7 +124,7 @@
 				'clientname'=>'createdDate',
 				'type'=>'date',
 				'html'=>'',
-				'table'=>'1'
+				'table'=>'0'
 			),
 			'vStatus'=>array(
 				'validate'=>'1',
@@ -447,6 +447,30 @@
 				'type'=>'string',
 				'html'=>'file',
 				'table'=>'0'
+			),
+			'dCreatedDate'=>array(
+				'validate'=>'0',
+				'clientname'=>'createdDate',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'1'
+			),
+			'vStatus'=>array(
+				'validate'=>'1',
+				'clientname'=>'firstaidStatus',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			)
+		),
+		'eyeshape'=>array(
+			'vName'=>array(
+				'validate'=>'1',
+				'clientname'=>'eventName',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1',
+				'other_validation'=>'vName'
 			),
 			'dCreatedDate'=>array(
 				'validate'=>'0',
