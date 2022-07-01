@@ -321,5 +321,61 @@ while($iterate)
     }
 }
 
-DFA($main_tree);
+//DFA($main_tree);
+
+
+$input_data = array(
+    "type"=>"mild-venomous",
+    "color"=>"brown",
+    "headshape"=>"broader",
+    "eyeshape"=>"vertical"
+);
+
+$snake_data = array();
+
+//get the root element
+$root_element = '';
+foreach($main_tree as $key=>$value)
+{
+    if(isset($value['root_element']))
+    {
+        $root_element = $key;
+    }
+}
+
+
+if(isset($input_data[$root_element]))
+{
+    $root_value = $input_data[$root_element];
+    //to get the snake
+    if(isset($main_tree[$root_value]))
+    {
+        if(isset($main_tree[$root_value]['child']))
+            $get_all_child = $main_tree[$root_value]['child'];
+        else if(isset($main_tree[$root_value]['snake_name']))
+            array_push($snake_data,$main_tree[$root_value]['snake_name']);
+        else
+        {
+
+        }
+    }
+}
+
+unset($input_data[$root_element]);
+foreach($input_data as $key=>$value)
+{
+    if(isset($get_all_child[$value]))
+    {
+        $snake_data_info = $get_all_child[$value];
+        if(isset($snake_data_info['snake_name']))
+        {
+            array_push($snake_data,$snake_data_info['snake_name']);
+        }
+    }
+}
+
+echo "<br>";
+echo "<br>";
+echo "As per the input the snake predication can be as follows =><br>";
+DFA($snake_data);
 ?>
