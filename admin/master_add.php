@@ -119,11 +119,13 @@
 						}
 						else
 						{
+							
 							if(document.getElementById(validate_array[key_feilds[i]]['clientname']).value == "")
 							{
 								alert(validate_array[key_feilds[i]]['clientname']+" is required");
 								return;
 							}
+	
 						}
 					}
 				}
