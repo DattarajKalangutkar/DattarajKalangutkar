@@ -54,7 +54,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=snake">Snakes</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=color">Color</a>
-                <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=pattern">Pattern</a>
+                <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=pattern">Texture</a>
+                <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=eyeshape">Eye Shape</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=symptoms">Symptoms</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=snaketype">Snake Type</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=hospital">Hospital</a>
@@ -64,6 +65,7 @@
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=firstaid">First Aid</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=statustrans">Transaction Status</a>
                 <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=events">Events</a>
+                <a class="collapse-item" href="<?php echo $site_url;?>master_list.php?type=algo">Algorithm</a>
             </div>
         </div>
     </li>
