@@ -460,6 +460,8 @@
 	{
 		$data = array();
 		$sql = "select * from $table where vStatus='1' $client_str order by iId desc";
+
+
 		$response_query = mysqli_query($con, $sql) or die('Error, No:434');
 		while($res = mysqli_fetch_assoc($response_query))
 		{
@@ -522,6 +524,7 @@
 			"values"=>array()
 		);
 		$sql = "select vName,iPoints from rescuer where vStatus='1' and iPoints!=0 order by iPoints desc limit 5";
+		echo $sql;
 		$response_query = mysqli_query($con, $sql) or die('Error, No:434');
 		while($res = mysqli_fetch_assoc($response_query))
 		{

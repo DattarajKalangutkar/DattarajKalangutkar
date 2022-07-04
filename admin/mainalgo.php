@@ -325,10 +325,10 @@ while($iterate)
 
 
 $input_data = array(
-    "type"=>"mild-venomous",
+    "type"=>"venomous",
     "color"=>"brown",
-    "headshape"=>"broader",
-    "eyeshape"=>"vertical"
+    "headshape"=>"",
+    "eyeshape"=>""
 );
 
 $snake_data = array();
