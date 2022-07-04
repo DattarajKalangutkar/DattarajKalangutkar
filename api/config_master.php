@@ -385,6 +385,66 @@
 				'table'=>'0'
 			)
 		),
+		'events'=>array(
+			'vName'=>array(
+				'validate'=>'1',
+				'clientname'=>'eventName',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'vDescription'=>array(
+				'validate'=>'1',
+				'clientname'=>'eventDescription',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'vImage'=>array(
+				'validate'=>'1',
+				'clientname'=>'eventImage',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'dCreatedDate'=>array(
+				'validate'=>'0',
+				'clientname'=>'createdDate',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			),
+			'vStatus'=>array(
+				'validate'=>'1',
+				'clientname'=>'headshapeStatus',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			)
+		),
+		'eyeshape'=>array(
+			'vName'=>array(
+				'validate'=>'1',
+				'clientname'=>'eyeshapeName',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'dCreatedDate'=>array(
+				'validate'=>'0',
+				'clientname'=>'createdDate',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			),
+			'vStatus'=>array(
+				'validate'=>'1',
+				'clientname'=>'eyeshapeStatus',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			)
+		),
 		'algo'=>array(
 			'snake'=>array(
 				'validate'=>'1',
