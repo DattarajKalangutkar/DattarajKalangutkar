@@ -321,14 +321,14 @@ while($iterate)
     }
 }
 
-//DFA($main_tree);
+DFA($main_tree);
 
 
 $input_data = array(
-    "type"=>"venomous",
+    "type"=>"non-venomous",
     "color"=>"brown",
     "headshape"=>"",
-    "eyeshape"=>""
+    "eyeshape"=>"vertical"
 );
 
 $snake_data = array();

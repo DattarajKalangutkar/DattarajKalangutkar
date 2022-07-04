@@ -5,6 +5,11 @@
 	if(isset($_GET['id']))
 		$id = $_GET['id'];
 	
+	if(isset($_GET['type']))
+		$type = $_GET['type'];
+
+	if(isset($_GET['client']))
+		$client = $_GET['client'];
 	
 	$modules = 'post';
 	$temp_get_array = $_GET;
@@ -57,17 +62,12 @@
 			$sample_array['id'] = $data_from_db['iId'];
 			foreach($post_config as $key=>$val)
 			{
-				// if($key == 'vStatus')
-				// {
-				// 	$sample_array[$val['clientname']] = $data_from_db[$key];
-				// }
-				// else
-				// 	$sample_array[$val['clientname']] = $data_from_db[$key];
 				if($key == 'vImage')
 				{
 					$sample_array[$val['clientname']] = $api_url.$data_from_db[$key];
 				}
-				else{
+				else
+				{
 					if(isset($val['data_fetch']))
 					{
 						$sample_array[$val['clientname']] = GETXFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key]);
@@ -76,10 +76,6 @@
 						$sample_array[$val['clientname']] = $data_from_db[$key];
 					}
 				}
-				// else
-				// {
-				// 	$sample_array[$val['clientname']] = $data_from_db[$key];
-				// }
 			}
 			$count = 1;
 		} 
@@ -102,6 +98,7 @@
 			foreach($data_from_db as $key=>$val)
 			{
 				$sample_array[$key]['id'] = $data_from_db[$key]['iId'];
+				$sample_array[$key]['clicked'] = getclientclickedonpost($data_from_db[$key]['iId'],$type,$client,$con);
 				foreach($post_config as $keys=>$val)
 				{
 					if($keys == 'vImage')

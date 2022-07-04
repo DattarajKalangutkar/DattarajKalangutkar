@@ -228,27 +228,29 @@
 				'clientname'=>'hospitalContact',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'valid_phone_number'
 			),
 			'vEmail'=>array(
 				'validate'=>'1',
 				'clientname'=>'hospitalEmail',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'valid_email_address'
 			),
 			'vLongitude'=>array(
 				'validate'=>'1',
 				'clientname'=>'hospitalLongitute',
 				'type'=>'string',
-				'html'=>'text',
+				'html'=>'number',
 				'table'=>'1'
 			),
 			'vLatitude'=>array(
 				'validate'=>'1',
 				'clientname'=>'hospitalLatitute',
 				'type'=>'string',
-				'html'=>'text',
+				'html'=>'number',
 				'table'=>'1'
 			),
 			'dCreatedDate'=>array(
@@ -294,14 +296,16 @@
 				'clientname'=>'wildlifeContact',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'valid_phone_number'
 			),
 			'vEmail'=>array(
 				'validate'=>'1',
 				'clientname'=>'wildlifeEmail',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'valid_email_address'
 			),
 			'vLongitude'=>array(
 				'validate'=>'1',
@@ -380,6 +384,66 @@
 			'vStatus'=>array(
 				'validate'=>'1',
 				'clientname'=>'headshapeStatus',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			)
+		),
+		'events'=>array(
+			'vName'=>array(
+				'validate'=>'1',
+				'clientname'=>'eventName',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'vDescription'=>array(
+				'validate'=>'1',
+				'clientname'=>'eventDescription',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'vImage'=>array(
+				'validate'=>'1',
+				'clientname'=>'eventImage',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'dCreatedDate'=>array(
+				'validate'=>'0',
+				'clientname'=>'createdDate',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			),
+			'vStatus'=>array(
+				'validate'=>'1',
+				'clientname'=>'headshapeStatus',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			)
+		),
+		'eyeshape'=>array(
+			'vName'=>array(
+				'validate'=>'1',
+				'clientname'=>'eyeshapeName',
+				'type'=>'string',
+				'html'=>'text',
+				'table'=>'1'
+			),
+			'dCreatedDate'=>array(
+				'validate'=>'0',
+				'clientname'=>'createdDate',
+				'type'=>'string',
+				'html'=>'',
+				'table'=>'0'
+			),
+			'vStatus'=>array(
+				'validate'=>'1',
+				'clientname'=>'eyeshapeStatus',
 				'type'=>'string',
 				'html'=>'',
 				'table'=>'0'
