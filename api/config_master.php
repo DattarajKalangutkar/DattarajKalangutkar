@@ -228,27 +228,29 @@
 				'clientname'=>'hospitalContact',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'valid_phone_number'
 			),
 			'vEmail'=>array(
 				'validate'=>'1',
 				'clientname'=>'hospitalEmail',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'valid_email_address'
 			),
 			'vLongitude'=>array(
 				'validate'=>'1',
 				'clientname'=>'hospitalLongitute',
 				'type'=>'string',
-				'html'=>'text',
+				'html'=>'number',
 				'table'=>'1'
 			),
 			'vLatitude'=>array(
 				'validate'=>'1',
 				'clientname'=>'hospitalLatitute',
 				'type'=>'string',
-				'html'=>'text',
+				'html'=>'number',
 				'table'=>'1'
 			),
 			'dCreatedDate'=>array(
@@ -294,14 +296,16 @@
 				'clientname'=>'wildlifeContact',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'valid_phone_number'
 			),
 			'vEmail'=>array(
 				'validate'=>'1',
 				'clientname'=>'wildlifeEmail',
 				'type'=>'string',
 				'html'=>'text',
-				'table'=>'1'
+				'table'=>'1',
+				'other_validation'=>'valid_email_address'
 			),
 			'vLongitude'=>array(
 				'validate'=>'1',

@@ -61,6 +61,7 @@
 
 	function updateValue()
 	{
+		
 		document.getElementById("forchangingforImage").value = '1';
 	}
 
@@ -172,9 +173,18 @@
 								type: "PUT",
 								url: '<?php echo $action;?>',
 								data: JSON.stringify(data),
-								success: function(res){
-									alert(JSON.parse(res).message);
-									window.location.reload();
+								success: function(res)
+								{
+									let response_data = JSON.parse(res);
+									if(response_data.error)
+									{
+										alert(response_data.message);
+									}
+									else
+									{
+										alert(response_data.message);
+										window.location.reload();
+									}
 								},
 							});
 					    }
@@ -201,8 +211,16 @@
 					url: '<?php echo $action;?>',
 					data: JSON.stringify(data),
 					success: function(res){
-						alert(JSON.parse(res).message);
-						window.location.reload();
+						let response_data = JSON.parse(res);
+						if(response_data.error)
+						{
+							alert(response_data.message);
+						}
+						else
+						{
+							alert(response_data.message);
+							window.location.reload();
+						}
 					},
 				});
 			}
@@ -227,8 +245,16 @@
 							data: JSON.stringify(data),
 							success: function(res)
 							{
-								alert(JSON.parse(res).message);
-								window.location.reload();
+								let response_data = JSON.parse(res);
+								if(response_data.error)
+								{
+									alert(response_data.message);
+								}
+								else
+								{
+									alert(response_data.message);
+									window.location.reload();
+								}
 							},
 						});
 				    }
@@ -241,8 +267,16 @@
 					url: '<?php echo $action;?>',
 					data: JSON.stringify(data),
 					success: function(res){
-						alert(JSON.parse(res).message);
-						window.location.reload();
+						let response_data = JSON.parse(res);
+						if(response_data.error)
+						{
+							alert(response_data.message);
+						}
+						else
+						{
+							alert(response_data.message);
+							window.location.reload();
+						}
 					},
 				});
 			}

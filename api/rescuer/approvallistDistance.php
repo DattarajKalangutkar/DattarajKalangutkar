@@ -12,7 +12,7 @@
 	{
 		$sample_array = array();
 		$count = 0;
-		$data_from_db = getresgisterrescuer($con,"rescuer",'','1'); //get all the data from the database
+		$data_from_db = getresgisterrescuerforapp($con,"rescuer",'','1'); //get all the data from the database
         //DFA($data_from_db);
         foreach($data_from_db as $key=>$val)
         {

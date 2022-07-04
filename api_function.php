@@ -40,7 +40,7 @@
 	        $colString .= "$col='$val',";
 	    }
 	    $colString      = substr($colString, 0, -1);
-		$sql            = "update $table set $colString where $identifier = $id and vStatus=1";
+		$sql            = "update $table set $colString where $identifier = $id";
 	    $response_query = mysqli_query($con, $sql) or die('Error, 35');
 	    return true;
 	}
@@ -162,7 +162,7 @@
 		}
 	}
 
-	function validate_other_function($identifer,$data,$feilds,$bad_word=array(),$getemail,$getoldpassword)
+	function validate_other_function($identifer,$data,$feilds,$bad_word=array(),$getemail='',$getoldpassword='')
 	{
 	//   print_r(md5($data[$feilds]) == $getoldpassword['vPassword']);
 	//   exit;
@@ -201,7 +201,7 @@
 			break;
 
 			case 'valid_phone_number':
-				if((strlen($data[$feilds])>11) || strlen($data[$feilds])<=10)
+				if((strlen($data[$feilds]) !=10))
 		        {
 		            echo json_encode(array("message"=>"Contact No should be 10 digits","error"=>true));
 					exit;
@@ -288,6 +288,18 @@
 	{
 		$data = array();
 		$sql = "select * from $table where vStatus='1' and vVerificationstatus='$status' $str order by iId desc";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
+		while($res = mysqli_fetch_assoc($response_query))
+		{
+			$data[] = $res;
+		}
+		return $data; 
+	}
+
+	function getresgisterrescuerforapp($con,$table,$str,$status)
+	{
+		$data = array();
+		$sql = "select * from $table where vStatus='1' and vVerificationstatus='$status' and vLat !='' and vLong!='' $str order by iId desc";
 		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
 		while($res = mysqli_fetch_assoc($response_query))
 		{
@@ -1135,5 +1147,20 @@
 		}
 		$str .= "<table>";
 		return $str;
+	}
+
+	function getclientclickedonpost($postid,$type,$client,$con)
+	{
+		$str = '';
+		if($type == '1')
+			$str = ' and iRescuerId='.$client;
+		else
+			$str = ' and iUserId='.$client;
+
+
+		$sql = "select * from post_liked where iPostId='$postid' $str and vStatus='1' order by iId";
+		$response_query = mysqli_query($con, $sql) or die('Error, insert query failed with query at 106');
+		$num_of_rows = mysqli_num_rows($response_query);
+		return ($num_of_rows > 0) ? true : false;
 	}
 ?>

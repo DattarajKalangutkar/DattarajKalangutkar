@@ -27,11 +27,7 @@
 
 			if(isset($val['other_validation']))
 			{
-				if(checkExist($con,$modules,$postdata[$val['clientname']],$val['other_validation']))
-				{
-					echo json_encode(error_msg('Value already Present in the Database',false));
-					exit;
-				}
+				validate_other_function($val['other_validation'],$postdata,$val['clientname']);
 			}
 			
 			if($val['clientname'] != 'createdDate') //if everything is fine then proceed further
@@ -42,7 +38,7 @@
 		
 		if(singleInsert($modules,$sample_array,$con))
 		{
-			echo json_encode(array("message"=>$modules." created Successfully","flag"=>true));
+			echo json_encode(array("message"=>$modules." created Successfully","flag"=>true,"error"=>false));
 			exit;
 		}
 	}
@@ -159,7 +155,7 @@
 
 		if(updateData($con,$modules,$sample_array,'iId',$id))
 		{
-			echo json_encode(array("message"=>$modules." Updated Successfully","flag"=>true));
+			echo json_encode(array("message"=>$modules." Updated Successfully","flag"=>true,"error"=>false));
 			exit;
 		}
 	}

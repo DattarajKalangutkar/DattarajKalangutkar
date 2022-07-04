@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2022 at 09:23 AM
+-- Generation Time: Jul 04, 2022 at 07:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.0.19
 
@@ -55,7 +55,8 @@ CREATE TABLE `color` (
 
 INSERT INTO `color` (`iId`, `vName`, `dCreatedDate`, `vStatus`) VALUES
 (1, 'tyere', '2022-06-24 18:41:50', '1'),
-(2, 'blue', '0000-00-00 00:00:00', '1');
+(2, 'blue', '0000-00-00 00:00:00', '1'),
+(3, 'brown', '2022-07-04 15:33:52', '1');
 
 -- --------------------------------------------------------
 
@@ -152,7 +153,8 @@ CREATE TABLE `hospital` (
 INSERT INTO `hospital` (`iId`, `vName`, `vAddress`, `vImage`, `vContact`, `vEmail`, `vLongitude`, `vLatitude`, `dCreatedDate`, `vStatus`) VALUES
 (1, 'Hospicio District Hospital', ' Fr Agnel Institute Of Commerce, Road, Monte Hill, Margao, Goa', 'uploads/hospital/hospital_hospicio.jpg', '0832-2705754', 'hospicio@gmail.com', '15.292419773253032', '73.96494222470896', '2022-05-29 13:19:02', '1'),
 (2, 'Goa Medical College and Hospital, Bambolim', 'Bambolim, Goa', 'uploads/hospital/hospital_bambolim.jpg', '8007733696', 'bambolim@gmail.com', '15.57577636377406', ' 73.84833952886996', '2022-05-29 13:35:06', '1'),
-(3, 'Govenment Hospital I D', 'Tisca,Goa', 'uploads/hospital/hospital_id.jpg', '7020350423', 'id@gmail.com', '15.34658471249514', '73.99106264647023', '2022-05-29 13:42:10', '1');
+(3, 'Govenment Hospital I D', 'Tisca,Goa', 'uploads/hospital/hospital_id.jpg', '7020350423', 'id@gmail.com', '15.34658471249514', '73.99106264647023', '2022-05-29 13:42:10', '1'),
+(4, 'fhgh', 'ghgj', 'uploads/hospital/hospital_1654323971440-min.jpg', '1234567893', 'gh@gmail.com', '34.343223', '2226.25265', '2022-07-04 16:01:20', '1');
 
 -- --------------------------------------------------------
 
@@ -174,7 +176,8 @@ CREATE TABLE `otp` (
 --
 
 INSERT INTO `otp` (`iId`, `email`, `otp`, `verified`, `dCreatedDate`, `vStatus`) VALUES
-(1, '18co08@aitdgoa.edu.in', '4640', '0', '0000-00-00 00:00:00', '1');
+(1, '18co08@aitdgoa.edu.in', '8119', '1', '0000-00-00 00:00:00', '1'),
+(2, 'bondla@gmail.com', '5700', '1', '0000-00-00 00:00:00', '1');
 
 -- --------------------------------------------------------
 
@@ -221,10 +224,35 @@ INSERT INTO `post` (`iId`, `iRescuerId`, `vPostImage`, `vComments`, `iLikes`, `i
 (7, 8, 'http://localhost/snake/api/uploads/post/post_bondla.jpg', '', 0, 0, '2022-06-21 23:16:50', '1'),
 (8, 8, 'http://localhost/snake/api/uploads/post/post_Compress_20220120_110748_8407.jpg', '', 0, 0, '2022-06-24 11:09:29', '1'),
 (9, 8, 'http://localhost/snake/api/uploads/post/post_hospicio.jpg', '', 0, 0, '2022-06-24 17:52:38', '1'),
-(10, 8, 'http://localhost/snake/api/uploads/post/post_bondla.jpg', '', 0, 0, '2022-06-30 21:49:22', '1'),
-(11, 8, 'http://localhost/snake/api/uploads/post/post_hospicio.jpg', '', 0, 0, '2022-07-02 14:32:15', '1'),
-(12, 8, 'http://localhost/snake/api/uploads/post/post_id.jpg', '', 0, 0, '2022-07-02 14:45:20', '1'),
-(13, 8, 'http://localhost/snake/api/uploads/post/post_id.jpg', '', 0, 0, '2022-07-04 12:51:28', '1');
+(10, 8, 'http://localhost/snake/api/uploads/post/post_bondla.jpg', '', 1, 0, '2022-06-30 21:49:22', '1'),
+(11, 8, 'http://localhost/snake/api/uploads/post/post_hospicio.jpg', '', 1, 0, '2022-07-02 14:32:15', '1'),
+(12, 8, 'http://localhost/snake/api/uploads/post/post_id.jpg', '', 1, 0, '2022-07-02 14:45:20', '1'),
+(13, 8, 'http://localhost/snake/api/uploads/post/post_id.jpg', '', 1, 0, '2022-07-04 12:51:28', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_liked`
+--
+
+CREATE TABLE `post_liked` (
+  `iId` int(10) NOT NULL,
+  `iPostId` int(10) NOT NULL,
+  `iUserId` int(10) NOT NULL DEFAULT 0,
+  `iRescuerId` int(10) NOT NULL DEFAULT 0,
+  `dCreatedDate` datetime NOT NULL,
+  `vStatus` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `post_liked`
+--
+
+INSERT INTO `post_liked` (`iId`, `iPostId`, `iUserId`, `iRescuerId`, `dCreatedDate`, `vStatus`) VALUES
+(1, 13, 0, 1, '2022-07-04 18:58:55', '1'),
+(2, 12, 0, 1, '2022-07-04 19:12:46', '1'),
+(3, 11, 0, 1, '2022-07-04 19:12:52', '1'),
+(4, 10, 0, 1, '2022-07-04 19:12:53', '1');
 
 -- --------------------------------------------------------
 
@@ -274,14 +302,7 @@ CREATE TABLE `rescuer` (
 --
 
 INSERT INTO `rescuer` (`iId`, `vName`, `vPhone`, `vUserName`, `vPassword`, `iRoleId`, `tAddress`, `iAge`, `vEmail`, `vGender`, `vCertificate`, `vExperience`, `vImage`, `vAchievement`, `vVerificationstatus`, `vLat`, `vLong`, `iPoints`, `dCreatedDate`, `vStatus`) VALUES
-(1, 'virisha', '8098098090', 'viru', '436e97532fa8c80ca6e94a8435781b5a', 1, 'salem', 21, 'abc@gmail.com', '', 's', 'n', 'n', 's', '1', '15.620838', '73.897766', 0, '2022-06-05 14:01:36', '1'),
-(2, 'Sahil', '9876789879', 'sahil_', 'sahil', 1, 'Bicholim', 22, 'sahil@gmail.com', 'male', 'a', '2', '', 'b', '1', '15.620838', '73.897766', 0, '2022-06-07 09:30:20', '1'),
-(3, 'nikhil', '7989867543', 'nikhil', '350d89c1cd6592bbbd1ed2e8a4f3ddba', 1, '', 0, 'id@gmail.com', '', '', '', 'http://localhost/snake/api/uploads/rescuer/rescuer_id.jpg', '', '1', '15.620838', '73.897766', 0, '2022-06-10 10:17:43', '1'),
-(4, 'shripad', '7218022181', 'shripad', '9d8ab5a275719914ffc9c4c03fffc57d', 1, '', 0, 'bondla@gmail.com', '', '', '', 'http://localhost/snake/api/uploads/rescuer/rescuer_hospicio.jpg', '', '1', '15.620838', '73.897766', 0, '2022-06-10 11:28:00', '1'),
-(5, 'samar', '7020350422', 'samar', 'cbc3f248a7e3acc6b6aac74efc6dc9d1', 1, '', 0, 'deulkarakshay888@gmail.com', '', '', '', 'http://localhost/snake/api/uploads/rescuer/rescuer_hospicio.jpg', '', '1', '15.620838', '73.897766', 0, '2022-06-10 11:21:07', '1'),
-(6, 'rani', '7020350423', 'rani', 'b9f81618db3b0d7a8be8fd904cca8b6a', 1, '', 0, 'bambolim@gmail.com', '', '', '', 'http://localhost/snake/api/uploads/rescuer/rescuer_hospicio.jpg', '', '1', '15.620838', '73.897766', 0, '2022-06-10 11:56:41', '1'),
-(7, 'saish', '9511762745', 'saish', '416cb5d703977558e2a0207744118e16', 1, '', 0, 'saish@gmail.com', '', '', '', 'http://localhost/snake/api/uploads/rescuer/rescuer_bondla.jpg', '', '1', '15.620838', '73.897766', 0, '2022-06-10 11:44:44', '1'),
-(8, 'diya', '12341234', 'diya', '436e97532fa8c80ca6e94a8435781b5a', 1, '', 0, 'diya@gmail.com', '', '', '', 'http://localhost/snake/api/uploads/rescuer/rescuer_bondla.jpg', '0', '1', '21.1458004', '79.0881546', 0, '2022-06-16 14:52:37', '1');
+(1, 'laximi', '7020350423', 'laximi', 'cef8605189c6f354b710d90610fcff74', 1, '', 0, '18co08@aitdgoa.edu.in', '', '', '', 'http://localhost/snake/api/uploads/rescuer/rescuer_bambolim.jpg', '0', '1', '18.5076', '73.7896', 8, '2022-07-04 17:13:28', '1');
 
 -- --------------------------------------------------------
 
@@ -407,7 +428,7 @@ CREATE TABLE `transcation` (
 --
 
 INSERT INTO `transcation` (`iId`, `iRescuerId`, `iUserId`, `iSnakeId`, `vImage`, `dRescuerDate`, `tRescuerAddress`, `ilength`, `iWeight`, `vTranStatus`, `tComment`, `vRate`, `tQuestionAnswer`, `dCreatedDate`, `vStatus`) VALUES
-(8, 1, 3, 4, 'http://localhost/snake/api/uploads/rescuer/rescuer_bondla.jpg', '2022-06-18 17:17:00', 'Assonora', 45, 23, '3', 'sdfghjk', '5', '', '2022-06-29 17:16:58', '1');
+(9, 1, 1, 4, 'http://localhost/snake/api/uploads/transaction/transaction_id.jpg', '2022-07-21 17:39:00', 'Fr Agnel Institute Of Commerce, Road, Monte Hill, Margao, Goa', 23, 45, '3', 'hii', '4', '', '2022-07-04 17:20:53', '1');
 
 -- --------------------------------------------------------
 
@@ -433,9 +454,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`iId`, `vName`, `vPhone`, `vEmail`, `vUsername`, `vPassword`, `iRoleId`, `vImage`, `dCreatedDate`, `vStatus`) VALUES
-(1, 'laximi', '9090909090', 'abc@gmail.com', 'laximi', 'laxii', 2, '', '2022-06-05 14:00:41', '1'),
-(2, 'sara', '4348009987', 'sara@gmail.com', 'sara', 'sara', 2, '', '2022-06-10 06:03:03', '1'),
-(3, 'rahil naik', '8408004353', 'rahil@gmail.com', 'rahil@', 'e340d7536f2c0a692a10334aea831735', 2, 'http://localhost/snake/api/uploads/user/user_Compress_20220120_110748_8407.jpg', '2022-06-16 12:05:09', '1');
+(1, 'dattu', '8408004353', 'bondla@gmail.com', 'dattu', '5fc333649ee942128be43559989ef80d', 2, 'http://localhost/snake/api/uploads/user/user_hospicio.jpg', '2022-07-04 17:19:29', '1');
 
 -- --------------------------------------------------------
 
@@ -528,6 +547,12 @@ ALTER TABLE `post`
   ADD PRIMARY KEY (`iId`);
 
 --
+-- Indexes for table `post_liked`
+--
+ALTER TABLE `post_liked`
+  ADD PRIMARY KEY (`iId`);
+
+--
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
@@ -595,7 +620,7 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `color`
 --
 ALTER TABLE `color`
-  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `events`
@@ -625,13 +650,13 @@ ALTER TABLE `headshape`
 -- AUTO_INCREMENT for table `hospital`
 --
 ALTER TABLE `hospital`
-  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `otp`
 --
 ALTER TABLE `otp`
-  MODIFY `iId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `iId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `pattern`
@@ -646,6 +671,12 @@ ALTER TABLE `post`
   MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `post_liked`
+--
+ALTER TABLE `post_liked`
+  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
@@ -655,7 +686,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `rescuer`
 --
 ALTER TABLE `rescuer`
-  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `snake`
@@ -685,13 +716,13 @@ ALTER TABLE `symptoms`
 -- AUTO_INCREMENT for table `transcation`
 --
 ALTER TABLE `transcation`
-  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `iId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `wildlife`
