@@ -275,7 +275,7 @@
 	function getalldataAlgo($con,$table)
 	{
 		$data = array();
-		$sql = "select type,color,headshape,eyeshape,snake as name,pattern,symptoms from $table limit 30";
+		$sql = "select type,color,headshape,eyeshape,snake as name,pattern,symptoms from $table";
 		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
 		while($res = mysqli_fetch_assoc($response_query))
 		{
@@ -536,7 +536,6 @@
 			"values"=>array()
 		);
 		$sql = "select vName,iPoints from rescuer where vStatus='1' and iPoints!=0 order by iPoints desc limit 5";
-		echo $sql;
 		$response_query = mysqli_query($con, $sql) or die('Error, No:434');
 		while($res = mysqli_fetch_assoc($response_query))
 		{
@@ -633,7 +632,7 @@
 			$str .= "<br>";
 		}
 
-		echo $str;
+		//echo $str;
 		$entropy = (-1)*$entropy;
 		return $entropy;
 	}
@@ -692,27 +691,27 @@
 			$str .= "is ".$entropy;
 			$str .= "<br>";
 			$str .= "<br>";
-			echo $str;
+			//echo $str;
 			$str = '';
 		}
 
-		echo "<br>";
-		echo "Now Lets caluate the Net Entropy : ";
+		//echo "<br>";
+		//echo "Now Lets caluate the Net Entropy : ";
 		$netEntropy = 0;
 		foreach($iden_array as $key=>$countkey)
 		{
 			$netEntropy += ($countkey/$total_count)*$net_entryopy[$key];
-			echo "log2(".$countkey."/".$total_count.")*(".$countkey."/".$total_count.") + ";
+			//echo "log2(".$countkey."/".$total_count.")*(".$countkey."/".$total_count.") + ";
 		}
 
-		echo " which is <strong>".$netEntropy."</strong>";
+		//echo " which is <strong>".$netEntropy."</strong>";
 		$gain = $total_gain-$netEntropy;
-		echo "<br>";
-		echo "So now Gain is ".$total_gain." - ".$netEntropy." = <strong>".$gain."</strong>";
+		//echo "<br>";
+		//echo "So now Gain is ".$total_gain." - ".$netEntropy." = <strong>".$gain."</strong>";
 
-		echo "<br>";
-		echo "<br>";
-		echo "Now Lets caluate the Split Info : ";
+		//echo "<br>";
+		//echo "<br>";
+		//echo "Now Lets caluate the Split Info : ";
 		$splitinfo = 0;
 		foreach($iden_array as $key=>$countkey)
 		{
@@ -723,18 +722,18 @@
 		if($splitinfo != 0)
 		{
 			$gain_ratio = ($gain/$splitinfo);
-			echo "(".$gain."/".$splitinfo.") => <strong>".$gain_ratio."</strong>";
-			echo "<br>";
-			echo "********************************* Done for ".$iden."*************************************";
-			echo "<br>";
+			//echo "(".$gain."/".$splitinfo.") => <strong>".$gain_ratio."</strong>";
+			//echo "<br>";
+			//echo "********************************* Done for ".$iden."*************************************";
+			//echo "<br>";
 			return $gain_ratio;
 		}
 		else
 		{
-			echo "0";
-			echo "<br>";
-			echo "********************************* Done for".$iden."*************************************";
-			echo "<br>";
+			//echo "0";
+			//echo "<br>";
+			//echo "********************************* Done for".$iden."*************************************";
+			//echo "<br>";
 			return 0;
 		}
 	}

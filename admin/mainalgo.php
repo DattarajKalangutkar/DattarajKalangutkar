@@ -24,56 +24,53 @@ $gain_ratio = array(
 $data_set_all = getalldataAlgo($con,'algo');
 $data_set = data_mining($data_set_all,$con);
 
-
-
-
 $main_tree = array();
 $iterate = 1;
 $branches = array();
 
-echo "<style> td{border: 3px solid black;text-align:center;}</style>";
-echo "Print the Full Dataset";
-echo "<br>";
-echo printDataset($data_set);
-echo "<br>";
+// echo"<style> td{border: 3px solid black;text-align:center;}</style>";
+// echo"Print the Full Dataset";
+// echo"<br>";
+// echoprintDataset($data_set);
+// echo"<br>";
 
 while($iterate)
 {
     if(count($main_tree) == 0)
     {
         $letcountofsnakes = getuniquedataset($data_set,'name');
-        echo "Count of the Snake Per Data";
-        echo printcountofsnake($letcountofsnakes,"Snake Name");
-        echo "<br>";
+        // echo"Count of the Snake Per Data";
+        // echoprintcountofsnake($letcountofsnakes,"Snake Name");
+        // echo"<br>";
         $total_count_data = getTotalcount($data_set);
-        echo "Total Count of the Data set is => ".$total_count_data;
-        echo "<br>";
+        // echo"Total Count of the Data set is => ".$total_count_data;
+        // echo"<br>";
         $total_entropy = total_dataset_entropy($total_count_data,$letcountofsnakes);
-        echo "Total Entropy of the Data set is => ".$total_entropy;
-        echo "<br>";
-        echo "<br>";
-        echo "<br>";
-        echo "Lets Calculate the Gain Ratio for all the Attribute:";
-        echo "<br>";
+        // echo"Total Entropy of the Data set is => ".$total_entropy;
+        // echo"<br>";
+        // echo"<br>";
+        // echo"<br>";
+        // echo"Lets Calculate the Gain Ratio for all the Attribute:";
+        // echo"<br>";
         foreach($gain_ratio as $iden=>$value)
         {
-            echo "Gain Ratio for <strong>".strtoupper($iden)."</strong>";
-            echo "<br>";
+            // echo"Gain Ratio for <strong>".strtoupper($iden)."</strong>";
+            // echo"<br>";
             $gain_entropy = 0;
             $get_count_of_every_attribute_values = getuniquedataset($data_set,$iden);
-            echo printcountofsnake($get_count_of_every_attribute_values,$iden);
-            echo "<br>";
+            // echoprintcountofsnake($get_count_of_every_attribute_values,$iden);
+            // echo"<br>";
             $get_count_of_every_attribute_values_based_on_snake = getcrossattribute($data_set,$get_count_of_every_attribute_values,$letcountofsnakes,$iden,'name');
             $gain_entropy = getgainentropy($data_set,$iden,$get_count_of_every_attribute_values,$get_count_of_every_attribute_values_based_on_snake,$total_count_data,$total_entropy); 
             $gain_ratio[$iden] = $gain_entropy;
         }
 
-        echo "So Now the Gain Ratio is ";
-        echo "<br>";
-        echo printcountofsnake($gain_ratio,"Attribute");
+        // echo"So Now the Gain Ratio is ";
+        // echo"<br>";
+        // echoprintcountofsnake($gain_ratio,"Attribute");
         $attribute_with_highest_gain_ratio = getmaxvalue($gain_ratio);
-        echo "So From the Above table we Get the Attribute with highest gain ratio as <strong>".strtoupper($attribute_with_highest_gain_ratio)."</strong>";
-        echo "<br>";
+        // echo"So From the Above table we Get the Attribute with highest gain ratio as <strong>".strtoupper($attribute_with_highest_gain_ratio)."</strong>";
+        // echo"<br>";
         $main_tree[$attribute_with_highest_gain_ratio] = array(
             "root_element"=>$attribute_with_highest_gain_ratio,
             "done"=>1,
@@ -112,46 +109,46 @@ while($iterate)
             //     $gain_ratio[$iden] = $gain_entropy;
             // }
             // $attribute_with_highest_gain_ratio = getmaxvalue($gain_ratio);
-            echo "<br>";
-            echo "******************************************************************************";
-            echo "<br>";
-            echo "Print the New Dataset";
-            echo "<br>";
-            echo printDataset($new_data_set);
-            echo "<br>";
+            // echo"<br>";
+            // echo"******************************************************************************";
+            // echo"<br>";
+            // echo"Print the New Dataset";
+            // echo"<br>";
+            // echoprintDataset($new_data_set);
+            // echo"<br>";
             $letcountofsnakes = getuniquedataset($new_data_set,'name');
-            echo "Count of the Snake Per Data";
-            echo printcountofsnake($letcountofsnakes,"Snake Name");
-            echo "<br>";
+            // echo"Count of the Snake Per Data";
+            // echoprintcountofsnake($letcountofsnakes,"Snake Name");
+            // echo"<br>";
             $total_count_data = getTotalcount($new_data_set);
-            echo "Total Count of the Data set is => ".$total_count_data;
-            echo "<br>";
+            // echo"Total Count of the Data set is => ".$total_count_data;
+            // echo"<br>";
             $total_entropy = total_dataset_entropy($total_count_data,$letcountofsnakes);
-            echo "Total Entropy of the Data set is => ".$total_entropy;
-            echo "<br>";
-            echo "<br>";
-            echo "<br>";
-            echo "Lets Calculate the Gain Ratio for all the Attribute:";
-            echo "<br>";
+            // echo"Total Entropy of the Data set is => ".$total_entropy;
+            // echo"<br>";
+            // echo"<br>";
+            // echo"<br>";
+            // echo"Lets Calculate the Gain Ratio for all the Attribute:";
+            // echo"<br>";
             foreach($gain_ratio as $iden=>$value)
             {
-                echo "Gain Ratio for <strong>".strtoupper($iden)."</strong>";
-                echo "<br>";
+                // echo"Gain Ratio for <strong>".strtoupper($iden)."</strong>";
+                // echo"<br>";
                 $gain_entropy = 0;
                 $get_count_of_every_attribute_values = getuniquedataset($new_data_set,$iden);
-                echo printcountofsnake($get_count_of_every_attribute_values,$iden);
-                echo "<br>";
+                // echoprintcountofsnake($get_count_of_every_attribute_values,$iden);
+                // echo"<br>";
                 $get_count_of_every_attribute_values_based_on_snake = getcrossattribute($new_data_set,$get_count_of_every_attribute_values,$letcountofsnakes,$iden,'name');
                 $gain_entropy = getgainentropy($new_data_set,$iden,$get_count_of_every_attribute_values,$get_count_of_every_attribute_values_based_on_snake,$total_count_data,$total_entropy); 
                 $gain_ratio[$iden] = $gain_entropy;
             }
 
-            echo "So Now the Gain Ratio is ";
-            echo "<br>";
-            echo printcountofsnake($gain_ratio,"Attribute");
+            // echo"So Now the Gain Ratio is ";
+            // echo"<br>";
+            // echoprintcountofsnake($gain_ratio,"Attribute");
             $attribute_with_highest_gain_ratio = getmaxvalue($gain_ratio);
-            echo "So From the Above table we Get the Attribute with highest gain ratio as <strong>".strtoupper($attribute_with_highest_gain_ratio)."</strong>";
-            echo "<br>";
+            // echo"So From the Above table we Get the Attribute with highest gain ratio as <strong>".strtoupper($attribute_with_highest_gain_ratio)."</strong>";
+            // echo"<br>";
 
 
 
@@ -192,46 +189,46 @@ while($iterate)
                         // }
                         // $attribute_with_highest_gain_ratio = getmaxvalue($gain_ratio);
 
-                        echo "<br>";
-                        echo "******************************************************************************";
-                        echo "<br>";
-                        echo "Print the New Dataset";
-                        echo "<br>";
-                        echo printDataset($new_data_set);
-                        echo "<br>";
+                        // echo"<br>";
+                        // echo"******************************************************************************";
+                        // echo"<br>";
+                        // echo"Print the New Dataset";
+                        // echo"<br>";
+                        // echoprintDataset($new_data_set);
+                        // echo"<br>";
                         $letcountofsnakes = getuniquedataset($new_data_set,'name');
-                        echo "Count of the Snake Per Data";
-                        echo printcountofsnake($letcountofsnakes,"Snake Name");
-                        echo "<br>";
+                        // echo"Count of the Snake Per Data";
+                        // echoprintcountofsnake($letcountofsnakes,"Snake Name");
+                        // echo"<br>";
                         $total_count_data = getTotalcount($new_data_set);
-                        echo "Total Count of the Data set is => ".$total_count_data;
-                        echo "<br>";
+                        // echo"Total Count of the Data set is => ".$total_count_data;
+                        // echo"<br>";
                         $total_entropy = total_dataset_entropy($total_count_data,$letcountofsnakes);
-                        echo "Total Entropy of the Data set is => ".$total_entropy;
-                        echo "<br>";
-                        echo "<br>";
-                        echo "<br>";
-                        echo "Lets Calculate the Gain Ratio for all the Attribute:";
-                        echo "<br>";
+                        // echo"Total Entropy of the Data set is => ".$total_entropy;
+                        // echo"<br>";
+                        // echo"<br>";
+                        // echo"<br>";
+                        // echo"Lets Calculate the Gain Ratio for all the Attribute:";
+                        // echo"<br>";
                         foreach($gain_ratio as $iden=>$value)
                         {
-                            echo "Gain Ratio for <strong>".strtoupper($iden)."</strong>";
-                            echo "<br>";
+                            // echo"Gain Ratio for <strong>".strtoupper($iden)."</strong>";
+                            // echo"<br>";
                             $gain_entropy = 0;
                             $get_count_of_every_attribute_values = getuniquedataset($new_data_set,$iden);
-                            echo printcountofsnake($get_count_of_every_attribute_values,$iden);
-                            echo "<br>";
+                            // echoprintcountofsnake($get_count_of_every_attribute_values,$iden);
+                            // echo"<br>";
                             $get_count_of_every_attribute_values_based_on_snake = getcrossattribute($new_data_set,$get_count_of_every_attribute_values,$letcountofsnakes,$iden,'name');
                             $gain_entropy = getgainentropy($new_data_set,$iden,$get_count_of_every_attribute_values,$get_count_of_every_attribute_values_based_on_snake,$total_count_data,$total_entropy); 
                             $gain_ratio[$iden] = $gain_entropy;
                         }
 
-                        echo "So Now the Gain Ratio is ";
-                        echo "<br>";
-                        echo printcountofsnake($gain_ratio,"Attribute");
+                        // echo"So Now the Gain Ratio is ";
+                        // echo"<br>";
+                        // echoprintcountofsnake($gain_ratio,"Attribute");
                         $attribute_with_highest_gain_ratio = getmaxvalue($gain_ratio);
-                        echo "So From the Above table we Get the Attribute with highest gain ratio as <strong>".strtoupper($attribute_with_highest_gain_ratio)."</strong>";
-                        echo "<br>";
+                        // echo"So From the Above table we Get the Attribute with highest gain ratio as <strong>".strtoupper($attribute_with_highest_gain_ratio)."</strong>";
+                        // echo"<br>";
 
 
 
@@ -259,7 +256,7 @@ while($iterate)
 }
 
 
-DFA($main_tree);
+//DFA($main_tree);
 
 $input_data = array(
     "snaketype"=>"snaketype_2",
@@ -309,11 +306,22 @@ foreach($input_data as $key=>$value)
         {
             array_push($snake_data,$snake_data_info['snake_name']);
         }
+
+
+        foreach($get_all_child as $iden=>$valuesss)
+        {
+            if(isset($valuesss['snake_name']) && in_array($value,$valuesss['trace']))
+            {
+                array_push($snake_data,$valuesss['snake_name']);
+            }
+        }
     }
 }
 
-echo "<br>";
-echo "<br>";
-echo "As per the input the snake predication can be as follows =><br>";
-DFA($snake_data);
+// echo"<br>";
+// echo"<br>";
+// echo"As per the input the snake predication can be as follows =><br>";
+
+echo json_encode(array("snakes"=>$snake_data,"error"=>false));
+exit;
 ?>
