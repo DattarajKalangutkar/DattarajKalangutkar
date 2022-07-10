@@ -275,7 +275,7 @@
 	function getalldataAlgo($con,$table)
 	{
 		$data = array();
-		$sql = "select type,color,headshape,eyeshape,snake as name from $table";
+		$sql = "select type,color,headshape,eyeshape,snake as name,pattern,symptoms from $table limit 30";
 		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
 		while($res = mysqli_fetch_assoc($response_query))
 		{
@@ -1131,7 +1131,7 @@
 		$str .="<tr><td>Name</td><td>Type</td><td>Color</td><td>HeadShape</td><td>Eyeshape</td></tr>";
 		foreach($data as $key=>$value)
 		{
-			$str .="<tr><td>".$value['name']."</td><td>".$value['type']."</td><td>".$value['color']."</td><td>".$value['headshape']."</td><td>".$value['eyeshape']."</td></tr>";
+			$str .="<tr><td>".$value['name']."</td><td>".$value['snaketype']."</td><td>".$value['color']."</td><td>".$value['headshape']."</td><td>".$value['eyeshape']."</td></tr>";
 		}
 		$str .= "<table>";
 		return $str;
@@ -1159,8 +1159,41 @@
 
 
 		$sql = "select * from post_liked where iPostId='$postid' $str and vStatus='1' order by iId";
-		$response_query = mysqli_query($con, $sql) or die('Error, insert query failed with query at 106');
+		$response_query = mysqli_query($con, $sql) or die('Error, 1162');
 		$num_of_rows = mysqli_num_rows($response_query);
 		return ($num_of_rows > 0) ? true : false;
+	}
+
+	function getIdFromTable($table,$value,$con)
+	{
+		$sql = "select iId as id from $table where vName='$value' and vStatus='1' order by iId";
+		$response_query = mysqli_query($con, $sql) or die('Error, 1170');
+		$num_of_rows = mysqli_num_rows($response_query);
+		if($num_of_rows > 0)
+		{
+			$value_from_db = mysqli_fetch_assoc($response_query)['id'];
+			return $table."_".$value_from_db;
+		}
+		else
+		{
+			$value_from_db = singleInsert($table,array('vName'=>$value),$con);
+			return $table."_".$value_from_db;
+		}
+	}
+
+	function data_mining($data,$con)
+	{
+		$array = array();
+		foreach($data as $key=>$value)
+		{
+			$array[$key]['snaketype'] = getIdFromTable('snaketype',$value['type'],$con);
+			$array[$key]['color'] = getIdFromTable('color',$value['color'],$con);
+			$array[$key]['headshape'] = getIdFromTable('headshape',$value['headshape'],$con);
+			$array[$key]['eyeshape'] = getIdFromTable('eyeshape',$value['eyeshape'],$con);
+			$array[$key]['pattern'] = getIdFromTable('pattern',$value['pattern'],$con);
+			$array[$key]['symptoms'] = getIdFromTable('symptoms',$value['symptoms'],$con);
+			$array[$key]['name'] = $value['name'];
+		}
+		return $array;
 	}
 ?>

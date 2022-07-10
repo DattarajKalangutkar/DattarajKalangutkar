@@ -2,94 +2,31 @@
 <?php
 include '../api_function.php';
 $gain_ratio = array(
-    "type"=>0,
+    "snaketype"=>0,
     "color"=>0,
     "headshape"=>0,
     "eyeshape"=>0,
+    "pattern"=>0,
+    "symptoms"=>0
 );
 
-//$data_set = getalldataAlgo($con,'algo');
-$data_set = array(
-    "row_1"=>array(
-        "type"=>"venomous",
-        "color"=>"brown",
-        "headshape"=>"triangular",
-        "eyeshape"=>"round",
-        "name"=>"cobra"
-    ),
-    "row_2"=>array
-    (
-        "type"=>"venomous",
-        "color"=>"black",
-        "headshape"=>"triangular",
-        "eyeshape"=>"round",
-        "name"=>"cobra"
-    ),
-    "row_3"=>array
-    (
-        "type"=>"venomous",
-        "color"=>"brown",
-        "headshape"=>"triangular",
-        "eyeshape"=>"vertical",
-        "name"=>"saw-scaled viper"
-    ),
-    "row_4"=>array
-    (
-        "type"=>"venomous",
-        "color"=>"reddish",
-        "headshape"=>"triangular",
-        "eyeshape"=>"pear-shaped",
-        "name"=>"saw-scaled viper"
-    ),
-    "row_5"=>array
-    (
-        "type"=>"non-venomous",
-        "color"=>"yellow",
-        "headshape"=>"broader",
-        "eyeshape"=>"round",
-        "name"=>"rat snake"
-    ),
-    "row_6"=>array
-    (
-        "type"=>"non-venomous",
-        "color"=>"brown",
-        "headshape"=>"broader",
-        "eyeshape"=>"round",
-        "name"=>"rat snake"
-    ),
-    "row_7"=>array
-    (
-        "type"=>"mild-venomous",
-        "color"=>"brown",
-        "headshape"=>"triangular",
-        "eyeshape"=>"vertical",
-        "name"=>"cat snake"
-    ),
-    "row_8"=>array
-    (
-        "type"=>"non-venomous",
-        "color"=>"brown",
-        "headshape"=>"triangular",
-        "eyeshape"=>"round",
-        "name"=>"wolf snake"
-    ),
-    "row_9"=>array
-    (
-        "type"=>"non-venomous",
-        "color"=>"brown",
-        "headshape"=>"broader",
-        "eyeshape"=>"vertical",
-        "name"=>"wolf snake"
-    ),
-    "row_10"=>array
-    (
-        "type"=>"venomous",
-        "color"=>"reddish",
-        "headshape"=>"triangular",
-        "eyeshape"=>"vertical",
-        "name"=>"saw-scaled viper"
-    )
-);
+// $file = fopen("snake_data.csv","r");
+// while(! feof($file))
+// {
+//     $data = fgetcsv($file);
+//     echo str_replace ("\n","",$data[2]);   
+//     echo "<br>";
+// }
+// fclose($file);
+
+// exit;
+
+$data_set_all = getalldataAlgo($con,'algo');
+$data_set = data_mining($data_set_all,$con);
+
+
+
+
 $main_tree = array();
 $iterate = 1;
 $branches = array();
@@ -321,14 +258,14 @@ while($iterate)
     }
 }
 
+
 DFA($main_tree);
 
-
 $input_data = array(
-    "type"=>"non-venomous",
-    "color"=>"brown",
+    "snaketype"=>"snaketype_2",
+    "color"=>"",
     "headshape"=>"",
-    "eyeshape"=>"vertical"
+    "eyeshape"=>"eyeshape_4"
 );
 
 $snake_data = array();
@@ -360,6 +297,7 @@ if(isset($input_data[$root_element]))
         }
     }
 }
+
 
 unset($input_data[$root_element]);
 foreach($input_data as $key=>$value)

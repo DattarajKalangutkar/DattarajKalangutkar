@@ -80,7 +80,6 @@ INSERT INTO `algo` (`iId`, `snake`, `type`, `color`, `headshape`, `texture`, `ey
 (74, 'common krait', 'venomous', 'bluish black', 'flattened', 'white crossbars', 'round', 'facial paralysis', '0000-00-00 00:00:00', '1'),
 (75, 'common krait', 'venomous', 'bluish black', 'flattened', 'white crossbars', 'round', 'headache', '0000-00-00 00:00:00', '1'),
 (76, 'bamboo pit viper', 'venomous', 'bright green', 'triangular', 'tail is red or yellow in color', 'vertical', 'immediate pain with rapid swelling', '0000-00-00 00:00:00', '1'),
-(78, 'bamboo pit viper', 'venomous', 'bright green', 'triangular', 'tail is red or yellow in color', 'vertical', 'sign of shock', '0000-00-00 00:00:00', '1'),
 (77, 'bamboo pit viper', 'venomous', 'bright green', 'triangular', 'tail is red or yellow in color', 'vertical', 'swelling in lymph nodes near the bite', '0000-00-00 00:00:00', '1'),
 (78, 'bamboo pit viper', 'venomous', 'bright green', 'triangular', 'tail is red or yellow in color', 'vertical', 'changes in heart rate ', '0000-00-00 00:00:00', '1'),
 (79, 'bamboo pit viper', 'venomous', 'bright green', 'triangular', 'tail is red or yellow in color', 'vertical', 'breathing problem', '0000-00-00 00:00:00', '1'),
