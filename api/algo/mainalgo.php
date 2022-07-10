@@ -1,6 +1,7 @@
 
 <?php
 include "../../api_function.php";
+$postdata = json_decode(file_get_contents("php://input"), true);
 $gain_ratio = array(
     "snaketype"=>0,
     "color"=>0,
@@ -258,11 +259,20 @@ while($iterate)
 
 //DFA($main_tree);
 
+$snaketype_post = ($postdata['snaketype'] == '') ? '':'snaketype_'.$postdata['snaketype'];
+$snakecolor_post = ($postdata['color'] == '') ? '':'color_'.$postdata['color'];
+$snakeheadshape_post = ($postdata['headshape'] == '') ? '':'headshape_'.$postdata['headshape'];
+$snakeEyeshape_post = ($postdata['eyeshape'] == '') ? '':'eyeshape_'.$postdata['eyeshape'];
+$snakeopattern_post = ($postdata['pattern'] == '') ? '':'pattern_'.$postdata['pattern'];
+$snakesymptoms_post = ($postdata['symptoms'] == '') ? '':'symptoms_'.$postdata['symptoms'];
+
 $input_data = array(
-    "snaketype"=>"snaketype_2",
-    "color"=>"",
-    "headshape"=>"",
-    "eyeshape"=>"eyeshape_4"
+    "snaketype"=>$snaketype_post,
+    "color"=>$snakecolor_post,
+    "headshape"=>$snakeheadshape_post,
+    "eyeshape"=>$snakeEyeshape_post,
+    "pattern"=>$snakeopattern_post,
+    "symptoms"=>$snakesymptoms_post
 );
 
 $snake_data = array();
@@ -322,6 +332,6 @@ foreach($input_data as $key=>$value)
 // echo"<br>";
 // echo"As per the input the snake predication can be as follows =><br>";
 
-echo json_encode(array("snakes"=>$snake_data,"error"=>false));
+echo json_encode(array("snakes"=>$snake_data,"flag"=>true));
 exit;
 ?>
