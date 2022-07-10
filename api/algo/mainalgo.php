@@ -1,6 +1,6 @@
 
 <?php
-include '../api_function.php';
+include "../../api_function.php";
 $gain_ratio = array(
     "snaketype"=>0,
     "color"=>0,
