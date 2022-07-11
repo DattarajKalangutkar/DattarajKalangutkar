@@ -287,7 +287,7 @@
 				'validate'=>'1',
 				'clientname'=>'wildlifeIamge',
 				'type'=>'string',
-				'html'=>'text',
+				'html'=>'file',
 				'table'=>'1'
 	
 			),
@@ -406,9 +406,9 @@
 			),
 			'vImage'=>array(
 				'validate'=>'1',
-				'clientname'=>'eventImage',
+				'clientname'=>'eventsImage',
 				'type'=>'string',
-				'html'=>'text',
+				'html'=>'file',
 				'table'=>'1'
 			),
 			'dCreatedDate'=>array(
