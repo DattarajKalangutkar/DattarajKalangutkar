@@ -1195,4 +1195,42 @@
 		}
 		return $array;
 	}
+
+	function gettoprankersrescuer($con,$table,$param,$status)
+	{
+		$sql = "select * from $table where vVerificationstatus='1' and vStatus='1' order by iPoints";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
+		while($res = mysqli_fetch_assoc($response_query))
+		{
+			$data[] = $res;
+		}
+		return $data; 
+	}
+  
+	function getnoofcalls($con,$table,$rescuerid)
+	{
+		$sql = "select * from $table where iRescuerId='$rescuerid' and vTranStatus='3' and vStatus='1' ";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:1213');
+		$num_of_rows = mysqli_num_rows($response_query);
+		return $num_of_rows;  
+
+	}
+
+	function getranking($con,$table,$id)
+	{
+		$sql = "select * from $table where vVerificationstatus='1' and vStatus='1' order by iPoints";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
+		while($res = mysqli_fetch_assoc($response_query))
+		{
+			$data[] = $res;
+		}
+		
+		foreach($data as $key=>$value)
+		{
+			if($value['iId'] == $id)
+				$ranking = $key+1;
+		}
+		return $ranking;
+	}
+	
 ?>
