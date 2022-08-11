@@ -113,6 +113,13 @@
             'html'=>'text',
             'table'=>'0'
         ),
+        'iPoints'=>array(
+            'validate'=>'0',
+            'clientname'=>'rescuerPoints',
+            'type'=>'number',
+            'html'=>'text',
+            'table'=>'0'
+        ),
         'dCreatedDate'=>array(
             'validate'=>'0',
             'clientname'=>'createdDate',
