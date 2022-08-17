@@ -13,10 +13,10 @@
 		$sample_array = array();
 		$count = 0;
 		$data_from_db = getresgisterrescuerforapp($con,"rescuer",'','1'); //get all the data from the database
-        //DFA($data_from_db);
         foreach($data_from_db as $key=>$val)
         {
-            $sample_array[$key]['distance'] = number_format(distance($postdata['lat'], $postdata['long'], $val['vLat'], $val['vLong'], "K"),2)." Kms";
+            $sample_array[$key]['distance_in_number'] = number_format(distance($postdata['lat'], $postdata['long'], $val['vLat'], $val['vLong'], "K"),2);
+            $sample_array[$key]['distance'] = $sample_array[$key]['distance_in_number']." Kms";
             $sample_array[$key]['id'] = $data_from_db[$key]['iId'];
             foreach($rescuer_config as $keys=>$val)
             {

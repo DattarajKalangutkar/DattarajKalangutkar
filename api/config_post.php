@@ -4,6 +4,7 @@
             'validate'=>'1',
             'clientname'=>'postRescuer',
             'type'=>'string',
+            'data_fetch'=>'rescuer',
             'html'=>'text',
             'table'=>'1'
         ),
