@@ -44,21 +44,8 @@
                                     <label>Email</label>
                                         <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerEmail'];?>" disabled="true">
                                     </div>
-                                    <div class="col-sm-6">
-                                    <label>Age</label>
-                                    <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerAge'];?>" disabled="true">
-                                    </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <label>Gender</label>
-                                        <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerGender'];?>" disabled="true">
-                                    </div>
-                                    <div class="col-sm-6">
-                                    <label>Address</label>
-                                    <input type="text" class="form-control form-control-user" value="<?php echo $rescuer_data['rescuerAddress'];?>" disabled="true">
-                                    </div>
-                                </div>
+                    
                             </form>
                         </div>
                     </div>
