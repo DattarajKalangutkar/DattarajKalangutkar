@@ -162,7 +162,7 @@
 				'html'=>'text',
 				'table'=>'1'
 			),
-			'dCreated_date'=>array(
+			'dCreatedDate'=>array(
 				'validate'=>'0',
 				'clientname'=>'createdDate',
 				'type'=>'date',
