@@ -63,7 +63,8 @@
 				{
 					$sample_array[$val['clientname']] = $api_url.$data_from_db[$key];
 				}
-				else{
+				else
+				{
 					if(isset($val['data_fetch']))
 					{
 						$sample_array[$val['clientname']] = GETXDATAFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key]);

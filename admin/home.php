@@ -114,11 +114,19 @@ new Chart("toprankingchart", {
     }]
   },
   options: {
+    scales: {
+        yAxes: [{
+            display: true,
+            ticks: {
+                beginAtZero: true,
+            }
+        }]
+    },
     legend: {display: false},
     title: {
       display: true,
       text: "Top 5 Ranking"
-    }
+    },
   }
 });
 
@@ -135,11 +143,19 @@ new Chart("complete_tranchart", {
     }]
   },
   options: {
+    scales: {
+        yAxes: [{
+            display: true,
+            ticks: {
+                beginAtZero: true,
+            }
+        }]
+    },
     legend: {display: false},
     title: {
-      display: true,
+        display: true,
       text: "Last 5 Days Transction"
-    }
+    },
   }
 });
 
@@ -155,11 +171,19 @@ new Chart("today_tranchart", {
     }]
   },
   options: {
+    scales: {
+        yAxes: [{
+            display: true,
+            ticks: {
+                beginAtZero: true,
+            }
+        }]
+    },
     legend: {display: false},
     title: {
-      display: true,
-      text: "Todays Transcation Status"
-    }
+        display: true,
+        text: "Todays Transcation Status"
+    },
   }
 });
 </script>
