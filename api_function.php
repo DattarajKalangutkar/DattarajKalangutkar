@@ -275,7 +275,7 @@
 	function getalldataAlgo($con,$table)
 	{
 		$data = array();
-		$sql = "select type,color,headshape,eyeshape,snake as name,texture,symptoms from $table";
+		$sql = "select type,color,headshape,eyeshape,snake as name,pattern,symptoms from $table";
 		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
 		while($res = mysqli_fetch_assoc($response_query))
 		{
@@ -1231,6 +1231,14 @@
 				$ranking = $key+1;
 		}
 		return $ranking;
+	}
+
+	function getsnakedetail($con,$table,$name)
+	{
+		$sql = "select * from $table where vName='$name' and vStatus='1' order by iId";
+		$response_query = mysqli_query($con, $sql) or die('Error, No:240');
+		$res = mysqli_fetch_assoc($response_query);
+		return $res;
 	}
 	
 ?>

@@ -1,5 +1,6 @@
 <?php
 include "../../api_function.php";
+include "../config_master.php";
 $postdata = json_decode(file_get_contents("php://input"), true);
 $gain_ratio = array(
     "snaketype"=>0,
@@ -163,7 +164,6 @@ $input_data = array(
 );
 
 $snake_data = array();
-
 $root_element = '';
 foreach($main_tree as $key=>$value)
 {
@@ -210,6 +210,38 @@ foreach($input_data as $key=>$value)
     }
 }
 
-echo json_encode(array("snakes"=>$snake_data,"flag"=>true));
+$data_from_db = array();
+$sample_array = array();
+if(count($snake_data) > 0)
+{
+    foreach($snake_data as $snake)
+    {
+        array_push($data_from_db,getsnakedetail($con,'snake',$snake));
+    }
+}
+$modules = "snake";
+foreach($data_from_db as $key=>$val)
+{
+    $sample_array[$key]['id'] = $data_from_db[$key]['iId'];
+    foreach($master_config[$modules] as $keys=>$val)
+    {
+        if($keys == 'vImage')
+        {
+            $sample_array[$key][$val['clientname']] = $api_url.$data_from_db[$key][$keys];
+        }
+        else{
+            if(isset($val['data_fetch']))
+            {
+                $sample_array[$key][$val['clientname']] = GETXDATAFROMYID($con,$val['data_fetch'],'vName',$data_from_db[$key][$keys]);
+            }
+            else{
+                $sample_array[$key][$val['clientname']] = $data_from_db[$key][$keys];
+            }
+        }
+    }
+}	
+
+
+echo json_encode(array("snakes"=>$sample_array,"flag"=>true));
 exit;
 ?>

@@ -6,7 +6,6 @@
 	$tech = ($_GET['type']) ? $_GET['type']:'Dashboard';	
 	$title = ($_GET['type']) ? ucwords($_GET['type']):'Dashboard';	
 	$action = $api_url.'master/sample.php?modules='.$tech;
-    
 	$data = json_decode(file_get_contents($action),true);
 	$get_data_table_str = getDataTable($master_config[$tech],$data['rows'],$tech,'edit',$con);
 ?>
