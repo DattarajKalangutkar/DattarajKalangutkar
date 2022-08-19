@@ -285,7 +285,7 @@
 			),
 			'vImage'=>array(
 				'validate'=>'1',
-				'clientname'=>'wildlifeIamge',
+				'clientname'=>'wildlifeImage',
 				'type'=>'string',
 				'html'=>'file',
 				'table'=>'1'
