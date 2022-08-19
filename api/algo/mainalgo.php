@@ -146,6 +146,9 @@ while($iterate)
     }
 }
 
+// echo "<pre>";
+// print_r($main_tree);
+// exit;
 
 $snaketype_post = ($postdata['snaketype'] == '') ? '':'snaketype_'.$postdata['snaketype'];
 $snakecolor_post = ($postdata['color'] == '') ? '':'color_'.$postdata['color'];
@@ -210,6 +213,7 @@ foreach($input_data as $key=>$value)
     }
 }
 
+$snake_data = array_unique($snake_data);
 $data_from_db = array();
 $sample_array = array();
 if(count($snake_data) > 0)
