@@ -9,7 +9,7 @@
 			$str .= "<option value='0'>Select an Option</option>";
 			foreach($full_data as $key=>$value)
 			{
-				$selected = ($value['iId'] == $val) ? 'selected':'';
+				$selected = ($value['iId'] == $val['iId']) ? 'selected':'';
 				$str .= "<option value='".$value['iId']."' $selected>".$value['vName']."</option>";
 			}
 			$str .= "</select>";
