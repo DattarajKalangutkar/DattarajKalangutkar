@@ -5,7 +5,7 @@
             'clientname'=>'postRescuer',
             'type'=>'string',
             'data_fetch'=>'rescuer',
-            'html'=>'text',
+            'html'=>'dropdown',
             'table'=>'1'
         ),
         'vPostImage'=>array(
@@ -20,7 +20,7 @@
             'clientname'=>'postComments',
             'type'=>'string',
             'html'=>'text',
-            'table'=>'1'
+            'table'=>'0'
         ),
         'iLikes'=>array(
             'validate'=>'0',
@@ -34,7 +34,7 @@
             'clientname'=>'postViews',
             'type'=>'string',
             'html'=>'text',
-            'table'=>'1'
+            'table'=>'0'
         ),
         'dCreatedDate'=>array(
             'validate'=>'0',

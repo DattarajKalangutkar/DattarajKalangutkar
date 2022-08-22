@@ -43,6 +43,11 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Transaction </span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="post_list.php">
+            <i class="fas fa-fw fa-table"></i>
+            <span>Post </span></a>
+    </li>
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
